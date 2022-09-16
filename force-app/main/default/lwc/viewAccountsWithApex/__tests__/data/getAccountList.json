@@ -1,0 +1,20 @@
+[
+    {
+        "Id": "0031700000pJRRSAA4",
+        "Name": "Acme Inc",
+        "Phone": "4158526633",
+        "Website": "www.acme.com",
+        "Owner.Name": "Amy Taylor",
+        "Industries": "Manufacturing",
+        "Type": "Record Type"
+    },
+    {
+        "Id": "0031700000pJRRSAA4",
+        "Name": "Acme LLC",
+        "Phone": "4158526633",
+        "Website": "www.acmellc.com",
+        "Owner.Name": "Kevin Smith",
+        "Industries": "Manufacturing",
+        "Type": "Record Type"
+    }
+]

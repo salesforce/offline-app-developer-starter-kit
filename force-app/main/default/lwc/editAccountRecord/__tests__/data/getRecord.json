@@ -1,0 +1,13 @@
+{
+    "fields": {
+        "Name": {
+            "value": "Name Mock"
+        },
+        "Phone": {
+            "value": "123-456-7890"
+        },
+        "Website": {
+            "value": "www.mocksite.fake"
+        }
+    }
+ }

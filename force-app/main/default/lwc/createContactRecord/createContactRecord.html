@@ -1,0 +1,22 @@
+<template>
+    <div class="component-background">
+        <div class="slds-var-p-around_medium body-slot">
+            <lightning-record-edit-form object-api-name="Contact" onsuccess={onSuccess} onerror={onError}>
+                <lightning-layout horizontal-align="spread">
+                    <lightning-layout-item padding="around-small">
+                        <lightning-button variant="base" label="Cancel" onclick={dismiss} class="slds-m-left_x-small"></lightning-button>
+                    </lightning-layout-item>
+                    <lightning-layout-item padding="around-small">
+                        <lightning-button variant="base" label="Create" type="submit" class="slds-m-left_x-small"></lightning-button>
+                    </lightning-layout-item>
+                </lightning-layout>
+                <lightning-messages></lightning-messages>
+                <lightning-input-field field-name={titleField} value={title}></lightning-input-field>
+                <lightning-input-field field-name={firstNameField} value={firstName}></lightning-input-field>
+                <lightning-input-field field-name={lastNameField} value={lastName}></lightning-input-field>
+                <lightning-input-field field-name={phoneField} value={phone}></lightning-input-field>
+                <lightning-input-field field-name={emailField} value={email}></lightning-input-field>
+            </lightning-record-edit-form>
+        </div>
+    </div>
+</template>

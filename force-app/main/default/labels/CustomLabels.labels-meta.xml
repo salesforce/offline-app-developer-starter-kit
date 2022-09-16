@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
+
+    <labels>
+        <fullName>LMR_Cancel</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Cancel</shortDescription>
+        <value>Cancel</value>
+    </labels>
+
+    <labels>
+        <fullName>LMR_Save</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Save</shortDescription>
+        <value>Save</value>
+    </labels>
+
+    <labels>
+        <fullName>LMR_Search</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Search</shortDescription>
+        <value>Search</value>
+    </labels>
+    <labels>
+        <fullName>LMR_Items</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>items</shortDescription>
+        <value>items</value>
+    </labels>
+    <labels>
+        <fullName>LMR_SortedBy</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>sorted by</shortDescription>
+        <value>sorted by</value>
+    </labels>
+    <labels>
+        <fullName>LMR_FilterTitle</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Filter title with capital F</shortDescription>
+        <value>Filter</value>
+    </labels>
+    <labels>
+        <fullName>LMR_Of</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription
+    >when filtering the data - X items of Y</shortDescription>
+        <value>of</value>
+    </labels>
+    <labels>
+        <fullName>LMR_filter</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>filter</shortDescription>
+        <value>filter</value>
+    </labels>
+    <labels>
+        <fullName>LMR_filters</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>filters</shortDescription>
+        <value>filters</value>
+    </labels>
+    <labels>
+        <fullName>LMR_Apply</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Apply button</shortDescription>
+        <value>Apply</value>
+    </labels>
+    <labels>
+        <fullName>LMR_ClearAll</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Clear All filters button</shortDescription>
+        <value>Clear All</value>
+    </labels>
+    <labels>
+        <fullName>LMR_SuccessTitle</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Success title on toast</shortDescription>
+        <value>Success</value>
+    </labels>
+    <labels>
+        <fullName>LMR_RecordIsUpdated</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription
+    >Record Is Updated - toast body on save</shortDescription>
+        <value>Record Is Updated</value>
+    </labels>
+    <labels>
+        <fullName>LMR_ErrorTitle</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Error title on toast</shortDescription>
+        <value>Something went wrong.</value>
+    </labels>
+    <labels>
+        <fullName>LMR_Selected</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>X selected</shortDescription>
+        <value>selected</value>
+    </labels>
+    <labels>
+        <fullName>LMR_Select</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>select value from dropdown</shortDescription>
+        <value>select</value>
+    </labels>
+    <labels>
+        <fullName>LMR_DefineDateRangeTitle</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Define a date range</shortDescription>
+        <value>Define a date range</value>
+    </labels>
+    <labels>
+        <fullName>LMR_StartDate</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Start Date</shortDescription>
+        <value>Start Date</value>
+    </labels>
+    <labels>
+        <fullName>LMR_EndDate</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>End Date</shortDescription>
+        <value>End Date</value>
+    </labels>
+    <labels>
+        <fullName>LMR_None</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>None option for picklist dropdown</shortDescription>
+        <value>None</value>
+    </labels>
+    <labels>
+        <fullName>LMR_Enabled</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Enabled</shortDescription>
+        <value>Enabled</value>
+    </labels>
+    <labels>
+        <fullName>LMR_Disabled</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Disabled</shortDescription>
+        <value>Disabled</value>
+    </labels>
+    <labels>
+        <fullName>FSL_LMR_Test</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Test Label</shortDescription>
+        <value>Test Label</value>
+    </labels>
+</CustomLabels>

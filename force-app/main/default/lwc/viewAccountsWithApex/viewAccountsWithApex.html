@@ -1,0 +1,17 @@
+<template>
+    <lightning-card
+        title="Apex: 10 Recently Created Accounts"
+        icon-name="custom:custom63"
+    >
+        <div class="slds-var-m-around_medium">
+            <template if:true={accounts.data}>
+                <template for:each={accounts.data} for:item="account">
+                    <p key={account.Id}>{account.Name}</p>
+                </template>
+            </template>
+            <template if:true={accounts.error}>
+                <c-error-panel errors={accounts.error}></c-error-panel>
+            </template>
+        </div>
+    </lightning-card>
+</template>

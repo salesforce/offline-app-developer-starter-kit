@@ -1,0 +1,17 @@
+.field-label {
+    font-family: -apple-system, 'SF Pro Display';
+    font-size: 14px;
+    color: #3E3E3C
+}
+
+.field-value {
+    font-family: -apple-system, 'SF Pro Display';
+    font-size: 14px;
+    color: #080707
+}
+
+.updated-field-value {
+    font-family: -apple-system, 'SF Pro Display';
+    font-size: 14px;
+    color: #8C4B02;
+}

@@ -1,0 +1,13 @@
+<template>
+    <lightning-layout class="slds-p-vertical_small">
+        <lightning-layout-item flexibility="auto" size=4><div class="field-label">{label}</div></lightning-layout-item>
+        <lightning-layout-item flexibility="auto">
+            <template if:true={showPreviousValue}>
+                <s class="field-value">{previousValue}</s>
+            </template>
+            <div if:true={value} class={fieldValueClass}>
+                {value}
+            </div>
+        </lightning-layout-item>
+    </lightning-layout>
+</template>

@@ -1,0 +1,9 @@
+.component-background {
+    background-color: #f3f2f2;
+    height: 100%;
+    width: 100%;
+}
+
+.body-slot {
+    background: #FFFFFF;
+}
