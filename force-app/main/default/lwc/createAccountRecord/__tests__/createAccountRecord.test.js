@@ -1,21 +1,21 @@
-import { createElement } from 'lwc';
-import CreateAccountRecord from 'c/createAccountRecord';
+import { createElement } from 'lwc'
+import CreateAccountRecord from 'c/createAccountRecord'
 
-import NAME_FIELD from '@salesforce/schema/Account.Name';
-import PHONE_FIELD from '@salesforce/schema/Account.Phone';
-import WEBSITE_FIELD from '@salesforce/schema/Account.Website';
-import INDUSTRY_FIELD from '@salesforce/schema/Account.Industry';
-import TYPE_FIELD from '@salesforce/schema/Account.Type';
+import NAME_FIELD from '@salesforce/schema/Account.Name'
+import PHONE_FIELD from '@salesforce/schema/Account.Phone'
+import WEBSITE_FIELD from '@salesforce/schema/Account.Website'
+import INDUSTRY_FIELD from '@salesforce/schema/Account.Industry'
+import TYPE_FIELD from '@salesforce/schema/Account.Type'
 
 describe('c-create-account-record', () => {
     afterEach(() => {
         // The jsdom instance is shared across test cases in a single file, so, reset the DOM
         while (document.body.firstChild) {
-            document.body.removeChild(document.body.firstChild);
+            document.body.removeChild(document.body.firstChild)
         }
 
         jest.restoreAllMocks()
-    });
+    })
 
     it('should go back when clicking cancel button', () => {
         // setup
@@ -34,7 +34,6 @@ describe('c-create-account-record', () => {
     })
 
     it('should populate correctly and have buttons, message, and input fields', () => {
-        const RECORD_ID_INPUT = '0011700000pJRRSAA4'
         const OBJECT_API_NAME = 'Account'
 
         const INPUT_FIELDS = [
@@ -43,7 +42,7 @@ describe('c-create-account-record', () => {
             WEBSITE_FIELD,
             INDUSTRY_FIELD,
             TYPE_FIELD
-        ];
+        ]
 
         // setup
         const element = createElement('c-create-account-record', {
@@ -68,9 +67,8 @@ describe('c-create-account-record', () => {
         // get the input fields and ensure they are in the correct order
         const outputFieldNames = Array.from(
             element.shadowRoot.querySelectorAll('lightning-input-field')
-        ).map((outputField) => outputField.fieldName);
-        expect(outputFieldNames).toEqual(INPUT_FIELDS);
-
+        ).map((outputField) => outputField.fieldName)
+        expect(outputFieldNames).toEqual(INPUT_FIELDS)
     })
 
     it('should go back after success', () => {
@@ -80,7 +78,7 @@ describe('c-create-account-record', () => {
         })
         document.body.appendChild(element)
 
-        const backSpy = jest.spyOn(window.history, 'back');
+        const backSpy = jest.spyOn(window.history, 'back')
         const form = element.shadowRoot.querySelector('lightning-record-edit-form')
 
         // test
@@ -88,7 +86,6 @@ describe('c-create-account-record', () => {
 
         return Promise.resolve().then(() => {
             expect(backSpy).toHaveBeenCalled()
-        });
-    });
-
-});
+        })
+    })
+})
