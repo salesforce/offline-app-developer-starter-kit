@@ -1,4 +1,5 @@
 .sfdx
+.sf
 .localdevserver
 .DS_Store
 node_modules
