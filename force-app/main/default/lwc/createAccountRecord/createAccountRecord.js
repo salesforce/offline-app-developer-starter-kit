@@ -28,13 +28,8 @@ export default class CreateAccountRecord extends LightningElement {
         this.dismiss(event);
     }
 
-    onError(event) {
-        console.error('Error creating Account', event);
-    }
-
     dismiss(event) {
         console.log('Dismissing modal', event.detail);
-        // NOTE: history.back() is only available on 240+ -- use NavigationMixin.Navigate for pre-240 solutions
         history.back();
     }
 }
