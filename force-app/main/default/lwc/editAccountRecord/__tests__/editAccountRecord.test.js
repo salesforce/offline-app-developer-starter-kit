@@ -1,12 +1,12 @@
 import { createElement } from 'lwc'
 import EditAccountRecord from 'c/editAccountRecord'
-import { getRecord, updateRecord } from 'lightning/uiRecordApi'
+import { getRecord } from 'lightning/uiRecordApi'
 
-import NAME_FIELD from '@salesforce/schema/Account.Name';
-import PHONE_FIELD from '@salesforce/schema/Account.Phone';
-import WEBSITE_FIELD from '@salesforce/schema/Account.Website';
-import INDUSTRY_FIELD from '@salesforce/schema/Account.Industry';
-import TYPE_FIELD from '@salesforce/schema/Account.Type';
+import NAME_FIELD from '@salesforce/schema/Account.Name'
+import PHONE_FIELD from '@salesforce/schema/Account.Phone'
+import WEBSITE_FIELD from '@salesforce/schema/Account.Website'
+import INDUSTRY_FIELD from '@salesforce/schema/Account.Industry'
+import TYPE_FIELD from '@salesforce/schema/Account.Type'
 
 const mockRecord = require("./data/getRecord.json")
 
@@ -14,7 +14,7 @@ describe('c-edit-account-record', () => {
     afterEach(() => {
         // The jsdom instance is shared across test cases in a single file so reset the DOM
         while (document.body.firstChild) {
-            document.body.removeChild(document.body.firstChild);
+            document.body.removeChild(document.body.firstChild)
         }
     })
 
@@ -69,7 +69,7 @@ describe('c-edit-account-record', () => {
 
             const mockedName = mockRecord.fields.Name.value
             
-            expect(displayName.innerHTML).toBe(mockedName);
+            expect(displayName.innerHTML).toBe(mockedName)
         })
     })
 
