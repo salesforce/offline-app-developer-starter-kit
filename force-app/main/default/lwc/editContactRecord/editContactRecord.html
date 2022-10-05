@@ -1,24 +1,33 @@
 <template>
     <div class="component-background">
-        <div class="slds-p-around_medium body-slot">
-            <lightning-record-edit-form object-api-name="Contact" record-id={recordId} onsuccess={onSuccess} onerror={onError}>
+        <div class="slds-var-p-around_medium body-slot">
+            <lightning-record-edit-form object-api-name="Contact" record-id={recordId} onsuccess={onSuccess}>
+
+                <!-- cancel and submit buttons-->
                 <lightning-layout horizontal-align="spread">
                     <lightning-layout-item padding="around-small">
-                        <lightning-button variant="base" label="Cancel" onclick={dismiss} class="slds-m-left_x-small"></lightning-button>
+                        <lightning-button variant="base" data-id="cancel" label="Cancel" type="button" onclick={dismiss} class="slds-m-left_x-small"></lightning-button>
                     </lightning-layout-item>
-                    <lightning-layout-item padding="around-small" class="modal-record-name slds-align_absolute-center">
+
+                    <lightning-layout-item data-id="name" padding="around-small" class="modal-record-name slds-align_absolute-center">
                         {fullName}
                     </lightning-layout-item>
+
                     <lightning-layout-item padding="around-small">
-                        <lightning-button variant="base" label="Save" type="submit" class="slds-m-left_x-small"></lightning-button>
+                        <lightning-button variant="base" data-id="submit" label="Save" type="submit" class="slds-m-left_x-small"></lightning-button>
                     </lightning-layout-item>
                 </lightning-layout>
+
+                <!-- show any error messages or alerts -->
                 <lightning-messages></lightning-messages>
+
+                <!-- input fields -->
                 <lightning-input-field field-name={titleField}></lightning-input-field>
                 <lightning-input-field field-name={firstNameField}></lightning-input-field>
                 <lightning-input-field field-name={lastNameField}></lightning-input-field>
                 <lightning-input-field field-name={phoneField}></lightning-input-field>
                 <lightning-input-field field-name={emailField}></lightning-input-field>
+
             </lightning-record-edit-form>
         </div>
     </div>

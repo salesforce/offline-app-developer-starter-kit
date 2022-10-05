@@ -1,21 +1,29 @@
 <template>
     <div class="component-background">
         <div class="slds-var-p-around_medium body-slot">
-            <lightning-record-edit-form object-api-name="Account" onsuccess={onSuccess} onerror={onError}>
+            <lightning-record-edit-form object-api-name="Account" onsuccess={onSuccess}>
+
+                <!-- cancel and submit buttons-->
                 <lightning-layout horizontal-align="spread">
                     <lightning-layout-item padding="around-small">
-                        <lightning-button variant="base" label="Cancel" onclick={dismiss} class="slds-m-left_x-small"></lightning-button>
+                        <lightning-button variant="base" data-id="cancel" label="Cancel" type="button" onclick={dismiss} class="slds-m-left_x-small"></lightning-button>
                     </lightning-layout-item>
+
                     <lightning-layout-item padding="around-small">
-                        <lightning-button variant="base" label="Create" type="submit" class="slds-m-left_x-small"></lightning-button>
+                        <lightning-button variant="base" data-id="submit" label="Create" type="submit" class="slds-m-left_x-small"></lightning-button>
                     </lightning-layout-item>
                 </lightning-layout>
+
+                <!-- show any error messages or alerts -->
                 <lightning-messages></lightning-messages>
+
+                <!-- input fields -->
                 <lightning-input-field field-name={nameField} value={name}></lightning-input-field>
                 <lightning-input-field field-name={phoneField} value={phone}></lightning-input-field>
                 <lightning-input-field field-name={websiteField} value={website}></lightning-input-field>
                 <lightning-input-field field-name={industryField} value={industry}></lightning-input-field>
                 <lightning-input-field field-name={typeField} value={type}></lightning-input-field>
+
             </lightning-record-edit-form>
         </div>
     </div>
