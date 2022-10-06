@@ -2,6 +2,7 @@ import { LightningElement, api, wire } from 'lwc';
 import { getRecord } from 'lightning/uiRecordApi';
 
 import TITLE_FIELD from '@salesforce/schema/Contact.Title';
+import NAME_FIELD from '@salesforce/schema/Contact.Name';
 import FIRSTNAME_FIELD from '@salesforce/schema/Contact.FirstName';
 import LASTNAME_FIELD from '@salesforce/schema/Contact.LastName';
 import PHONE_FIELD from '@salesforce/schema/Contact.Phone';
@@ -9,6 +10,7 @@ import EMAIL_FIELD from '@salesforce/schema/Contact.Email';
 
 const FIELDS = [
     TITLE_FIELD,
+    NAME_FIELD,
     FIRSTNAME_FIELD,
     LASTNAME_FIELD,
     PHONE_FIELD,

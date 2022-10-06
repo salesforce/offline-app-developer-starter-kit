@@ -9,6 +9,7 @@ import PHONE_FIELD from '@salesforce/schema/Contact.Phone'
 import EMAIL_FIELD from '@salesforce/schema/Contact.Email'
 
 const mockRecord = require("./data/getRecord.json")
+const mockRecordFirstNameNull = require("./data/getRecord_firstNameNull.json")
 
 describe('c-edit-contact-record', () => {
     afterEach(() => {
@@ -69,6 +70,35 @@ describe('c-edit-contact-record', () => {
             const displayName = element.shadowRoot.querySelector('lightning-layout-item[data-id="name"]')
 
             const mockedName = mockRecord.fields.FirstName.value + ' ' + mockRecord.fields.LastName.value
+            
+            expect(displayName.innerHTML).toBe(mockedName)
+        })
+    })
+
+    it('should only display last name if first name is null', () => {
+        const RECORD_ID = "003abcdefghijklmno"
+        const OBJECT_API_NAME = 'Contact'
+
+        const element = createElement('c-edit-contact-record', {
+            is: EditContactRecord
+        })
+        document.body.appendChild(element)
+        element.recordId = RECORD_ID
+        element.objectApiName = OBJECT_API_NAME
+        document.body.appendChild(element)
+
+        // Emit mock record into the wired field - we have to do this after inserting into DOM 
+        // for the component to receive updates. We will need to use a promise next to wait for 
+        // DOM to re-render
+        getRecord.emit(mockRecordFirstNameNull)
+
+        // Resolve a promise to wait for a re-render of the new content to include the name value
+        // that is built after the @wire executes.
+        return Promise.resolve().then(() => {
+            const displayName = element.shadowRoot.querySelector('lightning-layout-item[data-id="name"]')
+
+            // Full name should only consist of last name
+            const mockedName = mockRecord.fields.LastName.value
             
             expect(displayName.innerHTML).toBe(mockedName)
         })
