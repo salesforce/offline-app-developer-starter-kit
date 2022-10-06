@@ -26,7 +26,7 @@ export default class EditContactRecord extends LightningElement {
     record
 
     get fullName() {
-        var first =
+        const first =
             this.record &&
             this.record.data &&
             this.record.data.fields &&
@@ -34,7 +34,7 @@ export default class EditContactRecord extends LightningElement {
             this.record.data.fields.FirstName.value
                 ? (this.record.data.fields.FirstName.value + " ") : // append a space after first name
                 ""
-        var last =
+        const last =
             this.record &&
             this.record.data &&
             this.record.data.fields &&
