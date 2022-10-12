@@ -15,7 +15,7 @@ export default class ScanBarcode extends LightningElement {
     }
 
     doScan() {
-        if (this.scanner){
+        if (this.scanner && this.scanner.isAvailable()) {
             console.log('starting scan...')
             const scanningOptions = {
                 barcodeTypes: [
