@@ -2,8 +2,6 @@ import { createElement } from 'lwc'
 import ScanBarcode from 'c/scanBarcode'
 import { getBarcodeScanner } from 'lightning/mobileCapabilities'
 
-jest.mock('lightning/mobileCapabilities')
-
 describe('c-scan-barcode', () => {
 
     afterEach(() => {
