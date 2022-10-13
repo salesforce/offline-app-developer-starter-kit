@@ -57,7 +57,7 @@ describe('c-scan-barcode', () => {
 
         expect(mockBarcodeScanner.beginCapture).toHaveBeenCalledTimes(1)
 
-        // check to ensure the template was updated with the scanned barcode
+        // check to ensure the template was updated with the error code
         const errorCode = element.shadowRoot.querySelector('span[data-id="error"]')
         expect(errorCode.innerHTML).toBe('some-error')
 
@@ -84,7 +84,7 @@ describe('c-scan-barcode', () => {
         expect(mockBarcodeScanner.beginCapture).not.toHaveBeenCalled()
         expect(mockBarcodeScanner.endCapture).not.toHaveBeenCalled()
 
-        // check to ensure the template was updated with the scanned barcode
+        // check to ensure the template was updated with the error code
         const errorCode = element.shadowRoot.querySelector('span[data-id="error"]')
         expect(errorCode.innerHTML).toBe('SCANNER_NOT_INITIALIZED')
 
