@@ -1,15 +1,15 @@
-import { LightningElement, track } from 'lwc';
-import { getBarcodeScanner } from 'lightning/mobileCapabilities';
+import { LightningElement, track } from 'lwc'
+import { getBarcodeScanner } from 'lightning/mobileCapabilities'
 
 export default class ScanBarcode extends LightningElement {
-    scanner;
-    @track scannedBarcode = null;
-    @track errorCode = null;
+    scanner
+    @track scannedBarcode = null
+    @track errorCode = null
 
     connectedCallback() {
-        this.scanner = getBarcodeScanner();
+        this.scanner = getBarcodeScanner()
         if (this.scanner == null || !this.scanner.isAvailable()) {
-            console.warn('Scanner not initialized!');
+            console.warn('Scanner not initialized!')
         }
     }
 
@@ -29,32 +29,32 @@ export default class ScanBarcode extends LightningElement {
                 scannerSize: 'XLARGE',
                 cameraFacing: 'BACK',
                 showSuccessCheckMark: true
-            };
+            }
             this.scanner
                 .beginCapture(scanningOptions)
                 .then((result) => {
-                    console.log('successfully scanned', result);
-                    this.errorCode = null;
-                    this.scannedBarcode = result.value;
+                    console.log('successfully scanned', result)
+                    this.errorCode = null
+                    this.scannedBarcode = result.value
                 })
                 .catch((error) => {
-                    console.error('scan error', error);
-                    console.error(this.errorCode);
-                    this.errorCode = error.code;
-                    console.error(this.errorCode);
-                    this.scannedBarcode = null;
+                    console.error('scan error', error)
+                    console.error(this.errorCode)
+                    this.errorCode = error.code
+                    console.error(this.errorCode)
+                    this.scannedBarcode = null
                 })
                 .finally(() => {
-                    console.log('scan complete');
+                    console.log('scan complete')
     
                     // Clean up by ending capture,
                     // whether we completed successfully or had an error
-                    this.scanner.endCapture();
+                    this.scanner.endCapture()
                 });    
         } else {
-            console.log('Scanner not initialized!');
+            console.log('Scanner not initialized!')
             this.errorCode = 'SCANNER_NOT_INITIALIZED'
-            this.scannedBarcode = null;
+            this.scannedBarcode = null
         }
     }
 }
