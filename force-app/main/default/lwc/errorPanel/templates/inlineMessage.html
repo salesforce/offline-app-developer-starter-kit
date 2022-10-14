@@ -1,9 +1,9 @@
 <template>
     <div class="slds-var-m-vertical_small">
         <span class="slds-text-color_destructive">
-            {friendlyMessage}.
+            {friendlyMessage}
             <template if:true={errorMessages.length}>
-                <a onclick={handleShowDetailsClick}> Show details.</a>
+                <a onclick={handleShowDetailsClick}>&nbsp;Show details.</a>
             </template>
         </span>
         <template if:true={errorMessages.length}>

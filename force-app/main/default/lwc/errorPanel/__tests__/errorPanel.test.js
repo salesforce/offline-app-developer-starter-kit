@@ -1,128 +1,72 @@
-import { createElement } from 'lwc';
-import ErrorPanel from 'c/errorPanel';
+import { createElement } from 'lwc'
+import ErrorPanel from 'c/errorPanel'
 
 describe('c-error-panel', () => {
     afterEach(() => {
         // The jsdom instance is shared across test cases in a single file so reset the DOM
         while (document.body.firstChild) {
-            document.body.removeChild(document.body.firstChild);
+            document.body.removeChild(document.body.firstChild)
         }
-    });
-
-    // Helper function to wait until the microtask queue is empty. This is needed for promise
-    // timing when calling imperative Apex.
-    async function flushPromises() {
-        return Promise.resolve();
-    }
+    })
 
     it('displays a default friendly message', () => {
-        const MESSAGE = 'Error retrieving data';
+        const MESSAGE = 'An error occurred'
 
         // Create initial element
         const element = createElement('c-error-panel', {
             is: ErrorPanel
-        });
-        document.body.appendChild(element);
+        })
+        document.body.appendChild(element)
 
-        const messageEl = element.shadowRoot.querySelector('h3');
-        expect(messageEl.textContent).toBe(MESSAGE);
-    });
+        const messageEl = element.shadowRoot.querySelector('span')
+        expect(messageEl.textContent).toBe(MESSAGE)
+    })
 
     it('displays a custom friendly message', () => {
-        const MESSAGE = 'Errors are bad';
+        const MESSAGE = 'Errors are bad'
 
         // Create initial element
         const element = createElement('c-error-panel', {
             is: ErrorPanel
-        });
-        element.friendlyMessage = MESSAGE;
-        document.body.appendChild(element);
+        })
+        element.friendlyMessage = MESSAGE
+        document.body.appendChild(element)
 
-        const messageEl = element.shadowRoot.querySelector('h3');
-        expect(messageEl.textContent).toBe(MESSAGE);
-    });
+        const messageEl = element.shadowRoot.querySelector('span')
+        expect(messageEl.textContent).toBe(MESSAGE)
+    })
 
-    it('displays no error details when no errors are passed as parameters', () => {
+    it('does not have a show details link when there are no errors passed', () => {
         // Create initial element
         const element = createElement('c-error-panel', {
             is: ErrorPanel
-        });
-        document.body.appendChild(element);
+        })
+        document.body.appendChild(element)
 
-        const inputEl = element.shadowRoot.querySelector('lightning-input');
-        expect(inputEl).toBeNull();
-    });
+        const linkEl = element.shadowRoot.querySelector('a')
+        expect(linkEl).toBeNull()
+    })
 
-    it('displays error details when errors are passed as parameters', async () => {
-        const ERROR_MESSAGES_INPUT = [
-            { statusText: 'First bad error' },
-            { statusText: 'Second bad error' }
-        ];
-        const ERROR_MESSAGES_OUTPUT = ['First bad error', 'Second bad error'];
-
+    it('shows details of error message when button is clicked', async () => {
         // Create initial element
         const element = createElement('c-error-panel', {
             is: ErrorPanel
-        });
-        element.errors = ERROR_MESSAGES_INPUT;
-        document.body.appendChild(element);
+        })
+        element.errors = [
+            { message: "a" },
+            { message: "b" }
+        ]
 
-        const inputEl = element.shadowRoot.querySelector('a');
-        inputEl.checked = true;
-        inputEl.dispatchEvent(new CustomEvent('click'));
+        document.body.appendChild(element)
 
-        // Wait for any asynchronous DOM updates
-        await flushPromises();
+        const linkEl = element.shadowRoot.querySelector('a')
+        linkEl.click()
 
-        const messageTexts = Array.from(
-            element.shadowRoot.querySelectorAll('p')
-        ).map((errorMessage) => (errorMessage = errorMessage.textContent));
-        expect(messageTexts).toEqual(ERROR_MESSAGES_OUTPUT);
-    });
+        await Promise.resolve()
 
-    it('is accessible when inline message', async () => {
-        const ERROR_MESSAGES_INPUT = [
-            { statusText: 'First bad error' },
-            { statusText: 'Second bad error' }
-        ];
-
-        const element = createElement('c-error-panel', {
-            is: ErrorPanel
-        });
-
-        element.type = 'inlineMessage';
-        element.errors = ERROR_MESSAGES_INPUT;
-        document.body.appendChild(element);
-
-        // Click link to show details
-        element.shadowRoot.querySelector('a').click();
-
-        // Wait for any asynchronous DOM updates
-        await flushPromises();
-
-        await expect(element).toBeAccessible();
-    });
-
-    it('is accessible when no data illustration', async () => {
-        const ERROR_MESSAGES_INPUT = [
-            { statusText: 'First bad error' },
-            { statusText: 'Second bad error' }
-        ];
-
-        const element = createElement('c-error-panel', {
-            is: ErrorPanel
-        });
-
-        element.type = 'noDataIllustration';
-        element.errors = ERROR_MESSAGES_INPUT;
-        document.body.appendChild(element);
-
-        // Click link to show details
-        element.shadowRoot.querySelector('a').click();
-
-        // Wait for any asynchronous DOM updates
-        await flushPromises();
-
-        await expect(element).toBeAccessible();
-    });
-});
+        const errorEls = element.shadowRoot.querySelectorAll('p')
+        expect(errorEls.length).toBe(2)
+        expect(errorEls[0].textContent).toBe(element.errors[0].message)
+        expect(errorEls[1].textContent).toBe(element.errors[1].message)
+    })
+})
