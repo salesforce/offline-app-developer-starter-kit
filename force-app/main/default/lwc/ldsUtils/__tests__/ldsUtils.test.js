@@ -3,7 +3,6 @@ import { reduceErrors } from 'c/ldsUtils';
 describe('c-lds-utils', () => {
 
     beforeEach(() => {
-        // jest.unmock("c/ldsUtils.js")
         jest.clearAllMocks()
     })
 
