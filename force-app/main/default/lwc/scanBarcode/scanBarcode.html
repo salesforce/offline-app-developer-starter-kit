@@ -1,0 +1,22 @@
+<template>
+    <br/>
+    <div class="slds-text-align_center">
+
+        <!-- Button to start the scanner -->
+        <lightning-layout-item padding="around-small">
+            <lightning-button variant="base" label="Scan barcode example" onclick={doScan} class="slds-m-left_x-small"></lightning-button>
+        </lightning-layout-item>
+
+        <!-- After a barcode is successfully scanned, its value is displayed below -->
+        <template if:true={scannedBarcode}>
+            <span>Scanned:</span>
+            <span data-id="result">{scannedBarcode}</span>
+        </template>
+
+        <!-- If an error is returned while scanning, the error is shown below -->
+        <template if:true={errorCode}>
+            <span>Error:</span>
+            <span data-id="error">{errorCode}</span>
+        </template>
+    </div>
+</template>
