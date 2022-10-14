@@ -19,4 +19,4 @@ const mockBarcodeScannerFactory = {
 
 export function getBarcodeScanner() {
     return mockBarcodeScannerFactory
-};
+}

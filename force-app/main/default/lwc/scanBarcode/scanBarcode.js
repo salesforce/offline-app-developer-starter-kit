@@ -1,4 +1,4 @@
-import { LightningElement, api, track } from 'lwc';
+import { LightningElement, track } from 'lwc';
 import { getBarcodeScanner } from 'lightning/mobileCapabilities';
 
 export default class ScanBarcode extends LightningElement {
@@ -6,7 +6,6 @@ export default class ScanBarcode extends LightningElement {
     @track scannedBarcode = null;
     @track errorCode = null;
 
-    // When component is initialized, detect whether to enable Scan button
     connectedCallback() {
         this.scanner = getBarcodeScanner();
         if (this.scanner == null || !this.scanner.isAvailable()) {
@@ -26,7 +25,10 @@ export default class ScanBarcode extends LightningElement {
                     this.scanner.barcodeTypes.QR
                 ],
                 instructionText: 'Scan a barcode',
-                successText: 'Scanning complete.'
+                successText: 'Scanning complete.',
+                scannerSize: 'XLARGE',
+                cameraFacing: 'BACK',
+                showSuccessCheckMark: true
             };
             this.scanner
                 .beginCapture(scanningOptions)
