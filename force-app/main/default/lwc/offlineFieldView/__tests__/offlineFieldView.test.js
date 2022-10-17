@@ -5,15 +5,17 @@ import { formatForDisplay } from "../offlineFieldView";
 const mockGetRecord = require("./data/getRecord.json");
 
 describe('formatForDisplay', () => {
-  test('formats UTC date', () => {
-    expect(formatForDisplay('2022-06-10T21:03:00Z')).toBe('6/10/2022, 2:03:00 PM');
+  it('formats UTC date', () => {
+    let dateString = '2022-06-10T21:03:00Z'
+    expect(formatForDisplay(dateString)).toBe(new Date(dateString).toLocaleString());
   })
   
-  test('formats UTC date with milliseconds', () => {
-    expect(formatForDisplay('2022-06-10T21:03:00.000Z')).toBe('6/10/2022, 2:03:00 PM');
+  it('formats UTC date with milliseconds', () => {
+    let dateString = '2022-06-10T21:03:00.000Z'
+    expect(formatForDisplay(dateString)).toBe(new Date(dateString).toLocaleString());
   })  
   
-  test('does not modify regular text', () => {
+  it('does not modify regular text', () => {
     expect(formatForDisplay('die Wahrheit')).toBe('die Wahrheit');
   })  
 })
@@ -40,7 +42,7 @@ describe('c-offline-field-view', () => {
           const timeField = element.shadowRoot.querySelector(
               '.field-value'
           );
-          expect(timeField.textContent).toBe('6/10/2022, 2:03:00 PM');
+          expect(timeField.textContent).toBe(new Date(mockGetRecord.fields.Time.value).toLocaleString());
       });
   });
 

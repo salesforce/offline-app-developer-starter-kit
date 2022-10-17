@@ -1,6 +1,11 @@
 import { reduceErrors } from 'c/ldsUtils';
 
 describe('c-lds-utils', () => {
+
+    beforeEach(() => {
+        jest.clearAllMocks()
+    })
+
     describe('reduceErrors', () => {
         it('reduces single error with message in body', () => {
             const FULL_ERROR = { body: { message: 'mockError' } };
