@@ -1,6 +1,7 @@
 import { createElement } from 'lwc'
 import ViewAccountRecord from 'c/viewAccountRecord'
 import { getRecord } from 'lightning/uiRecordApi'
+import LmsSubscriberWebComponent from 'c/lmsSubscriberWebComponent';
 
 const mockGetRecord = require("./data/getRecord.json")
 
@@ -22,6 +23,7 @@ describe('c-view-account-record', () => {
         element.objectApiName = "cardIconName"
 
         // Emit mock record into the wired field
+        // eslint-disable-next-line @lwc/lwc/no-unexpected-wire-adapter-usages
         getRecord.emit(mockGetRecord)
 
         // Resolve a promise to wait for a re-render of the new content
