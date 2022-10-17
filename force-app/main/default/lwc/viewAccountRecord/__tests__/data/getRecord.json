@@ -24,11 +24,11 @@
         "serverValues" : {
             "Name" : {
                 "value" : "Old Name",
-                "displyValue" : null
+                "displayValue" : null
             },
             "Phone" : {
                 "value" : "+1-719-555-1212",
-                "displyValue" : null
+                "displayValue" : null
             }
 
         }
