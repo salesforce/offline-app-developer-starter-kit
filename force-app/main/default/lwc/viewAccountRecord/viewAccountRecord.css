@@ -31,7 +31,7 @@
     font-weight: bold;
 }
 
-.body-slot c-offline-field-view:not(:last-child) {
+.body-slot {
     display: block;
     border-bottom: 1px solid #DDDBDA;
 }
