@@ -1,7 +1,6 @@
 import { createElement } from 'lwc'
 import ViewAccountRecord from 'c/viewAccountRecord'
 import { getRecord } from 'lightning/uiRecordApi'
-import LmsSubscriberWebComponent from 'c/lmsSubscriberWebComponent';
 
 const mockGetRecord = require("./data/getRecord.json")
 
