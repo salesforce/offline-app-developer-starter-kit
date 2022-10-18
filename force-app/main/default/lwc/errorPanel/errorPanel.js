@@ -1,25 +1,25 @@
-import { LightningElement, api } from 'lwc'
-import { reduceErrors } from 'c/ldsUtils'
-import inlineMessage from './templates/inlineMessage.html'
+import { LightningElement, api } from "lwc";
+import { reduceErrors } from "c/ldsUtils";
+import inlineMessage from "./templates/inlineMessage.html";
 
 export default class ErrorPanel extends LightningElement {
-    /** Single or array of LDS errors */
-    @api errors
+  /** Single or array of LDS errors */
+  @api errors;
 
-    /** Generic / user-friendly message */
-    @api friendlyMessage = 'An error occurred'
-    
-    viewDetails = false
+  /** Generic / user-friendly message */
+  @api friendlyMessage = "An error occurred";
 
-    get errorMessages() {
-        return reduceErrors(this.errors)
-    }
+  viewDetails = false;
 
-    handleShowDetailsClick() {
-        this.viewDetails = !this.viewDetails
-    }
+  get errorMessages() {
+    return reduceErrors(this.errors);
+  }
 
-    render() {
-        return inlineMessage
-    }
+  handleShowDetailsClick() {
+    this.viewDetails = !this.viewDetails;
+  }
+
+  render() {
+    return inlineMessage;
+  }
 }
