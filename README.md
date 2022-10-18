@@ -4,7 +4,7 @@ The Offline App Developer Starter Kit provides instructions and sample code to g
 
 ## Prerequisites
 
-- Your organization must have the following permissions enabled: 
+- The Salesforce product team will enable the following permissions for your organization during onboarding: 
   - `LightningWebRuntime`
   - `LightningSDK`
   - `Briefcase`
