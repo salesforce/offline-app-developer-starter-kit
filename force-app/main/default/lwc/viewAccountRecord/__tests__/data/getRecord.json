@@ -18,5 +18,19 @@
         "Type": {
             "value": "Record type"
         }
+    },
+
+    "drafts": {
+        "serverValues" : {
+            "Name" : {
+                "value" : "Old Name",
+                "displayValue" : null
+            },
+            "Phone" : {
+                "value" : "+1-719-555-1212",
+                "displayValue" : null
+            }
+
+        }
     }
  }
