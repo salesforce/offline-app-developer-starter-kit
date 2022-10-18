@@ -30,6 +30,6 @@ export default class CreateAccountRecord extends LightningElement {
 
     dismiss(event) {
         console.log('Dismissing modal', event.detail);
-        history.back();
+        window.history.back();
     }
 }

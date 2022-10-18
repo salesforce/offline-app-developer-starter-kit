@@ -32,6 +32,7 @@ describe('c-edit-account-record', () => {
         // Emit mock record into the wired field - we have to do this after inserting into DOM 
         // for the component to receive updates. We will need to use a promise next to wait for 
         // DOM to re-render
+        // eslint-disable-next-line @lwc/lwc/no-unexpected-wire-adapter-usages
         getRecord.emit(mockRecord)
 
         // let's ensure that the form is as expected
@@ -69,6 +70,7 @@ describe('c-edit-account-record', () => {
 
             const mockedName = mockRecord.fields.Name.value
             
+            // eslint-disable-next-line @lwc/lwc/no-inner-html
             expect(displayName.innerHTML).toBe(mockedName)
         })
     })

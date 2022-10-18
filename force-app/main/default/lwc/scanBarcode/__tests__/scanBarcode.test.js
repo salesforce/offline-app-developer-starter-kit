@@ -1,6 +1,7 @@
 import { createElement } from 'lwc'
 import ScanBarcode from 'c/scanBarcode'
 import { getBarcodeScanner } from 'lightning/mobileCapabilities'
+import process from 'node:process';
 
 describe('c-scan-barcode', () => {
 

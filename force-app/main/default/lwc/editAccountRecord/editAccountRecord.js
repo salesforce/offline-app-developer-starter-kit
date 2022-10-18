@@ -34,6 +34,6 @@ export default class EditAccountRecord extends LightningElement {
 
     dismiss(event) {
         console.log('Dismissing modal', event.detail)
-        history.back()
+        window.history.back()
     }
 }
