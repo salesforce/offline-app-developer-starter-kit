@@ -37,6 +37,8 @@ export default class EditAccountRecord extends LightningElement {
 
   dismiss(event) {
     console.log("Dismissing modal", event.detail);
-    window.history.back();
+    // TODO: Can we use window.history.back() here?
+    // eslint-disable-next-line no-restricted-globals
+    history.back();
   }
 }
