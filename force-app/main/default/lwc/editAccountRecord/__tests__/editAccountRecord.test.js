@@ -77,7 +77,7 @@ describe("c-edit-account-record", () => {
       const mockedName = mockRecord.fields.Name.value;
 
       // eslint-disable-next-line @lwc/lwc/no-inner-html
-      expect(displayName.innerHTML).toBe(mockedName);
+      expect(displayName.innerHTML).toContain(mockedName);
     });
   });
 
