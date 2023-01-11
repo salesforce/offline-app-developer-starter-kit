@@ -26,9 +26,12 @@ export default class ScanBarcode extends LightningElement {
         ],
         instructionText: "Scan a barcode",
         successText: "Scanning complete.",
-        scannerSize: "XLARGE",
-        cameraFacing: "BACK",
-        showSuccessCheckMark: true,
+        scannerSize: "XLARGE", // defines the scanner camera view size (e.g SMALL, MEDIUM, LARGE, XLARGE, FULLSCREEN)
+        cameraFacing: "BACK", // defines which device camera to use (e.g FRONT, BACK)
+        showSuccessCheckMark: true, // visually show a check mark in the scanner native UI after successfully scanning a barcode
+        vibrateOnSuccess: true, // vibrate the device after successfully scanning a barcode
+        manualConfirmation: false, // set to TRUE in order to wait for the user to manually confirm the selected barcode
+        previewBarcodeData: true, // preview the barcode data in the scanner native UI
       };
       this.scanner
         .beginCapture(scanningOptions)
