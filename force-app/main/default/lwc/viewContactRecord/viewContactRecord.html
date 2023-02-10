@@ -24,29 +24,11 @@
                 </div>
 
                 <div class="body-slot">
-                    <!-- use lightning-record-form to show the compact layout. here, we use 'view' as the mode which allows edits too -->
                     <lightning-record-form record-id={recordId} object-api-name={objectApiName} layout-type="Compact"
                         columns="1" mode="readonly">
                     </lightning-record-form>
                 </div>
-
-                <!-- show any draft information for this record -->
-                <template if:true={draftDetails} >
-                    <lightning-accordion allow-multiple-sections-open="true">
-                        <lightning-accordion-section name="draftEdits" label="Draft - Original Values">
-                            <ul class="slds-list_dotted">
-                                <template for:each={draftDetails} for:item="draftItem">
-                                    <li key={draftItem.fieldName}>
-                                        {draftItem.fieldName}={draftItem.value}
-                                    </li>
-                                </template>
-                            </ul>
-                        </lightning-accordion-section>
-                    </lightning-accordion>
-                </template>
             </div>
         </template>
-
-        <c-account-related-contacts record-id={recordId}></c-account-related-contacts>
     </div>
 </template>

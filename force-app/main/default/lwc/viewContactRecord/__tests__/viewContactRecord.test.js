@@ -1,11 +1,10 @@
 import { createElement } from "lwc";
-import ViewAccountRecord from "c/viewAccountRecord";
+import ViewContactRecord from "c/viewContactRecord";
 import { getRecord } from "lightning/uiRecordApi";
 
-jest.mock("c/accountRelatedContacts");
 const mockGetRecord = require("./data/getRecord.json");
 
-describe("c-view-account-record", () => {
+describe("c-view-contact-record", () => {
   afterEach(() => {
     // The jsdom instance is shared across test cases in a single file so reset the DOM
     while (document.body.firstChild) {
@@ -14,8 +13,8 @@ describe("c-view-account-record", () => {
   });
 
   it("should correctly populate record fields", () => {
-    const element = createElement("c-view-account-record", {
-      is: ViewAccountRecord,
+    const element = createElement("c-view-contact-record", {
+      is: ViewContactRecord,
     });
     element.objectApiName = "objectApiName";
     document.body.appendChild(element);
@@ -42,11 +41,6 @@ describe("c-view-account-record", () => {
       expect(iconField.iconName).toBe(
         "standard:" + element.objectApiName.toLowerCase()
       );
-
-      // our sample data also has 2 draft edits (name and phone)
-      const draftEdits = element.shadowRoot.querySelectorAll("li");
-      expect(draftEdits[0].textContent).toBe("Name=Old Name");
-      expect(draftEdits[1].textContent).toBe("Phone=+1-719-555-1212");
     });
   });
 });
