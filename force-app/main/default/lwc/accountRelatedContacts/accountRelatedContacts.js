@@ -44,7 +44,7 @@ export default class AccountRelatedContacts extends NavigationMixin(
     variables: "$graphqlVariables",
     operationName: "accountWithChildContacts",
   })
-  graphqlResult({ data, errors }) {
+  graphqlResult({ data /* errors */ }) {
     this.contactsData = data;
   }
   contactsData;
