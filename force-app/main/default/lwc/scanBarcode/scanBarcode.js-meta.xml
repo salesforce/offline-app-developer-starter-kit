@@ -4,6 +4,10 @@
     <isExposed>true</isExposed>
     <targets>
         <target>lightning__GlobalAction</target>
+        <target>lightning__AppPage</target>
+        <target>lightning__HomePage</target>
+        <target>lightning__RecordPage</target>
+        <target>lightning__RecordAction</target>
    </targets>
    <targetConfigs>
         <targetConfig targets="lightning__GlobalAction">
