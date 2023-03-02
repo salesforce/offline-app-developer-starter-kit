@@ -10,9 +10,9 @@ export default class ViewAccountRecord extends LightningElement {
   @api recordId;
   @api objectApiName;
 
-  fields = [NAME_FIELD, PHONE_FIELD, WEBSITE_FIELD, INDUSTRY_FIELD, TYPE_FIELD];
+  FIELDS = [NAME_FIELD, PHONE_FIELD, WEBSITE_FIELD, INDUSTRY_FIELD, TYPE_FIELD];
 
-  @wire(getRecord, { recordId: "$recordId", fields: fields })
+  @wire(getRecord, { recordId: "$recordId", fields: this.FIELDS })
   record;
 
   get name() {
