@@ -36,19 +36,19 @@ The Offline App Developer Starter Kit provides instructions and sample code to g
    git clone https://github.com/salesforce/offline-app-developer-starter-kit.git
    ```
 
-1. Open directory:
+2. Open directory:
 
    ```sh
    cd offline-app-developer-starter-kit
    ```
 
-1. Install dependencies:
+3. Install dependencies:
 
    ```sh
    npm install
    ```
 
-1. Authorize access to your org. Either Salesforce CLI or VS Code can be used for authorization and deployment. VS Code is recommended.
+4. Authorize access to your org. Either Salesforce CLI or VS Code can be used for authorization and deployment. VS Code is recommended.
 
    - Authorize Salesforce from VS Code:
 
