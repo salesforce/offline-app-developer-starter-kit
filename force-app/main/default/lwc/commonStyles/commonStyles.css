@@ -7,3 +7,28 @@
 .body-slot {
     background: #FFFFFF;
 }
+
+.card-container {
+    background: #FFFFFF;
+    border-radius: 8px;
+    margin: 0px 16px;
+}
+
+.object-name {
+    font-family: -apple-system, 'SF Pro Display';
+    font-size: 14pt;
+    color: #3E3E3C;
+}
+
+.record-name {
+    font-family: -apple-system, 'SF Pro Display';
+    font-size: 14pt;
+    color: #080707;
+    font-weight: bold;
+}
+
+.button {
+    font-family: -apple-system, 'SF Pro Display';
+    font-size: 14pt;
+    color: #3E3E3C;
+}

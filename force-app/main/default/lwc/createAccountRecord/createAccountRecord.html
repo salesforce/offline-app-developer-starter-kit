@@ -1,16 +1,16 @@
 <template>
     <div class="component-background">
-        <div class="slds-var-p-around_medium body-slot">
+        <div class="body-slot slds-var-p-horizontal_small slds-var-p-bottom_medium">
             <lightning-record-edit-form object-api-name="Account" onsuccess={onSuccess}>
 
                 <!-- cancel and submit buttons-->
-                <lightning-layout horizontal-align="spread">
-                    <lightning-layout-item padding="around-small">
-                        <lightning-button variant="base" data-id="cancel" label="Cancel" type="button" onclick={dismiss} class="slds-m-left_x-small"></lightning-button>
+                <lightning-layout horizontal-align="spread" class="slds-var-p-horizontal_xx-small">
+                    <lightning-layout-item>
+                        <lightning-button variant="base" data-id="cancel" label="Cancel" type="button" onclick={dismiss} class="button"></lightning-button>
                     </lightning-layout-item>
 
-                    <lightning-layout-item padding="around-small">
-                        <lightning-button variant="base" data-id="submit" label="Create" type="submit" class="slds-m-left_x-small"></lightning-button>
+                    <lightning-layout-item>
+                        <lightning-button variant="base" data-id="submit" label="Create" type="submit" class="button"></lightning-button>
                     </lightning-layout-item>
                 </lightning-layout>
 

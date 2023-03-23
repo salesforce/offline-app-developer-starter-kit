@@ -1,37 +1,6 @@
 @import 'c/commonStyles';
 
-.card-container {
-    background: #FFFFFF;
-    border-radius: 8px;
-    margin: 0px 16px;
-}
-
 .title-slot {
     background: transparent;
     width: 100%
-}
-
-.body-slot {
-    background: transparent;
-    margin: 0px 12px;
-}
-
-.object-name {
-    font-family: -apple-system, 'SF Pro Display';
-    font-size: 14px;
-    line-height: 18px;
-    color: #3E3E3C;
-}
-
-.record-name {
-    font-family: -apple-system, 'SF Pro Display';
-    font-size: 20px;
-    line-height: 26px;
-    color: #080707;
-    font-weight: bold;
-}
-
-.body-slot {
-    display: block;
-    border-bottom: 1px solid #DDDBDA;
 }
