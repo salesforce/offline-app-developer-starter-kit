@@ -1,0 +1,26 @@
+.card-container {
+    background:var(--lwc-colorBackgroundAlt, #FFFFFF);
+    border-radius: var(--lwc-varSpacingXSmall, 0.5rem);
+    padding: var(--lwc-varSpacingMedium, 1rem);
+    margin: var(--lwc-varSpacingMedium, 1rem);
+}
+
+.card-content {
+    margin: 0;
+    padding: 0;
+}
+
+.card-separator {
+    border: 0.5px solid #C9C9C9;
+}
+
+.card-result {
+    font-family: 'SF Pro Text';
+    font-style: normal;
+    font-weight: var(--lwc-fontWeightRegular, 400);
+    font-size: var(--lwc-fontSize5, 1rem);
+    line-height: var(--lwc-spacingLarge, 1.5rem);
+    /* identical to box height, or 150% */
+
+    letter-spacing: -0.41px;
+}
