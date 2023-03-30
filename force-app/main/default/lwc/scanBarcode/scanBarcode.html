@@ -1,22 +1,20 @@
 <template>
-    <br/>
-    <div class="slds-text-align_center">
-
-        <!-- Button to start the scanner -->
-        <lightning-layout-item padding="around-small">
-            <lightning-button variant="base" label="Scan barcode example" onclick={doScan} class="slds-m-left_x-small"></lightning-button>
-        </lightning-layout-item>
-
-        <!-- After a barcode is successfully scanned, its value is displayed below -->
-        <template if:true={scannedBarcode}>
-            <span>Scanned:</span>
-            <span data-id="result">{scannedBarcode}</span>
-        </template>
-
-        <!-- If an error is returned while scanning, the error is shown below -->
-        <template if:true={errorCode}>
-            <span>Error:</span>
-            <span data-id="error">{errorCode}</span>
-        </template>
+    <div class="slds-p-around_medium">
+        <div class="slds-text-align_center">
+            <!-- Button to start the scanner -->
+            <lightning-button variant="base" label="Scan barcode example" onclick={doScan}></lightning-button>
+        </div>
+        <div>
+            <!-- After a barcode is successfully scanned, its value is displayed below -->
+            <template if:true={scannedBarcode}>
+                <p>Scanned: <span data-id="result">{scannedBarcode}</span></p>
+            </template>
+        </div>
+        <div>
+            <!-- If an error is returned while scanning, the error is shown below -->
+            <template if:true={errorMessage}>
+                <p>Error: <span data-id="error">{errorMessage}</span></p>
+            </template>
+        </div>
     </div>
 </template>

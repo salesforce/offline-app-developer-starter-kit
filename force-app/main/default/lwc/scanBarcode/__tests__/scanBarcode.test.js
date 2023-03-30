@@ -45,7 +45,7 @@ describe("c-scan-barcode", () => {
     // reset beginCapture() mock to return an error
     let mockBarcodeScanner = getBarcodeScanner();
     mockBarcodeScanner.beginCapture = jest.fn(() =>
-      Promise.reject({ code: "some-error" })
+      Promise.reject({ code: "some-error", message: "some error occured!" })
     );
 
     const element = createElement("c-scan-barcode", {
@@ -63,9 +63,11 @@ describe("c-scan-barcode", () => {
     expect(mockBarcodeScanner.beginCapture).toHaveBeenCalledTimes(1);
 
     // check to ensure the template was updated with the error code
-    const errorCode = element.shadowRoot.querySelector('span[data-id="error"]');
+    const errorMessage = element.shadowRoot.querySelector(
+      'span[data-id="error"]'
+    );
     // eslint-disable-next-line @lwc/lwc/no-inner-html
-    expect(errorCode.innerHTML).toBe("some-error");
+    expect(errorMessage.innerHTML).toBe("some error occured!");
 
     expect(mockBarcodeScanner.endCapture).toHaveBeenCalledTimes(1);
   });
@@ -91,9 +93,11 @@ describe("c-scan-barcode", () => {
     expect(mockBarcodeScanner.endCapture).not.toHaveBeenCalled();
 
     // check to ensure the template was updated with the error code
-    const errorCode = element.shadowRoot.querySelector('span[data-id="error"]');
+    const errorMessage = element.shadowRoot.querySelector(
+      'span[data-id="error"]'
+    );
     // eslint-disable-next-line @lwc/lwc/no-inner-html
-    expect(errorCode.innerHTML).toBe("SCANNER_NOT_INITIALIZED");
+    expect(errorMessage.innerHTML).toBe("Scanner not initialized!");
 
     const scannedBarcode = element.shadowRoot.querySelector(
       'span[data-id="result"]'
