@@ -4,7 +4,7 @@ import { getBarcodeScanner } from "lightning/mobileCapabilities";
 export default class ScanBarcode extends LightningElement {
   scanner;
   @track scannedBarcode = null;
-  @track errorCode = null;
+  @track errorMessage = null;
 
   connectedCallback() {
     this.scanner = getBarcodeScanner();
@@ -37,14 +37,25 @@ export default class ScanBarcode extends LightningElement {
         .beginCapture(scanningOptions)
         .then((result) => {
           console.log("successfully scanned", result);
-          this.errorCode = null;
+          this.errorMessage = null;
           this.scannedBarcode = result.value;
         })
         .catch((error) => {
+          if (error.code === "USER_DISMISSED") {
+            // user closed the scanner - don't consider it as an error case
+            this.errorMessage = null;
+          } else if (
+            error.code === "USER_DENIED_PERMISSION" ||
+            error.code === "USER_DISABLED_PERMISSION"
+          ) {
+            // show a custom message with instructions on how to resolve the issue
+            this.errorMessage =
+              "Unable to access the device camera. Enable camera access in the Settings app.";
+          } else {
+            this.errorMessage = error.message;
+          }
           console.error("scan error", error);
-          console.error(this.errorCode);
-          this.errorCode = error.code;
-          console.error(this.errorCode);
+          console.error(this.errorMessage);
           this.scannedBarcode = null;
         })
         .finally(() => {
@@ -56,7 +67,7 @@ export default class ScanBarcode extends LightningElement {
         });
     } else {
       console.log("Scanner not initialized!");
-      this.errorCode = "SCANNER_NOT_INITIALIZED";
+      this.errorMessage = "Scanner not initialized!";
       this.scannedBarcode = null;
     }
   }
