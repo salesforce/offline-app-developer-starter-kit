@@ -53,7 +53,7 @@ export default class ViewAccountRecord extends LightningElement {
   }
 
   get cardIconName() {
-    return "standard:" + this.objectApiName.toLowerCase();
+    return `standard:${this.objectApiName ? this.objectApiName.toLowerCase() : ''}`
   }
 
   get recordDataExists() {
