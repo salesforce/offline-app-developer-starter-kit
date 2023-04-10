@@ -1,0 +1,46 @@
+<template>
+    <div class="card-container">  
+        <!-- After the current location is received, its value is displayed here: -->
+        <template lwc:if={currentLocation}>
+            <div class="slds-text-align_left slds-border_bottom card-result-container">
+            
+                <!-- Current location as latitude and longitude -->
+                <strong>Your current location is:</strong><br>
+                <span class="card-result">Lat: <slot name="latitude">{currentLocation.coords.latitude}</slot></span><br>
+                <span class="card-result">Long: <slot name="longitude">{currentLocation.coords.longitude}</slot></span>
+            </div>
+        </template>
+
+        <!-- While request is processing, show spinner -->
+        <div class="slds-m-around_none">
+            <template if:true={requestInProgress}>
+                <div class="slds-is-relative spinner-container">
+                    <lightning-spinner
+                        alternative-text={interstitialMessage} >
+                    </lightning-spinner>
+                </div>
+                <div class="slds-text-align_center">
+                    {interstitialMessage}
+                </div>
+            </template>
+        </div>
+    
+        <!-- Static help text -->
+        <div class="slds-text-align_left slds-text-color_weak" if:true={showInstruction}>
+            Tap <strong>{buttonText}</strong> to see where you are.
+        </div>
+    
+        <!-- Disable the button if LocationService isn't available -->
+        <div class="slds-align_absolute-center slds-var-m-top_medium" if:false={requestInProgress}>
+            <lightning-button
+                variant="brand"
+                disabled={locationButtonDisabled}
+                icon-name="utility:checkin"
+                label={buttonText}
+                title="Use your device's GPS and other location sensors to determine your current location"
+                onclick={handleGetCurrentLocationClick}>
+            </lightning-button>
+        </div>
+
+    </div>
+</template>

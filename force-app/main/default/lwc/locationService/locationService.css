@@ -1,0 +1,21 @@
+.card-container {
+    background:var(--lwc-colorBackgroundAlt, #FFFFFF);
+    border-radius: var(--lwc-varSpacingXSmall, 0.5rem);
+    padding: var(--lwc-varSpacingMedium, 1rem);
+    margin: var(--lwc-varSpacingMedium, 1rem); 
+}
+
+.card-result {
+    font-family: -apple-system, 'SF Pro Display';
+    font-style: normal;
+    font-weight: var(--lwc-fontWeightRegular, 400);
+    line-height: var(--lwc-spacingLarge, 1.5rem);
+}
+
+.card-result-container {
+    padding-bottom: var(--lwc-varSpacingMedium, 1rem);
+}
+
+.spinner-container {
+    min-height: 73px;
+}
