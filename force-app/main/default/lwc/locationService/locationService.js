@@ -4,6 +4,8 @@ import { ShowToastEvent } from "lightning/platformShowToastEvent";
 
 export default class LocationService extends LightningElement {
   @api currentLocation;
+  currentLatitude;
+  currentLongitude;
 
   locationService;
   locationButtonDisabled = false;
@@ -26,6 +28,8 @@ export default class LocationService extends LightningElement {
     if (this.locationService != null && this.locationService.isAvailable()) {
       // Reset current location
       this.currentLocation = null;
+      this.currentLatitude = 0;
+      this.currentLongitude = 0;
 
       // Configure options for location request
       const locationOptions = {
@@ -43,6 +47,8 @@ export default class LocationService extends LightningElement {
         .getCurrentPosition(locationOptions)
         .then((result) => {
           this.currentLocation = result;
+          this.currentLatitude = this.currentLocation.coords.latitude;
+          this.currentLongitude = this.currentLocation.coords.longitude;
 
           // Change the label on the button whenever a request succeeds
           this.buttonText = "Refetch location";
