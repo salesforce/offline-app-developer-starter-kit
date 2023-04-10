@@ -14,21 +14,20 @@ export default class AccountRelatedContacts extends NavigationMixin(
       query accountWithChildContacts($recordId: ID) {
         uiapi {
           query {
-            Account(where: { Id: { eq: $recordId } })
-              @category(name: "recordQuery") {
+            Account(where: { Id: { eq: $recordId } }) {
               edges {
                 node {
-                  Contacts(first: 5) @category(name: "childRelationship") {
+                  Contacts {
                     edges {
                       node {
                         Id
-                        Name @category(name: "StringValue") {
+                        Name {
                           value
                         }
-                        Phone @category(name: "StringValue") {
+                        Phone {
                           value
                         }
-                        Email @category(name: "StringValue") {
+                        Email {
                           value
                         }
                       }
@@ -56,7 +55,8 @@ export default class AccountRelatedContacts extends NavigationMixin(
   }
 
   get contacts() {
-    if (!this.contactsData) return null;
+    if (!this.contactsData || !this.contactsData.uiapi.query.Account)
+      return null;
     const accounts = this.contactsData.uiapi.query.Account.edges;
     if (!accounts || !accounts[0]) return null;
     const contacts = accounts[0].node.Contacts.edges.map((e) => e.node);
