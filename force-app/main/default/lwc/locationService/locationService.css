@@ -14,6 +14,11 @@
 
 .card-result-container {
     padding-bottom: var(--lwc-varSpacingMedium, 1rem);
+    margin-bottom: var(--lwc-varSpacingMedium, 1rem);
+}
+
+.error-message {
+    color: red;
 }
 
 .spinner-container {

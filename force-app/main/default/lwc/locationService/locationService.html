@@ -1,16 +1,16 @@
 <template>
     <div class="card-container">  
-        <!-- After the current location is received, its value is displayed here: -->
-        <template lwc:if={currentLocation}>
-            <div class="slds-text-align_left slds-border_bottom card-result-container">
-            
-                <!-- Current location as latitude and longitude -->
-                <strong>Your current location is:</strong><br>
-                <span class="card-result">Lat: <slot name="latitude">{currentLatitude}</slot></span><br>
-                <span class="card-result">Long: <slot name="longitude">{currentLongitude}</slot></span>
-            </div>
-        </template>
 
+        <div if:true={currentLocation} class="slds-text-align_left slds-border_bottom card-result-container">
+            <strong>Your current location is:</strong><br>
+            <span class="card-result">Lat: <slot name="latitude">{currentLatitude}</slot></span><br>
+            <span class="card-result">Long: <slot name="longitude">{currentLongitude}</slot></span>
+        </div>
+        
+        <div if:true={errorMessage} class="slds-text-align_left slds-border_bottom card-result-container">
+            <span class="error-message" data-id="error">{errorMessage}</span>
+        </div>
+        
         <!-- While request is processing, show spinner -->
         <div class="slds-m-around_none">
             <template if:true={requestInProgress}>

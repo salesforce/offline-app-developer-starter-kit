@@ -1,9 +1,9 @@
-import { LightningElement, api } from "lwc";
+import { LightningElement, track } from "lwc";
 import { getLocationService } from "lightning/mobileCapabilities";
-import { ShowToastEvent } from "lightning/platformShowToastEvent";
 
 export default class LocationService extends LightningElement {
-  @api currentLocation;
+  @track errorMessage;
+  @track currentLocation;
   currentLatitude;
   currentLongitude;
 
@@ -31,6 +31,8 @@ export default class LocationService extends LightningElement {
       this.currentLatitude = 0;
       this.currentLongitude = 0;
 
+      this.errorMessage = null;
+
       // Configure options for location request
       const locationOptions = {
         enableHighAccuracy: true,
@@ -54,16 +56,28 @@ export default class LocationService extends LightningElement {
           this.buttonText = "Refetch location";
         })
         .catch((error) => {
-          // iOS error message can contain unescaped double quotes. Replace them with single quote.
-          const message = error.message.replace(/\"/g, "'");
-
-          // Show error message in a toast
-          this.dispatchEvent(
-            new ShowToastEvent({
-              message: `${message}`,
-              variant: "error",
-            })
-          );
+          switch (error.code) {
+            case "LOCATION_SERVICE_DISABLED":
+              this.errorMessage = "Location service on the device is disabled."; // Android only
+              break;
+            case "USER_DENIED_PERMISSION":
+              this.errorMessage =
+                "User denied permission to use location service on the device.";
+              break;
+            case "USER_DISABLED_PERMISSION":
+              this.errorMessage =
+                "Toggle permission to use location service on the device from Settings.";
+              break;
+            case "SERVICE_NOT_ENABLED":
+              this.errorMessage =
+                "Location service on the device is not enabled.";
+              break;
+            case "UNKNOWN_REASON":
+            default:
+              // iOS error message can contain unescaped double quotes. Replace them with single quote.
+              this.errorMessage = error.message.replace(/\"/g, "'");
+              break;
+          }
 
           // Show instruction again if the request didn't succeed
           this.showInstruction = true;
@@ -76,13 +90,7 @@ export default class LocationService extends LightningElement {
           this.requestInProgress = false;
         });
     } else {
-      // Let user know they need to use a mobile phone with a GPS
-      this.dispatchEvent(
-        new ShowToastEvent({
-          message: "Make sure to use a device with GPS",
-          variant: "error",
-        })
-      );
+      this.errorMessage = "Nimbus location service is not available.";
     }
   }
 }
