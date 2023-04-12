@@ -8,27 +8,28 @@ import EMAIL_FIELD from "@salesforce/schema/Contact.Email";
 import MAILINGADDRESS_FIELD from "@salesforce/schema/Contact.MailingAddress";
 import DEPARTMENT_FIELD from "@salesforce/schema/Contact.Department";
 
-const FIELDS = [
-  NAME_FIELD,
-  TITLE_FIELD,
-  PHONE_FIELD,
-  EMAIL_FIELD,
-  MAILINGADDRESS_FIELD,
-  DEPARTMENT_FIELD,
-];
-
 export default class ViewContactRecord extends LightningElement {
   @api recordId;
   @api objectApiName;
 
-  fields = FIELDS;
+  get fields() {
+    return [
+      NAME_FIELD,
+      TITLE_FIELD,
+      PHONE_FIELD,
+      EMAIL_FIELD,
+      MAILINGADDRESS_FIELD,
+      DEPARTMENT_FIELD,
+    ];
+  }
 
-  @wire(getRecord, { recordId: "$recordId", fields: FIELDS })
+  @wire(getRecord, { recordId: "$recordId", fields: "$fields" })
   record;
 
   get cardIconName() {
-    if (!this.objectApiName) return "standard:record";
-    return `standard:${this.objectApiName.toLowerCase()}`;
+    return `standard:${
+      this.objectApiName ? this.objectApiName.toLowerCase() : "record"
+    }`;
   }
 
   get name() {
