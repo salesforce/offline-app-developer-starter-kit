@@ -75,7 +75,7 @@ export default class LocationService extends LightningElement {
             case "UNKNOWN_REASON":
             default:
               // iOS error message can contain unescaped double quotes. Replace them with single quote.
-              this.errorMessage = error.message.replace(/\"/g, "'");
+              this.errorMessage = error.message; //.replace(/\"/g, "'");
               break;
           }
 
