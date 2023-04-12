@@ -6,21 +6,15 @@ import WEBSITE_FIELD from "@salesforce/schema/Account.Website";
 import INDUSTRY_FIELD from "@salesforce/schema/Account.Industry";
 import TYPE_FIELD from "@salesforce/schema/Account.Type";
 
-const FIELDS = [
-  NAME_FIELD,
-  PHONE_FIELD,
-  WEBSITE_FIELD,
-  INDUSTRY_FIELD,
-  TYPE_FIELD,
-];
-
 export default class ViewAccountRecord extends LightningElement {
   @api recordId;
   @api objectApiName;
 
-  fields = FIELDS;
+  get fields() {
+    return [NAME_FIELD, PHONE_FIELD, WEBSITE_FIELD, INDUSTRY_FIELD, TYPE_FIELD];
+  }
 
-  @wire(getRecord, { recordId: "$recordId", fields: FIELDS })
+  @wire(getRecord, { recordId: "$recordId", fields: "$fields" })
   record;
 
   get name() {
