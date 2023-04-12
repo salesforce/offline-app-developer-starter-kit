@@ -3,7 +3,6 @@ import { getLocationService } from "lightning/mobileCapabilities";
 
 export default class LocationService extends LightningElement {
   @track errorMessage;
-  @track currentLocation;
   currentLatitude;
   currentLongitude;
 
@@ -24,10 +23,13 @@ export default class LocationService extends LightningElement {
     this.locationButtonDisabled = false;
   }
 
+  get hasCurrentLocation() {
+    return this.currentLatitude && this.currentLongitude;
+  }
+
   handleGetCurrentLocationClick(event) {
     if (this.locationService != null && this.locationService.isAvailable()) {
       // Reset current location
-      this.currentLocation = null;
       this.currentLatitude = 0;
       this.currentLongitude = 0;
 
@@ -48,9 +50,8 @@ export default class LocationService extends LightningElement {
       this.locationService
         .getCurrentPosition(locationOptions)
         .then((result) => {
-          this.currentLocation = result;
-          this.currentLatitude = this.currentLocation.coords.latitude;
-          this.currentLongitude = this.currentLocation.coords.longitude;
+          this.currentLatitude = result.coords.latitude;
+          this.currentLongitude = result.coords.longitude;
 
           // Change the label on the button whenever a request succeeds
           this.buttonText = "Refetch location";
@@ -74,8 +75,7 @@ export default class LocationService extends LightningElement {
               break;
             case "UNKNOWN_REASON":
             default:
-              // iOS error message can contain unescaped double quotes. Replace them with single quote.
-              this.errorMessage = error.message; //.replace(/\"/g, "'");
+              this.errorMessage = error.message;
               break;
           }
 

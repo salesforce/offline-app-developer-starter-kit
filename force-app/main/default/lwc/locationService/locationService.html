@@ -1,7 +1,7 @@
 <template>
     <div class="card-container">  
 
-        <div if:true={currentLocation} class="slds-text-align_left slds-border_bottom card-result-container">
+        <div if:true={hasCurrentLocation} class="slds-text-align_left slds-border_bottom card-result-container">
             <strong>Your current location is:</strong><br>
             <span class="card-result">Lat: <slot name="latitude">{currentLatitude}</slot></span><br>
             <span class="card-result">Long: <slot name="longitude">{currentLongitude}</slot></span>
