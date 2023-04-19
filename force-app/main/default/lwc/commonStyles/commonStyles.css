@@ -21,20 +21,10 @@
 
 .header-slot {
   background: var(--card-background-color);
-  position: fixed;
-  z-index: 9999;
-  top: 0;
-  left: 0;
-  right: 0;
   padding-left: 10px;
   padding-right: 10px;
   border-top-left-radius: var(--border-radius);
   border-top-right-radius: var(--border-radius);
-}
-
-.header-offset {
-  position: relative;
-  top: 44;
 }
 
 .card-container {
