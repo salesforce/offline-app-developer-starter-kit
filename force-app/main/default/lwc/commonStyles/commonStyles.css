@@ -3,12 +3,17 @@
   --border-radius: 8px;
   --component-background-color: #f3f2f2;
   --card-background-color: #ffffff;
-  --font-family: system-ui, -apple-system, BlinkMacSystemFont, "Roboto",
-  "Google Sans", sans-serif;
+  --font-family: system-ui, -apple-system, BlinkMacSystemFont, "Roboto", "Google Sans", sans-serif;
   --font-size: 14px;
 }
 
 .component-background {
+  background-color: var(--component-background-color);
+  height: 100%;
+  width: 100%;
+}
+
+.component-background-edit {
   background-color: var(--component-background-color);
   height: 100%;
   width: 100%;
@@ -19,17 +24,35 @@
   border-radius: var(--border-radius);
 }
 
+/* This class fixes the element to the top of the screen, mainly used for EDIT functionality where CANCEL/SAVE should be pinned. */
 .header-slot {
-  background: var(--card-background-color);
+  background: var(--component-background-color);
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  right: 0;
   padding-left: 10px;
   padding-right: 10px;
   border-top-left-radius: var(--border-radius);
   border-top-right-radius: var(--border-radius);
 }
 
+/* This will help move another element under the fixed header. */
+.header-offset {
+  position: relative;
+  top: 44;
+}
+
+.title-slot {
+  background: transparent;
+  width: 100%
+}
+
 .card-container {
   background: var(--card-background-color);
-  margin: 0px 16px;
+  margin: 8px 16px;
+  padding: 0px 0px 4px 4px;
   border-radius: var(--border-radius);
 }
 
@@ -44,10 +67,18 @@
   font-size: var(--font-size);
   color: #080707;
   font-weight: bold;
+  padding-top: 4px;
 }
 
 .button {
   font-family: var(--font-family);
   font-size: var(--font-size);
   color: #3e3e3c;
+}
+
+.button-primary {
+  font-family: var(--font-family);
+  font-size: var(--font-size);
+  color: #3e3e3c;
+  font-weight: bold;
 }
