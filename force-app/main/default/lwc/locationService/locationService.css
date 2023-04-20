@@ -1,3 +1,5 @@
+@import 'c/commonStyles';
+
 .card-container {
     background:var(--lwc-colorBackgroundAlt, #FFFFFF);
     border-radius: var(--lwc-varSpacingXSmall, 0.5rem);
