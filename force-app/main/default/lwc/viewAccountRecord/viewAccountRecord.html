@@ -2,21 +2,21 @@
     <div class="component-background">
         <template if:true={record}>
             <div class="card-container">
+                
                 <div class="title-slot">
-
                     <!-- Show a header with the icon, object api name, and record name -->
-                    <lightning-layout>
-                        <lightning-layout-item class="slds-p-around_small">
-                            <lightning-icon icon-name={cardIconName} size="large" data-id="iconId" data-name={cardIconName}></lightning-icon>
+                    <lightning-layout vertical-align="center">
+                        <lightning-layout-item class="slds-var-p-around_small">
+                            <lightning-icon icon-name={cardIconName} size="medium" data-id="iconId" data-name={cardIconName}></lightning-icon>
                         </lightning-layout-item>
                     
-                        <lightning-layout-item class="slds-p-vertical_small">
+                        <lightning-layout-item>
                             <lightning-layout multiple-rows>
-                                <lightning-layout-item size=12 class="object-name" data-id="objectApiNameId">
-                                    <p style="word-break: break-all;">{objectApiName}</p>
-                                </lightning-layout-item>
                                 <lightning-layout-item size=12 class="record-name" data-id="nameId">
                                     <p style="word-break: break-all;">{name}</p>
+                                </lightning-layout-item>
+                                <lightning-layout-item size=12 class="object-name" data-id="objectApiNameId">
+                                    <p style="word-break: break-all;">{objectApiName}</p>
                                 </lightning-layout-item>
                             </lightning-layout>
                         </lightning-layout-item>
@@ -26,7 +26,7 @@
                 <div class="body-slot">
                     <!-- use lightning-record-form to show the selected fields. here, we use 'view' as the mode which allows edits too -->
                     <lightning-record-form record-id={recordId} object-api-name={objectApiName} fields={fields}
-                        columns="1" mode="view">
+                        columns="1" mode="readonly">
                     </lightning-record-form>
                 </div>
 
