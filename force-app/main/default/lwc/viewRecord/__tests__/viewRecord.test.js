@@ -1,10 +1,10 @@
 import { createElement } from "lwc";
-import ViewAccountRecord from "c/viewAccountRecord";
+import ViewRecord from "c/viewRecord";
 import { getRecord } from "lightning/uiRecordApi";
 
 const mockGetRecord = require("./data/getRecord.json");
 
-describe("c-view-account-record", () => {
+describe("c-view-record", () => {
   afterEach(() => {
     // The jsdom instance is shared across test cases in a single file so reset the DOM
     while (document.body.firstChild) {
@@ -13,8 +13,8 @@ describe("c-view-account-record", () => {
   });
 
   it("should correctly populate record fields", () => {
-    const element = createElement("c-view-account-record", {
-      is: ViewAccountRecord,
+    const element = createElement("c-view-record", {
+      is: ViewRecord,
     });
     element.objectApiName = "objectApiName";
     document.body.appendChild(element);

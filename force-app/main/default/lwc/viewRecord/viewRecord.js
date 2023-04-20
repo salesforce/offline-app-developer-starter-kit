@@ -1,21 +1,22 @@
 import { LightningElement, api, wire } from "lwc";
 import { getRecord } from "lightning/uiRecordApi";
-import NAME_FIELD from "@salesforce/schema/Account.Name";
-import PHONE_FIELD from "@salesforce/schema/Account.Phone";
-import WEBSITE_FIELD from "@salesforce/schema/Account.Website";
-import INDUSTRY_FIELD from "@salesforce/schema/Account.Industry";
-import TYPE_FIELD from "@salesforce/schema/Account.Type";
+import { fieldsForCompactLayout } from "c/utils";
 
-export default class ViewAccountRecord extends LightningElement {
+export default class ViewRecord extends LightningElement {
   @api recordId;
   @api objectApiName;
-
-  get fields() {
-    return [NAME_FIELD, PHONE_FIELD, WEBSITE_FIELD, INDUSTRY_FIELD, TYPE_FIELD];
-  }
-
   @wire(getRecord, { recordId: "$recordId", fields: "$fields" })
   record;
+
+  _fields = [];
+
+  get fields() {
+    return this._fields;
+  }
+
+  connectedCallback() {
+    this._fields = fieldsForCompactLayout(this.objectApiName);
+  }
 
   get name() {
     return this.recordDataExists &&
@@ -46,13 +47,13 @@ export default class ViewAccountRecord extends LightningElement {
     return serverChanges;
   }
 
+  get recordDataExists() {
+    return this.record && this.record.data;
+  }
+
   get cardIconName() {
     return `standard:${
       this.objectApiName ? this.objectApiName.toLowerCase() : ""
     }`;
-  }
-
-  get recordDataExists() {
-    return this.record && this.record.data;
   }
 }
