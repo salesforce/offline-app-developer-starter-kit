@@ -1,18 +1,18 @@
-import { LightningElement, track } from "lwc";
+import { LightningElement, api } from "lwc";
 import { getLocationService } from "lightning/mobileCapabilities";
 
 export default class LocationService extends LightningElement {
-  @track errorMessage;
-  currentLatitude;
-  currentLongitude;
+  @api errorMessage;
+  @api currentLatitude;
+  @api currentLongitude;
 
   locationService;
-  locationButtonDisabled = false;
+  @api locationButtonDisabled = false;
   requestInProgress = false;
   showInstruction = true;
   buttonInstruction = "Get Current Location";
-  buttonText = this.buttonInstruction;
-  interstitialMessage = "Fetching your current location...";
+  @api buttonText = this.buttonInstruction;
+  @api interstitialMessage = "Fetching your current location...";
 
   // When the component is initialized, detect whether to enable the button
   connectedCallback() {
