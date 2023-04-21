@@ -1,10 +1,2 @@
 @import 'c/commonStyles';
 
-.modal-record-name {
-    font-family: -apple-system, 'SF Pro Display';
-    font-size: 17px;
-    line-height: 22px;
-    color: #080707;
-    font-weight: bold;
-    text-align: center;
-}

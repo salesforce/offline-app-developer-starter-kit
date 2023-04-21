@@ -1,8 +1,10 @@
 // set up some default mock behavior. tests can reset these to other behavior if needed
 const mockIsAvailable = jest.fn().mockReturnValue(true);
-const mockBeginCapture = jest.fn(() =>
-  Promise.resolve({ value: "some-barcode" })
-);
+
+const mockBeginCapture = jest.fn().mockImplementation(() => {
+  return Promise.resolve({ value: "some-barcode" });
+});
+
 const mockEndCapture = jest.fn();
 
 const mockBarcodeScannerFactory = {
@@ -19,6 +21,24 @@ const mockBarcodeScannerFactory = {
   endCapture: mockEndCapture,
 };
 
+const mockGetCurrentPosition = jest.fn().mockImplementation(() => {
+  return Promise.resolve({
+    coords: {
+      latitude: 111.11,
+      longitude: 99.99,
+    },
+  });
+});
+
+const mockLocationServiceFactory = {
+  isAvailable: mockIsAvailable,
+  getCurrentPosition: mockGetCurrentPosition,
+};
+
 export function getBarcodeScanner() {
   return mockBarcodeScannerFactory;
+}
+
+export function getLocationService() {
+  return mockLocationServiceFactory;
 }
