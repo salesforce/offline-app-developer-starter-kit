@@ -7,7 +7,7 @@ import CONTACT_ACCOUNT_FIELD from "@salesforce/schema/Contact.AccountId";
 import CONTACT_PHONE_FIELD from "@salesforce/schema/Contact.Phone";
 import CONTACT_EMAIL_FIELD from "@salesforce/schema/Contact.Email";
 import CONTACT_MOBILE_FIELD from "@salesforce/schema/Contact.MobilePhone";
-import CONTACT_CONTACT_OWNER_FIELD from "@salesforce/schema/Contact.OwnerId";
+import CONTACT_OWNER_FIELD from "@salesforce/schema/Contact.OwnerId";
 
 const mockGetRecord = require("./data/getRecord.json");
 
@@ -50,7 +50,7 @@ describe("c-view-contact-record", () => {
       CONTACT_PHONE_FIELD,
       CONTACT_EMAIL_FIELD,
       CONTACT_MOBILE_FIELD,
-      CONTACT_CONTACT_OWNER_FIELD,
+      CONTACT_OWNER_FIELD,
     ]);
 
     // check draft list
