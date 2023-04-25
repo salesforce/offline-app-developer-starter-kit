@@ -4,23 +4,7 @@
             <div class="card-container">
                 
                 <div class="title-slot">
-                    <!-- Show a header with the icon, object api name, and record name -->
-                    <lightning-layout vertical-align="center">
-                        <lightning-layout-item class="slds-var-p-around_small">
-                            <lightning-icon icon-name={cardIconName} size="medium" data-id="iconId" data-name={cardIconName}></lightning-icon>
-                        </lightning-layout-item>
-                    
-                        <lightning-layout-item>
-                            <lightning-layout multiple-rows>
-                                <lightning-layout-item size=12 class="record-name" data-id="nameId">
-                                    <p style="word-break: break-all;">{name}</p>
-                                </lightning-layout-item>
-                                <lightning-layout-item size=12 class="object-name" data-id="objectApiNameId">
-                                    <p style="word-break: break-all;">{objectApiName}</p>
-                                </lightning-layout-item>
-                            </lightning-layout>
-                        </lightning-layout-item>
-                    </lightning-layout>
+                    <c-record-header record-name={name} object-api-name={objectApiName}></c-record-header>
                 </div>
 
                 <div class="body-slot">
@@ -31,19 +15,7 @@
                 </div>
 
                 <!-- show any draft information for this record -->
-                <template if:true={draftDetails} >
-                    <lightning-accordion allow-multiple-sections-open="true">
-                        <lightning-accordion-section name="draftEdits" label="Draft - Original Values">
-                            <ul class="slds-list_dotted">
-                                <template for:each={draftDetails} for:item="draftItem">
-                                    <li key={draftItem.fieldName}>
-                                        {draftItem.fieldName}={draftItem.value}
-                                    </li>
-                                </template>
-                            </ul>
-                        </lightning-accordion-section>
-                    </lightning-accordion>
-                </template>
+                <c-draft-details-list record-id={recordId} fields={fields}></c-draft-details-list>
             </div>
         </template>
     </div>

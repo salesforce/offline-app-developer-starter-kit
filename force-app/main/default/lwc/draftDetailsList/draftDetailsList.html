@@ -1,0 +1,15 @@
+<template>
+    <template if:true={drafts} >
+        <lightning-accordion allow-multiple-sections-open="true">
+            <lightning-accordion-section name="draftEdits" label="Draft - Original Values">
+                <ul class="slds-list_dotted">
+                    <template for:each={drafts} for:item="draft">
+                        <li key={draft.fieldName}>
+                            {draft.fieldName}={draft.value}
+                        </li>
+                    </template>
+                </ul>
+            </lightning-accordion-section>
+        </lightning-accordion>
+    </template>
+</template>
