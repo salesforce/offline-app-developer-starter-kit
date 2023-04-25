@@ -1,15 +1,15 @@
 import { createElement } from "lwc";
-import ViewAccountRecord from "c/viewAccountRecord";
 import { getRecord } from "lightning/uiRecordApi";
-import NAME_FIELD from "@salesforce/schema/Account.Name";
-import PHONE_FIELD from "@salesforce/schema/Account.Phone";
-import WEBSITE_FIELD from "@salesforce/schema/Account.Website";
-import INDUSTRY_FIELD from "@salesforce/schema/Account.Industry";
-import TYPE_FIELD from "@salesforce/schema/Account.Type";
+import ViewOpportunityRecord from "c/viewOpportunityRecord";
+import OPPORTUNITY_NAME_FIELD from "@salesforce/schema/Opportunity.Name";
+import OPPORTUNITY_ACCOUNT_FIELD from "@salesforce/schema/Opportunity.AccountId";
+import OPPORTUNITY_CLOSE_DATE_FIELD from "@salesforce/schema/Opportunity.CloseDate";
+import OPPORTUNITY_AMOUNT_FIELD from "@salesforce/schema/Opportunity.Amount";
+import OPPORTUNITY_OWNER_FIELD from "@salesforce/schema/Opportunity.OwnerId";
 
 const mockGetRecord = require("./data/getRecord.json");
 
-describe("c-view-account-record", () => {
+describe("c-view-opportunity-record", () => {
   afterEach(() => {
     // The jsdom instance is shared across test cases in a single file so reset the DOM
     while (document.body.firstChild) {
@@ -18,11 +18,11 @@ describe("c-view-account-record", () => {
   });
 
   it("should correctly populate record fields", async () => {
-    const element = createElement("c-view-account-record", {
-      is: ViewAccountRecord,
+    const element = createElement("c-view-contact-record", {
+      is: ViewOpportunityRecord,
     });
-    element.recordId = "0011700000pJRRSAA4";
-    element.objectApiName = "Account";
+    element.recordId = "0061700000pJRRSAA4";
+    element.objectApiName = "Opportunity";
     document.body.appendChild(element);
 
     // Emit mock record into the wired field
@@ -42,11 +42,11 @@ describe("c-view-account-record", () => {
     expect(formEl.recordId).toBe(element.recordId);
     expect(formEl.objectApiName).toBe(element.objectApiName);
     expect(formEl.fields).toEqual([
-      NAME_FIELD,
-      PHONE_FIELD,
-      WEBSITE_FIELD,
-      INDUSTRY_FIELD,
-      TYPE_FIELD,
+      OPPORTUNITY_NAME_FIELD,
+      OPPORTUNITY_ACCOUNT_FIELD,
+      OPPORTUNITY_CLOSE_DATE_FIELD,
+      OPPORTUNITY_AMOUNT_FIELD,
+      OPPORTUNITY_OWNER_FIELD,
     ]);
 
     // check draft list

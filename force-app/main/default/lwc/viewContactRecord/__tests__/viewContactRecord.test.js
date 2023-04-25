@@ -1,15 +1,17 @@
 import { createElement } from "lwc";
-import ViewAccountRecord from "c/viewAccountRecord";
 import { getRecord } from "lightning/uiRecordApi";
-import NAME_FIELD from "@salesforce/schema/Account.Name";
-import PHONE_FIELD from "@salesforce/schema/Account.Phone";
-import WEBSITE_FIELD from "@salesforce/schema/Account.Website";
-import INDUSTRY_FIELD from "@salesforce/schema/Account.Industry";
-import TYPE_FIELD from "@salesforce/schema/Account.Type";
+import ViewContactRecord from "c/viewContactRecord";
+import CONTACT_NAME_FIELD from "@salesforce/schema/Contact.Name";
+import CONTACT_TITLE_FIELD from "@salesforce/schema/Contact.Title";
+import CONTACT_ACCOUNT_FIELD from "@salesforce/schema/Contact.AccountId";
+import CONTACT_PHONE_FIELD from "@salesforce/schema/Contact.Phone";
+import CONTACT_EMAIL_FIELD from "@salesforce/schema/Contact.Email";
+import CONTACT_MOBILE_FIELD from "@salesforce/schema/Contact.MobilePhone";
+import CONTACT_OWNER_FIELD from "@salesforce/schema/Contact.OwnerId";
 
 const mockGetRecord = require("./data/getRecord.json");
 
-describe("c-view-account-record", () => {
+describe("c-view-contact-record", () => {
   afterEach(() => {
     // The jsdom instance is shared across test cases in a single file so reset the DOM
     while (document.body.firstChild) {
@@ -18,11 +20,11 @@ describe("c-view-account-record", () => {
   });
 
   it("should correctly populate record fields", async () => {
-    const element = createElement("c-view-account-record", {
-      is: ViewAccountRecord,
+    const element = createElement("c-view-contact-record", {
+      is: ViewContactRecord,
     });
-    element.recordId = "0011700000pJRRSAA4";
-    element.objectApiName = "Account";
+    element.recordId = "0031700000pJRRSAA4";
+    element.objectApiName = "Contact";
     document.body.appendChild(element);
 
     // Emit mock record into the wired field
@@ -42,11 +44,13 @@ describe("c-view-account-record", () => {
     expect(formEl.recordId).toBe(element.recordId);
     expect(formEl.objectApiName).toBe(element.objectApiName);
     expect(formEl.fields).toEqual([
-      NAME_FIELD,
-      PHONE_FIELD,
-      WEBSITE_FIELD,
-      INDUSTRY_FIELD,
-      TYPE_FIELD,
+      CONTACT_NAME_FIELD,
+      CONTACT_TITLE_FIELD,
+      CONTACT_ACCOUNT_FIELD,
+      CONTACT_PHONE_FIELD,
+      CONTACT_EMAIL_FIELD,
+      CONTACT_MOBILE_FIELD,
+      CONTACT_OWNER_FIELD,
     ]);
 
     // check draft list

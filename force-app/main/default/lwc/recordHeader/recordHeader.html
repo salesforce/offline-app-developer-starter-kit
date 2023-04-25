@@ -1,0 +1,22 @@
+<template>
+
+    <!-- Show the record type icon, object api name, and record name -->
+    <lightning-layout vertical-align="center">
+        <lightning-layout-item class="slds-var-p-around_small">
+            <lightning-icon icon-name={cardIconName} size="medium" data-id="iconId"
+                data-name={cardIconName}></lightning-icon>
+        </lightning-layout-item>
+
+        <lightning-layout-item>
+            <lightning-layout multiple-rows>
+                <lightning-layout-item size=12 class="record-name" data-id="nameId">
+                    <p style="word-break: break-all;">{recordName}</p>
+                </lightning-layout-item>
+                <lightning-layout-item size=12 class="object-name" data-id="objectApiNameId">
+                    <p style="word-break: break-all;">{objectApiName}</p>
+                </lightning-layout-item>
+            </lightning-layout>
+        </lightning-layout-item>
+    </lightning-layout>
+
+</template>
