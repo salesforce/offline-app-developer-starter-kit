@@ -17,7 +17,6 @@ export default class ViewOpportunityRecord extends LightningElement {
       OPPORTUNITY_CLOSE_DATE_FIELD,
       OPPORTUNITY_AMOUNT_FIELD,
       OPPORTUNITY_OWNER_FIELD,
-      { objectApiName: "Opportunity", fieldApiName: "IqScore" },
     ];
   }
 
