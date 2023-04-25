@@ -2,8 +2,8 @@
 <LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
     <apiVersion>56.0</apiVersion>
     <isExposed>true</isExposed>
-    <masterLabel>Create Account Record</masterLabel>
-    <description>Creates a new Account.</description>
+    <masterLabel>Create Opportunity Record</masterLabel>
+    <description>Creates a new Opportunity.</description>
     <targets>
         <target>lightning__GlobalAction</target>
         <target>lightning__RecordPage</target>
