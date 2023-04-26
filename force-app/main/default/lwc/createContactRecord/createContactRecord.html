@@ -1,0 +1,40 @@
+<template>
+    <div class="component-background">
+        <lightning-record-edit-form object-api-name="Contact" onsuccess={onSuccess}>
+
+            <div class="header-slot">
+                <!-- cancel and submit buttons-->
+                <lightning-layout horizontal-align="spread" class="slds-var-p-horizontal_xx-small">
+                    <lightning-layout-item>
+                        <lightning-button variant="base" data-id="cancel" label="Cancel" type="button" onclick={dismiss}
+                            class="button"></lightning-button>
+                    </lightning-layout-item>
+
+                    <lightning-layout-item>
+                        <lightning-button variant="base" data-id="submit" label="Create" type="submit"
+                            class="button-primary"></lightning-button>
+                    </lightning-layout-item>
+                </lightning-layout>
+            </div>
+
+
+
+            <div class="header-offset slds-var-p-horizontal_small slds-var-p-bottom_medium">
+
+                <!-- show any error messages or alerts -->
+                <lightning-messages></lightning-messages>
+
+                <!-- input fields -->
+                <lightning-input-field field-name={nameField} value={name}></lightning-input-field>
+                <lightning-input-field field-name={titleField} value={title}></lightning-input-field>
+                <lightning-input-field field-name={accountField} value={account}></lightning-input-field>
+                <lightning-input-field field-name={phoneField} value={phone}></lightning-input-field>
+                <lightning-input-field field-name={emailField} value={email}></lightning-input-field>
+                <lightning-input-field field-name={mobileField} value={mobile}></lightning-input-field>
+                <lightning-input-field field-name={ownerField} value={owner}></lightning-input-field>
+
+            </div>
+
+        </lightning-record-edit-form>
+    </div>
+</template>
