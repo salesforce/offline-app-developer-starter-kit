@@ -1,17 +1,15 @@
 import { createElement } from "lwc";
 import { getRecord } from "lightning/uiRecordApi";
-import ViewContactRecord from "c/viewContactRecord";
-import CONTACT_NAME_FIELD from "@salesforce/schema/Contact.Name";
-import CONTACT_TITLE_FIELD from "@salesforce/schema/Contact.Title";
-import CONTACT_ACCOUNT_FIELD from "@salesforce/schema/Contact.AccountId";
-import CONTACT_PHONE_FIELD from "@salesforce/schema/Contact.Phone";
-import CONTACT_EMAIL_FIELD from "@salesforce/schema/Contact.Email";
-import CONTACT_MOBILE_FIELD from "@salesforce/schema/Contact.MobilePhone";
-import CONTACT_OWNER_FIELD from "@salesforce/schema/Contact.OwnerId";
+import ViewOpportunityRecord from "c/viewOpportunityRecord";
+import OPPORTUNITY_NAME_FIELD from "@salesforce/schema/Opportunity.Name";
+import OPPORTUNITY_ACCOUNT_FIELD from "@salesforce/schema/Opportunity.AccountId";
+import OPPORTUNITY_CLOSE_DATE_FIELD from "@salesforce/schema/Opportunity.CloseDate";
+import OPPORTUNITY_AMOUNT_FIELD from "@salesforce/schema/Opportunity.Amount";
+import OPPORTUNITY_OWNER_FIELD from "@salesforce/schema/Opportunity.OwnerId";
 
 const mockGetRecord = require("./data/getRecord.json");
 
-describe("c-view-contact-record", () => {
+describe("c-view-opportunity-record", () => {
   afterEach(() => {
     // The jsdom instance is shared across test cases in a single file so reset the DOM
     while (document.body.firstChild) {
@@ -21,10 +19,10 @@ describe("c-view-contact-record", () => {
 
   it("should correctly populate record fields", async () => {
     const element = createElement("c-view-contact-record", {
-      is: ViewContactRecord,
+      is: ViewOpportunityRecord,
     });
-    element.recordId = "0031700000pJRRSAA4";
-    element.objectApiName = "Contact";
+    element.recordId = "0061700000pJRRSAA4";
+    element.objectApiName = "Opportunity";
     document.body.appendChild(element);
 
     // Emit mock record into the wired field
@@ -44,13 +42,11 @@ describe("c-view-contact-record", () => {
     expect(formEl.recordId).toBe(element.recordId);
     expect(formEl.objectApiName).toBe(element.objectApiName);
     expect(formEl.fields).toEqual([
-      CONTACT_NAME_FIELD,
-      CONTACT_TITLE_FIELD,
-      CONTACT_ACCOUNT_FIELD,
-      CONTACT_PHONE_FIELD,
-      CONTACT_EMAIL_FIELD,
-      CONTACT_MOBILE_FIELD,
-      CONTACT_OWNER_FIELD,
+      OPPORTUNITY_NAME_FIELD,
+      OPPORTUNITY_ACCOUNT_FIELD,
+      OPPORTUNITY_CLOSE_DATE_FIELD,
+      OPPORTUNITY_AMOUNT_FIELD,
+      OPPORTUNITY_OWNER_FIELD,
     ]);
 
     // check draft list

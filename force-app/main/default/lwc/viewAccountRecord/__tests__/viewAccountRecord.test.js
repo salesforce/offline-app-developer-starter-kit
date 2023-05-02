@@ -1,6 +1,11 @@
 import { createElement } from "lwc";
 import ViewAccountRecord from "c/viewAccountRecord";
 import { getRecord } from "lightning/uiRecordApi";
+import NAME_FIELD from "@salesforce/schema/Account.Name";
+import PHONE_FIELD from "@salesforce/schema/Account.Phone";
+import WEBSITE_FIELD from "@salesforce/schema/Account.Website";
+import INDUSTRY_FIELD from "@salesforce/schema/Account.Industry";
+import TYPE_FIELD from "@salesforce/schema/Account.Type";
 
 jest.mock("c/accountRelatedContacts");
 const mockGetRecord = require("./data/getRecord.json");
@@ -13,11 +18,12 @@ describe("c-view-account-record", () => {
     }
   });
 
-  it("should correctly populate record fields", () => {
+  it("should correctly populate record fields", async () => {
     const element = createElement("c-view-account-record", {
       is: ViewAccountRecord,
     });
-    element.objectApiName = "objectApiName";
+    element.recordId = "0011700000pJRRSAA4";
+    element.objectApiName = "Account";
     document.body.appendChild(element);
 
     // Emit mock record into the wired field
@@ -25,28 +31,27 @@ describe("c-view-account-record", () => {
     getRecord.emit(mockGetRecord);
 
     // Resolve a promise to wait for a re-render of the new content
-    return Promise.resolve().then(() => {
-      const objectField = element.shadowRoot.querySelector(
-        'lightning-layout-item[data-id="objectApiNameId"]'
-      );
-      expect(objectField.textContent).toBe(element.objectApiName);
+    await Promise.resolve();
 
-      const nameField = element.shadowRoot.querySelector(
-        'lightning-layout-item[data-id="nameId"]'
-      );
-      expect(nameField.textContent).toBe(mockGetRecord.fields.Name.value);
+    // ensure record header exists
+    const recordHeader = element.shadowRoot.querySelector("c-record-header");
+    expect(recordHeader).not.toBeNull();
 
-      const iconField = element.shadowRoot.querySelector(
-        'lightning-icon[data-id="iconId"]'
-      );
-      expect(iconField.iconName).toBe(
-        "standard:" + element.objectApiName.toLowerCase()
-      );
+    // ensure record form exists and was invoked with expected args
+    const formEl = element.shadowRoot.querySelector("lightning-record-form");
+    expect(formEl).not.toBeNull();
+    expect(formEl.recordId).toBe(element.recordId);
+    expect(formEl.objectApiName).toBe(element.objectApiName);
+    expect(formEl.fields).toEqual([
+      NAME_FIELD,
+      PHONE_FIELD,
+      WEBSITE_FIELD,
+      INDUSTRY_FIELD,
+      TYPE_FIELD,
+    ]);
 
-      // our sample data also has 2 draft edits (name and phone)
-      const draftEdits = element.shadowRoot.querySelectorAll("li");
-      expect(draftEdits[0].textContent).toBe("Name=Old Name");
-      expect(draftEdits[1].textContent).toBe("Phone=+1-719-555-1212");
-    });
+    // check draft list
+    const draftEdits = element.shadowRoot.querySelector("c-draft-details-list");
+    expect(draftEdits).not.toBeNull();
   });
 });

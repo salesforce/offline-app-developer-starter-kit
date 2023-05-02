@@ -1,0 +1,36 @@
+{
+    "fields": {
+        "Name": {
+            "value": "Name Mock"
+        },
+        "Phone": {
+            "value": "123-456-7890"
+        },
+        "Website": {
+            "value": "www.mocksite.fake"
+        },
+        "Owner.Name": {
+            "value": "Owner name"
+        },
+        "Industry": {
+            "value": "Industry mock"
+        },
+        "Type": {
+            "value": "Record type"
+        }
+    },
+
+    "drafts": {
+        "serverValues" : {
+            "Name" : {
+                "value" : "Old Name",
+                "displayValue" : null
+            },
+            "Phone" : {
+                "value" : "+1-719-555-1212",
+                "displayValue" : null
+            }
+
+        }
+    }
+ }

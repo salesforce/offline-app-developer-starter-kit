@@ -2,10 +2,9 @@
 <LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
     <apiVersion>56.0</apiVersion>
     <isExposed>true</isExposed>
-    <masterLabel>Create Account Record</masterLabel>
-    <description>Creates a new Account.</description>
+    <masterLabel>View Opportunity Record    </masterLabel>
+    <description>Component to view a single Opportunity. Will also display any draft items in accordion if any drafts exist for the record.</description>
     <targets>
-        <target>lightning__GlobalAction</target>
         <target>lightning__RecordPage</target>
         <target>lightning__RecordAction</target>
     </targets>

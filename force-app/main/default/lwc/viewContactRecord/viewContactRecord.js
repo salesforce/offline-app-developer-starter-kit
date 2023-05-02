@@ -1,12 +1,12 @@
 import { LightningElement, api, wire } from "lwc";
 import { getRecord } from "lightning/uiRecordApi";
-
-import NAME_FIELD from "@salesforce/schema/Contact.Name";
-import TITLE_FIELD from "@salesforce/schema/Contact.Title";
-import PHONE_FIELD from "@salesforce/schema/Contact.Phone";
-import EMAIL_FIELD from "@salesforce/schema/Contact.Email";
-import MAILINGADDRESS_FIELD from "@salesforce/schema/Contact.MailingAddress";
-import DEPARTMENT_FIELD from "@salesforce/schema/Contact.Department";
+import CONTACT_NAME_FIELD from "@salesforce/schema/Contact.Name";
+import CONTACT_TITLE_FIELD from "@salesforce/schema/Contact.Title";
+import CONTACT_ACCOUNT_FIELD from "@salesforce/schema/Contact.AccountId";
+import CONTACT_PHONE_FIELD from "@salesforce/schema/Contact.Phone";
+import CONTACT_EMAIL_FIELD from "@salesforce/schema/Contact.Email";
+import CONTACT_MOBILE_FIELD from "@salesforce/schema/Contact.MobilePhone";
+import CONTACT_OWNER_FIELD from "@salesforce/schema/Contact.OwnerId";
 
 export default class ViewContactRecord extends LightningElement {
   @api recordId;
@@ -14,30 +14,20 @@ export default class ViewContactRecord extends LightningElement {
 
   get fields() {
     return [
-      NAME_FIELD,
-      TITLE_FIELD,
-      PHONE_FIELD,
-      EMAIL_FIELD,
-      MAILINGADDRESS_FIELD,
-      DEPARTMENT_FIELD,
+      CONTACT_NAME_FIELD,
+      CONTACT_TITLE_FIELD,
+      CONTACT_ACCOUNT_FIELD,
+      CONTACT_PHONE_FIELD,
+      CONTACT_EMAIL_FIELD,
+      CONTACT_MOBILE_FIELD,
+      CONTACT_OWNER_FIELD,
     ];
   }
 
   @wire(getRecord, { recordId: "$recordId", fields: "$fields" })
   record;
 
-  get cardIconName() {
-    return `standard:${
-      this.objectApiName ? this.objectApiName.toLowerCase() : "record"
-    }`;
-  }
-
   get name() {
-    return this.record &&
-      this.record.data &&
-      this.record.data.fields &&
-      this.record.data.fields.Name
-      ? this.record.data.fields.Name.value
-      : "";
+    return this.record?.data?.fields?.Name?.value ?? "";
   }
 }

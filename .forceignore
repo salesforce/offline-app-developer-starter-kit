@@ -2,3 +2,4 @@
 
 **/.eslintrc.json
 **/__tests__/**
+**/__mocks__**
