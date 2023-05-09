@@ -42,7 +42,7 @@ The Offline App Developer Starter Kit provides instructions and sample code to g
    cd offline-app-developer-starter-kit
    ```
 
-3. Check out the appropriate tag. The tagged commits are properly tested, whereas `HEAD` may not be ready for consumption.
+3. Check out the appropriate tag. The tagged commits are properly tested, whereas the `HEAD` of the branch may not be ready for consumption.
 
 4. Install dependencies:
 
