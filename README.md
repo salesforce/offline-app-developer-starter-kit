@@ -6,12 +6,12 @@ The Offline App Developer Starter Kit — this repository — is your jump start
 
 Getting started with the Starter Kit is straightforward, but does require a few steps.
 
-* Install prerequisite developer tools.
-* Configure a Briefcase for offline priming.
-* Make a copy of the Starter Kit project, and configure it for your org.
-* Deploy the Starter Kit code to your development org.
-* Add quick actions included in the Starter Kit to your record page layouts.
-* Access the Offline App from the Salesforce Mobile app and see your code in action!
+* Install prerequisite developer tools
+* Configure a Briefcase for offline priming
+* Make a copy of the Starter Kit project, and configure it for your org
+* Deploy the Starter Kit code to your development org
+* Add quick actions included in the Starter Kit to your record page layouts
+* Access the Offline App from the Salesforce Mobile app and see the code in action!
 
 The remainder of this README is intended to guide you through these steps. The instructions provided are specific to getting started with the Starter Kit, **not** complete documentation. For additional details of developing with Lightning Web Components and offline development, see the following developer guides:
 
@@ -22,7 +22,7 @@ The remainder of this README is intended to guide you through these steps. The i
 
 The Salesforce product team will enable your org for Mobile Offline when you license it. While you wait, perform the following tasks to set up your developer environment and tools, so you can begin exploring once Mobile Offline is enabled.
 
-* Install Salesforce CLI:
+* Install Salesforce CLI
   * Follow the steps in the [Salesforce CLI Setup Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_intro.htm)
 * Install Visual Studio Code and the Salesforce Extension Pack
   * [Visual Studio Code Download](https://code.visualstudio.com/download)
@@ -32,7 +32,7 @@ Instructions for installing and using additional tools specific for mobile and o
 
 ## Define an Offline Briefcase
 
-The _Briefcase_ is the most fundamental and powerful method for defining the set of records that your offline users can take with them when they're in the field, away from a network connection. A Briefcase is actually quite simple; it's just a set of rules and filters that select records. The Offline App uses — depends on — a Briefcase to use when priming records for offline use.
+The _Briefcase_ is the most fundamental and powerful method for defining the set of records that your offline users can take with them when they're in the field, away from a network connection. A Briefcase is actually quite simple; it's just a set of rules and filters that select records. The Offline App uses — and depends on — a Briefcase to use when priming records for offline use.
 
 1. From Setup, navigate to Briefcase Builder and click **New Briefcase**:
   ![Setup Briefcase](images/SetupBriefcase.png)
@@ -52,7 +52,7 @@ For additional details about how to create a briefcase for offline use, see "[Br
 
 To use the Starter Kit, first clone (copy) it to your development system, and then configure it to connect to a Salesforce org you want to use for development. The easiest way to accomplish this is using the command line.
 
-1. In Terminal, or your command line application of choice, create or move to a directory where you want to copy the Starter Kit.
+1. In Terminal, or your command line application of choice, create or move to a directory where you want to copy the Starter Kit. For example:
 
    ```sh
    mkdir -p ~/Developer/Salesforce
@@ -71,7 +71,7 @@ To use the Starter Kit, first clone (copy) it to your development system, and th
    cd offline-app-developer-starter-kit
    ```
 
-4. Check out an appropriate (recent) [tagged release of the Starter Kit](https://github.com/salesforce/offline-app-developer-starter-kit/tags).
+4. Check out an appropriate (recent) [tagged release of the Starter Kit](https://github.com/salesforce/offline-app-developer-starter-kit/tags). For example:
   
    ```sh
    git checkout v242.3.0
@@ -85,7 +85,7 @@ To use the Starter Kit, first clone (copy) it to your development system, and th
    npm install
    ```
 
-6. Authorize access to your org. Either Salesforce CLI or VS Code can be used for authorization and deployment. VS Code is recommended.
+6. Authorize access to your org. Either Salesforce CLI or VS Code can be used for authorization and deployment.
   
    * Authorize Salesforce from VS Code:
 
@@ -105,9 +105,9 @@ To use the Starter Kit, first clone (copy) it to your development system, and th
 
       For extensive details about using Salesforce CLI, see the [CLI Reference](https://developer.salesforce.com/docs/atlas.en-us.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference.htm).
 
-## Deploy Changes
+## Deploy Components and Quick Actions
 
-Before you can run a changed component, you need to deploy it to your org. Changes made to components or quick actions can be deployed via the CLI or VS Code.
+Before you can run a quick action based on a Lightning web component, you need to deploy the relevant code artifacts to your org. Components and quick actions can be deployed via the CLI or VS Code.
 
 Using CLI:
 
@@ -131,7 +131,7 @@ Using VS Code:
 
 For a quick action to appear in the action bar of a record view, it must be assigned to the main page layout for the record's object type.
 
-Here's an example of assigning the **Edit** quick action for an Account:
+Here's an example of assigning the **Edit** quick action for the Account object type:
 
 1. From Setup, open the Object Manager.
 2. Enter `Account` in the Quick Find box, then select **Account**.
@@ -143,9 +143,11 @@ Here's an example of assigning the **Edit** quick action for an Account:
 8. Click **Save**.
 
 > **Note**
-> At this time, only actions added to the main page layout are shown. Support for record types will be available in a future release.
+> At this time, only actions added to the main page layout are accessible in the Offline App. Support for record types will be available in a future release.
 
 ## View Offline Components in the Salesforce Mobile App
+
+The part you've been waiting for: seeing the code in action!
 
 > **Note**
 > The iOS version is used here, but the experience is identical across iOS and Android.
@@ -176,7 +178,7 @@ cd force-app/main/default
 * `lwc/` directory contains example Lightning web component bundles:  
   ![VS Code Authorize](images/lwcDirectory.png)
 
-  For example, `lwc/genericVisit/` contains the files which make up the `genericVisit` component.
+  For example, `lwc/genericVisit/` contains the files that make up the `genericVisit` component.
 * `quickActions/` directory contains example Quick Actions:  
   ![Quick Actions](images/quickActionsDirectory.png)
 
@@ -198,7 +200,7 @@ cd force-app/main/default
 
 ### Call Apex Methods from Lightning Web Components
 
-Apex methods can be called from Lightning web components. However, Apex is a server-side language, and Apex methods aren't available when offline. When developing for the Offline App, we recommend taht you use base components and Lightning Data Service (LDS) via wire adapters for viewing or modifying data.
+Apex methods can be called from Lightning web components. However, Apex is a server-side language, and Apex methods aren't available when offline. When developing for the Offline App, we recommend that you use base components and Lightning Data Service (LDS) via wire adapters for viewing or modifying data. See "[Data Guidelines](https://developer.salesforce.com/docs/component-library/documentation/en/lwc/lwc.data_guidelines)" for a more detailed description of recommended strategies for data access within LWCs.
 
 The Starter Kit provides an example of calling Apex from an LWC:
 
