@@ -143,14 +143,21 @@ Here's an example of assigning the Edit LWC quick action for an Account:
 > **Note**
 > The experience is identical across iOS and Android.
 
-- Launch the mobile app:
+- Launch the Offline App:
+
   ![Offline Splash](images/OfflineSplash.png)
-- Tap **Download Offline Records**:
-  ![Offline Download](images/OfflineDownload.png)
-- Once primed, offline records are displayed in a list:
+
+- Tap on **My Offline Records**:
+
+  ![Offline Download](images/LandingPage.png)
+
+- Offline Briefcase records:
+
+  ![Briefcase Records](images/MyOfflineRecords.png)
+
+- Records:
+
   ![View Records](images/OfflineRecords.png)
-- To see the deployed component, tap an associated record:
-  FIXME: Missing Image
 
 ## Call Apex Methods from Lightning Web Components
 
