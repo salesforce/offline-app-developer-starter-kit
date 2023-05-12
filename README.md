@@ -74,6 +74,11 @@ To use the Starter Kit, first clone (copy) it to your development system, and th
 4. Check out an appropriate (recent) [tagged release of the Starter Kit](https://github.com/salesforce/offline-app-developer-starter-kit/tags). For example:
   
    ```sh
+   git tag -l
+     v242.0.0
+     v242.1.0
+     v242.2.0
+     v242.3.0
    git checkout v242.3.0
    ```
   
@@ -89,7 +94,7 @@ To use the Starter Kit, first clone (copy) it to your development system, and th
   
    * Authorize Salesforce from VS Code:
 
-      * Enter the command palette in VSCode (CMD+SHIFT+P) and type `SFDX:Authorize an org`
+      * Enter the command palette in VS Code (CMD+SHIFT+P) and type `SFDX:Authorize an org`
         ![VS Code Authorize](images/VSCodeAuthorize.png)
       * A browser window opens with the Salesforce login screen. Log in to your org.
 
@@ -176,27 +181,28 @@ cd force-app/main/default
 ```
 
 * `lwc/` directory contains example Lightning web component bundles:  
-  ![VS Code Authorize](images/lwcDirectory.png)
+  ![Lightning web components source files](images/source_dir_lwc_edit_account.png)
 
-  For example, `lwc/genericVisit/` contains the files that make up the `genericVisit` component.
+  For example, `lwc/editAccountRecord/` contains the files that make up the `editAccountRecord` component.
 * `quickActions/` directory contains example Quick Actions:  
-  ![Quick Actions](images/quickActionsDirectory.png)
+  ![Quick Actions metadata files](images/source_dir_quickactions_edit_account.png)
 
-  For example: `Account.view.quickAction-meta.xml` contains metadata to describe a quick action:
+  For example: `Account.edit.quickAction-meta.xml` contains metadata to describe a quick action:
 
   ```xml
   <?xml version="1.0" encoding="UTF-8"?>
   <QuickAction xmlns="http://soap.sforce.com/2006/04/metadata">
       <actionSubtype>ScreenAction</actionSubtype>
-      <label>View</label>
-      <lightningWebComponent>genericVisit</lightningWebComponent>
+      <label>Edit</label>
+      <lightningWebComponent>editAccountRecord</lightningWebComponent>
       <optionsCreateFeedItem>false</optionsCreateFeedItem>
       <type>LightningWebComponent</type>
+      <icon>editActionIcon</icon>
   </QuickAction>
   ```
 
   The `<lightningWebComponent>` element specifies the Lightning web component loaded for
-  the given quick action. In this case, the `genericVisit` component.
+  the given quick action. In this case, the `editAccountRecord` component.
 
 ### Call Apex Methods from Lightning Web Components
 
