@@ -157,14 +157,22 @@ The part you've been waiting for: seeing the code in action!
 > **Note**
 > The iOS version is used here, but the experience is identical across iOS and Android.
 
-* Launch the mobile app:
+
+- Launch the Offline App:
+
   ![Offline Splash](images/OfflineSplash.png)
-* Tap **Download Offline Records**:
-  ![Offline Download](images/OfflineDownload.png)
-* Once primed, offline records are displayed in a list:
+
+- Tap on **My Offline Records**:
+
+  ![Offline Download](images/LandingPage.png)
+
+- Offline Briefcase records:
+
+  ![Briefcase Records](images/MyOfflineRecords.png)
+
+- Records:
+
   ![View Records](images/OfflineRecords.png)
-* To see the deployed component, tap an associated record:
-  FIXME: Missing Image
 
 ## Modify Existing and Create New Components
 
