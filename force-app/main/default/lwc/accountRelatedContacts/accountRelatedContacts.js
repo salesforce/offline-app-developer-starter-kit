@@ -44,23 +44,20 @@ export default class AccountRelatedContacts extends NavigationMixin(
     operationName: "accountWithChildContacts",
   })
   graphqlResult({ data /* errors */ }) {
-    this.contactsData = data;
+    this.contacts = null;
+    if (data && data.uiapi.query.Account) {
+      const accounts = data.uiapi.query.Account.edges;
+      if (accounts && accounts[0]) {
+        this.contacts = accounts[0].node.Contacts.edges.map((e) => e.node);
+      }
+    }
   }
-  contactsData;
+  contacts;
 
   get graphqlVariables() {
     return {
       recordId: this.recordId,
     };
-  }
-
-  get contacts() {
-    if (!this.contactsData || !this.contactsData.uiapi.query.Account)
-      return null;
-    const accounts = this.contactsData.uiapi.query.Account.edges;
-    if (!accounts || !accounts[0]) return null;
-    const contacts = accounts[0].node.Contacts.edges.map((e) => e.node);
-    return contacts;
   }
 
   contactClick(event) {

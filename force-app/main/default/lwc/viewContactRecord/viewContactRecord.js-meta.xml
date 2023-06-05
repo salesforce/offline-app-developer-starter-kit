@@ -3,8 +3,9 @@
     <apiVersion>56.0</apiVersion>
     <isExposed>true</isExposed>
     <masterLabel>View Contact Record</masterLabel>
-    <description
-  >Component to view a single Contact. Will also display any draft items in accordion if any drafts exist for the record.</description>
+    <description>
+        Component to view a single Contact. Will also display any draft items in accordion if any drafts exist for the record.
+    </description>
     <targets>
         <target>lightning__RecordPage</target>
         <target>lightning__RecordAction</target>
