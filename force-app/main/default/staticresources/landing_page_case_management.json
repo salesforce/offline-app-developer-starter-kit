@@ -1,0 +1,228 @@
+{
+  "view": {
+    "definition": "generated/landing_page",
+    "name": "component_view",
+    "properties": {},
+    "regions": {
+      "components": {
+        "name": "components",
+        "components": [
+          {
+            "definition": "mcf/container",
+            "name": "container",
+            "properties": {
+              "backgroundColor": "#F3F2f2"
+            },
+            "dataProviders": {},
+            "regions": {
+              "components": {
+                "name": "components",
+                "components": [
+                  {
+                    "definition": "mcf/card",
+                    "name": "global_actions",
+                    "properties": {
+                      "label": "Global Actions"
+                    },
+                    "regions": {
+                      "components": {
+                        "name": "components",
+                        "components": [
+                          {
+                            "definition": "mcfp/actionList",
+                            "name": "actions_list",
+                            "properties": {},
+                            "regions": {
+                              "components": {
+                                "name": "components",
+                                "components": [
+                                  {
+                                    "definition": "mcfp/actionItem",
+                                    "name": "global_action",
+                                    "properties": {
+                                      "apiName": "Global.New_Case_Report"
+                                    },
+                                    "regions": {}
+                                  }
+                                ]
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  {
+                    "definition": "mcf/card",
+                    "name": "recent_cases",
+                    "properties": {
+                      "label": "Recent Cases"
+                    },
+                    "regions": {
+                      "components": {
+                        "name": "components",
+                        "components": [
+                          {
+                            "definition": "mcf/list",
+                            "name": "case_list",
+                            "properties": {
+                              "size": 5,
+                              "objectApiName": "Case",
+                              "fieldMap": {
+                                "mainField": "Subject",
+                                "subField1": "Status"
+                              },
+                              "fields": {
+                                "Subject": "StringValue",
+                                "Status": "StringValue"
+                              },
+                              "orderBy": [
+                                {
+                                  "LastViewedDate": "DESC"
+                                }
+                              ]
+                            },
+                            "regions": {
+                              "components": {
+                                "name": "components",
+                                "components": [
+                                  {
+                                    "definition": "mcf/recordRow",
+                                    "name": "record_row",
+                                    "properties": {},
+                                    "regions": {}
+                                  }
+                                ]
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  {
+                    "definition": "mcf/card",
+                    "name": "recent_accounts",
+                    "properties": {
+                      "label": "Recent Accounts"
+                    },
+                    "regions": {
+                      "components": {
+                        "name": "components",
+                        "components": [
+                          {
+                            "definition": "mcf/list",
+                            "name": "account_list",
+                            "properties": {
+                              "size": 5,
+                              "objectApiName": "Account",
+                              "fieldMap": {
+                                "mainField": "Name",
+                                "subField1": "AnnualRevenue",
+                                "subField2": "Industry"
+                              },
+                              "fields": {
+                                "Name": "StringValue",
+                                "AnnualRevenue": "StringValue",
+                                "Industry": "StringValue"
+                              },
+                              "orderBy": [
+                                {
+                                  "LastViewedDate": "DESC"
+                                }
+                              ]
+                            },
+                            "regions": {
+                              "components": {
+                                "name": "components",
+                                "components": [
+                                  {
+                                    "definition": "mcf/recordRow",
+                                    "name": "record_row",
+                                    "properties": {},
+                                    "regions": {}
+                                  }
+                                ]
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  {
+                    "definition": "mcf/card",
+                    "name": "recent_contacts",
+                    "properties": {
+                      "label": "Recent Contacts"
+                    },
+                    "regions": {
+                      "components": {
+                        "name": "components",
+                        "components": [
+                          {
+                            "definition": "mcf/list",
+                            "name": "contact_list",
+                            "properties": {
+                              "size": 5,
+                              "objectApiName": "Contact",
+                              "fieldMap": {
+                                "mainField": "Name",
+                                "subField1": "Title"
+                              },
+                              "fields": {
+                                "Name": "StringValue",
+                                "Title": "StringValue",
+                                "MobilePhone": "StringValue",
+                                "Email": "StringValue"
+                              },
+                              "orderBy": [
+                                {
+                                  "LastViewedDate": "DESC"
+                                }
+                              ],
+                              "swipeActions": {
+                                "call": [
+                                  {
+                                    "label": "Mobile",
+                                    "value": "MobilePhone"
+                                  }
+                                ],
+                                "email": [
+                                  {
+                                    "label": "Email",
+                                    "value": "Email"
+                                  }
+                                ]
+                              }
+                            },
+                            "regions": {
+                              "components": {
+                                "name": "components",
+                                "components": [
+                                  {
+                                    "definition": "mcf/recordRow",
+                                    "name": "record_row",
+                                    "properties": {},
+                                    "regions": {}
+                                  }
+                                ]
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  "target": "mcf__native",
+  "apiName": "landing_page",
+  "id": "8592e04f-f59b-4a19-9b1f-af7d55f2b491"
+}

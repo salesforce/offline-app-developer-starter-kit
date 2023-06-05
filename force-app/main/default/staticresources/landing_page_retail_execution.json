@@ -1,0 +1,304 @@
+{
+  "view": {
+    "definition": "generated/landing_page",
+    "name": "component_view",
+    "properties": {},
+    "regions": {
+      "components": {
+        "name": "components",
+        "components": [
+          {
+            "definition": "mcf/container",
+            "name": "container",
+            "properties": {
+              "backgroundColor": "#F3F2f2"
+            },
+            "dataProviders": {},
+            "regions": {
+              "components": {
+                "name": "components",
+                "components": [
+                  {
+                    "definition": "mcf/card",
+                    "name": "global_actions",
+                    "properties": {
+                      "label": "Global Actions"
+                    },
+                    "regions": {
+                      "components": {
+                        "name": "components",
+                        "components": [
+                          {
+                            "definition": "mcfp/actionList",
+                            "name": "actions_list",
+                            "properties": {},
+                            "regions": {
+                              "components": {
+                                "name": "components",
+                                "components": [
+                                  {
+                                    "definition": "mcfp/actionItem",
+                                    "name": "global_action",
+                                    "properties": {
+                                      "apiName": "Global.New_Opportunity"
+                                    },
+                                    "regions": {}
+                                  },
+                                  {
+                                    "definition": "mcfp/actionItem",
+                                    "name": "global_action",
+                                    "properties": {
+                                      "apiName": "Global.New_Lead"
+                                    },
+                                    "regions": {}
+                                  },
+                                  {
+                                    "definition": "mcfp/actionItem",
+                                    "name": "global_action",
+                                    "properties": {
+                                      "apiName": "Global.New_Account"
+                                    },
+                                    "regions": {}
+                                  }
+                                ]
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  {
+                    "definition": "mcf/card",
+                    "name": "component_view",
+                    "properties": {
+                      "label": "Today's Events"
+                    },
+                    "regions": {
+                      "components": {
+                        "name": "components",
+                        "components": [
+                          {
+                            "definition": "mcf/timedList",
+                            "name": "visits_list",
+                            "properties": {
+                              "size": 5,
+                              "objectApiName": "Visit",
+                              "fieldMap": {
+                                "mainField": "Name",
+                                "startTime": "PlannedVisitStartTime",
+                                "endTime": "PlannedVisitEndTime",
+                                "subField1": "Status"
+                              },
+                              "fields": {
+                                "Name": "StringValue",
+                                "PlannedVisitStartTime": "DateTimeValue",
+                                "PlannedVisitEndTime": "DateTimeValue",
+                                "AddressId": "StringValue",
+                                "Status": "StringValue"
+                              },
+                              "swipeActions": {
+                                "map": [
+                                  {
+                                    "label": "Navigate",
+                                    "value": {
+                                      "address": "AddressId"
+                                    }
+                                  }
+                                ]
+                              }
+                            },
+                            "regions": {
+                              "components": {
+                                "name": "components",
+                                "components": [
+                                  {
+                                    "definition": "mcf/timedRow",
+                                    "name": "component_view",
+                                    "properties": {},
+                                    "regions": {}
+                                  }
+                                ]
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  {
+                    "definition": "mcf/card",
+                    "name": "last_modified_accounts",
+                    "properties": {
+                      "label": "Accounts"
+                    },
+                    "regions": {
+                      "components": {
+                        "name": "components",
+                        "components": [
+                          {
+                            "definition": "mcf/list",
+                            "name": "accounts_list",
+                            "properties": {
+                              "size": 5,
+                              "objectApiName": "Account",
+                              "fieldMap": {
+                                "mainField": "Name",
+                                "subField1": "Phone"
+                              },
+                              "fields": {
+                                "Name": "StringValue",
+                                "Phone": "StringValue"
+                              },
+                              "orderBy": [
+                                {
+                                  "LastModifiedDate": "DESC"
+                                }
+                              ]
+                            },
+                            "regions": {
+                              "components": {
+                                "name": "components",
+                                "components": [
+                                  {
+                                    "definition": "mcf/recordRow",
+                                    "name": "record_row",
+                                    "properties": {},
+                                    "regions": {}
+                                  }
+                                ]
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  {
+                    "definition": "mcf/card",
+                    "name": "opportunities",
+                    "properties": {
+                      "label": "Opportunities"
+                    },
+                    "regions": {
+                      "components": {
+                        "name": "components",
+                        "components": [
+                          {
+                            "definition": "mcf/list",
+                            "name": "opportunities_list",
+                            "properties": {
+                              "size": 5,
+                              "objectApiName": "Opportunity",
+                              "fieldMap": {
+                                "mainField": "Name",
+                                "subField1": "CloseDate",
+                                "subField2": "Amount"
+                              },
+                              "fields": {
+                                "Name": "StringValue",
+                                "CloseDate": "DateValue",
+                                "Amount": "StringValue"
+                              },
+                              "orderBy": [
+                                {
+                                  "CloseDate": "DESC"
+                                }
+                              ]
+                            },
+                            "regions": {
+                              "components": {
+                                "name": "components",
+                                "components": [
+                                  {
+                                    "definition": "mcf/recordRow",
+                                    "name": "record_row",
+                                    "properties": {},
+                                    "regions": {}
+                                  }
+                                ]
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  {
+                    "definition": "mcf/card",
+                    "name": "last_modified_leads",
+                    "properties": {
+                      "label": "Leads"
+                    },
+                    "regions": {
+                      "components": {
+                        "name": "components",
+                        "components": [
+                          {
+                            "definition": "mcf/list",
+                            "name": "leads_list",
+                            "properties": {
+                              "size": 5,
+                              "objectApiName": "Lead",
+                              "fieldMap": {
+                                "mainField": "Name",
+                                "subField1": "Company",
+                                "subField2": "Industry"
+                              },
+                              "fields": {
+                                "Name": "StringValue",
+                                "Company": "StringValue",
+                                "Industry": "StringValue",
+                                "Phone": "StringValue",
+                                "Email": "StringValue"
+                              },
+                              "orderBy": [
+                                {
+                                  "LastModifiedDate": "DESC"
+                                }
+                              ],
+                              "swipeActions": {
+                                "call": [
+                                  {
+                                    "label": "Call",
+                                    "value": "Phone"
+                                  }
+                                ],
+                                "email": [
+                                  {
+                                    "label": "Email",
+                                    "value": "Email"
+                                  }
+                                ]
+                              }
+                            },
+                            "regions": {
+                              "components": {
+                                "name": "components",
+                                "components": [
+                                  {
+                                    "definition": "mcf/recordRow",
+                                    "name": "record_row",
+                                    "properties": {},
+                                    "regions": {}
+                                  }
+                                ]
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  "target": "mcf__native",
+  "apiName": "landing_page",
+  "id": "8592e04f-f59b-4a19-9b1f-af7d55f2b491"
+}

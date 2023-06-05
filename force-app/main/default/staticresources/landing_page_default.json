@@ -1,0 +1,195 @@
+{
+  "view": {
+    "definition": "generated/landing_page",
+    "name": "component_view",
+    "properties": {},
+    "regions": {
+      "components": {
+        "name": "components",
+        "components": [
+          {
+            "definition": "mcf/container",
+            "name": "container",
+            "properties": {
+              "backgroundColor": "#F3F2f2"
+            },
+            "dataProviders": {},
+            "regions": {
+              "components": {
+                "name": "components",
+                "components": [
+                  {
+                    "definition": "mcf/card",
+                    "name": "recently_viewed_contacts",
+                    "properties": {
+                      "label": "Recently Viewed Contacts"
+                    },
+                    "regions": {
+                      "components": {
+                        "name": "components",
+                        "components": [
+                          {
+                            "definition": "mcf/list",
+                            "name": "contact_list",
+                            "properties": {
+                              "size": 5,
+                              "objectApiName": "Contact",
+                              "swipeActions": {
+                                "call": [
+                                  {
+                                    "label": "Mobile",
+                                    "value": "MobilePhone"
+                                  }
+                                ],
+                                "email": [
+                                  {
+                                    "label": "Email",
+                                    "value": "Email"
+                                  }
+                                ]
+                              },
+                              "fieldMap": {
+                                "mainField": "Name",
+                                "subField1": "MobilePhone"
+                              },
+                              "fields": {
+                                "Name": "StringValue",
+                                "MobilePhone": "StringValue",
+                                "Email": "StringValue"
+                              },
+                              "orderBy": [
+                                {
+                                  "LastViewedDate": "DESC"
+                                }
+                              ]
+                            },
+                            "regions": {
+                              "components": {
+                                "name": "components",
+                                "components": [
+                                  {
+                                    "definition": "mcf/recordRow",
+                                    "name": "record_row",
+                                    "properties": {},
+                                    "regions": {}
+                                  }
+                                ]
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  {
+                    "definition": "mcf/card",
+                    "name": "account_card",
+                    "properties": {
+                      "label": "Accounts"
+                    },
+                    "regions": {
+                      "components": {
+                        "name": "components",
+                        "components": [
+                          {
+                            "definition": "mcf/list",
+                            "name": "account_list",
+                            "properties": {
+                              "size": 5,
+                              "objectApiName": "Account",
+                              "fieldMap": {
+                                "mainField": "Name",
+                                "subField1": "Industry",
+                                "subField2": "Id"
+                              },
+                              "fields": {
+                                "Name": "StringValue",
+                                "Industry": "StringValue",
+                                "Id": "String"
+                              },
+                              "orderBy": [
+                                {
+                                  "Name": "ASC"
+                                }
+                              ]
+                            },
+                            "regions": {
+                              "components": {
+                                "name": "components",
+                                "components": [
+                                  {
+                                    "definition": "mcf/recordRow",
+                                    "name": "record_row",
+                                    "properties": {
+                                      "displayIcon": false
+                                    },
+                                    "regions": {}
+                                  }
+                                ]
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  {
+                    "definition": "mcf/card",
+                    "name": "opportunity_card",
+                    "properties": {
+                      "label": "Upcoming Opportunities"
+                    },
+                    "regions": {
+                      "components": {
+                        "name": "components",
+                        "components": [
+                          {
+                            "definition": "mcf/list",
+                            "name": "opportunity_list",
+                            "properties": {
+                              "size": 3,
+                              "objectApiName": "Opportunity",
+                              "fieldMap": {
+                                "mainField": "Name"
+                              },
+                              "fields": {
+                                "Name": "StringValue"
+                              },
+                              "orderBy": [
+                                {
+                                  "CloseDate": "ASC"
+                                }
+                              ]
+                            },
+                            "regions": {
+                              "components": {
+                                "name": "components",
+                                "components": [
+                                  {
+                                    "definition": "mcf/recordRow",
+                                    "name": "record_row",
+                                    "properties": {
+                                      "displayIcon": false
+                                    },
+                                    "regions": {}
+                                  }
+                                ]
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  "target": "mcf__native",
+  "apiName": "landing_page",
+  "id": "8592e04f-f59b-4a19-9b1f-af7d55f2b491"
+}
