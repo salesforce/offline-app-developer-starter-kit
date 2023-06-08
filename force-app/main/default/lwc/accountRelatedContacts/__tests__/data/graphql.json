@@ -1,0 +1,32 @@
+{
+  "uiapi": {
+    "query": {
+      "Account": {
+        "edges": [
+          {
+            "node": {
+              "Contacts": {
+                "edges": [
+                  {
+                    "node": {
+                      "Id": "ABC",
+                      "Name": {
+                        "value": "Marc Benioff"
+                      },
+                      "Phone": {
+                        "value": "415-555-5555"
+                      },
+                      "Email": {
+                        "value": "marc@salesforce.com"
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}
