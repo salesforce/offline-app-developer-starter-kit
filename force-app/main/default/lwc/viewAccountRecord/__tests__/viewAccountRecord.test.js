@@ -7,6 +7,7 @@ import WEBSITE_FIELD from "@salesforce/schema/Account.Website";
 import INDUSTRY_FIELD from "@salesforce/schema/Account.Industry";
 import TYPE_FIELD from "@salesforce/schema/Account.Type";
 
+jest.mock("c/accountRelatedContacts");
 const mockGetRecord = require("./data/getRecord.json");
 
 describe("c-view-account-record", () => {
