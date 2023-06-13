@@ -6,6 +6,7 @@ import OPPORTUNITY_ACCOUNT_FIELD from "@salesforce/schema/Opportunity.AccountId"
 import OPPORTUNITY_CLOSE_DATE_FIELD from "@salesforce/schema/Opportunity.CloseDate";
 import OPPORTUNITY_AMOUNT_FIELD from "@salesforce/schema/Opportunity.Amount";
 import OPPORTUNITY_OWNER_FIELD from "@salesforce/schema/Opportunity.OwnerId";
+import OPPORTUNITY_STAGENAME_FIELD from "@salesforce/schema/Opportunity.StageName";
 
 describe("c-create-opportunity-record", () => {
   afterEach(() => {
@@ -43,6 +44,7 @@ describe("c-create-opportunity-record", () => {
       OPPORTUNITY_ACCOUNT_FIELD,
       OPPORTUNITY_CLOSE_DATE_FIELD,
       OPPORTUNITY_AMOUNT_FIELD,
+      OPPORTUNITY_STAGENAME_FIELD,
       OPPORTUNITY_OWNER_FIELD,
     ];
 

@@ -3,6 +3,7 @@ import OPPORTUNITY_NAME_FIELD from "@salesforce/schema/Opportunity.Name";
 import OPPORTUNITY_ACCOUNT_FIELD from "@salesforce/schema/Opportunity.AccountId";
 import OPPORTUNITY_CLOSE_DATE_FIELD from "@salesforce/schema/Opportunity.CloseDate";
 import OPPORTUNITY_AMOUNT_FIELD from "@salesforce/schema/Opportunity.Amount";
+import OPPORTUNITY_STAGENAME_FIELD from "@salesforce/schema/Opportunity.StageName";
 import OPPORTUNITY_OWNER_FIELD from "@salesforce/schema/Opportunity.OwnerId";
 
 export default class CreateContactRecord extends LightningElement {
@@ -13,13 +14,14 @@ export default class CreateContactRecord extends LightningElement {
   accountField = OPPORTUNITY_ACCOUNT_FIELD;
   closeDateField = OPPORTUNITY_CLOSE_DATE_FIELD;
   amountField = OPPORTUNITY_AMOUNT_FIELD;
+  stageNameField = OPPORTUNITY_STAGENAME_FIELD;
   ownerField = OPPORTUNITY_OWNER_FIELD;
 
   name = "";
   account = "";
   closeDate = "";
   amount = "";
-  owner = "";
+  stageName = "";
 
   onSuccess(event) {
     console.log("Created opportunity", event.detail);
