@@ -25,7 +25,6 @@ export default class CreateContactRecord extends LightningElement {
   phone = "";
   email = "";
   mobile = "";
-  owner = "";
 
   onSuccess(event) {
     console.log("Created contact", event.detail);
