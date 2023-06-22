@@ -93,7 +93,7 @@ export default class FileUpload extends LightningElement {
         this.dispatchEvent(
           new ShowToastEvent({
             title: "Success",
-            message: "File uploaded",
+            message: "File attached",
             variant: "success",
           })
         );
