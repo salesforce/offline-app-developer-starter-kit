@@ -16,6 +16,7 @@ export default class FileUpload extends LightningElement {
   @track
   errorMessage = "";
 
+  // eslint-disable @salesforce/lwc-graph-analyzer/no-getter-contains-more-than-return-statement
   get fileName() {
     const file = this.files && this.files[0];
     if (file) {
@@ -23,6 +24,7 @@ export default class FileUpload extends LightningElement {
     }
     return undefined;
   }
+  // eslint-enable @salesforce/lwc-graph-analyzer/no-getter-contains-more-than-return-statement
 
   handleInputChange(event) {
     this.files = event.detail.files;
