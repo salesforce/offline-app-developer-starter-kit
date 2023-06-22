@@ -6,7 +6,7 @@ import {
 import { getRelatedListRecords } from "lightning/uiRelatedListApi";
 import { ShowToastEvent } from "lightning/platformShowToastEvent";
 
-export default class FileUploadPage extends LightningElement {
+export default class FilesPage extends LightningElement {
   // This allows the component to be placed on a record page, or other record
   // context, and receive the record's ID when it runs
   @api
