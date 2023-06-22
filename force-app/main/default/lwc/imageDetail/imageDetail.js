@@ -3,7 +3,7 @@ import { getFieldValue, getRecord } from "lightning/uiRecordApi";
 import IMAGE_URL_FIELD from "@salesforce/schema/ContentDocument.LatestPublishedVersion.VersionDataUrl";
 import IMAGE_TITLE_FIELD from "@salesforce/schema/ContentDocument.Title";
 
-export default class MyImage extends LightningElement {
+export default class ImageDetail extends LightningElement {
   @api recordfield;
 
   @wire(getRecord, {
