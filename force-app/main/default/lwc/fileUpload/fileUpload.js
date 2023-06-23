@@ -88,7 +88,9 @@ export default class FileUpload extends LightningElement {
       console.error(error);
       this.errorMessage = error;
     } finally {
-      this.resetInputs();
+        if (!this.errorMessage) {}
+        this.resetInputs();
+    }
       this.uploadingFile = false;
     }
   }
