@@ -1,10 +1,5 @@
-import { LightningElement, api, track, wire } from "lwc";
-import {
-  unstable_createContentDocumentAndVersion,
-  createRecord,
-} from "lightning/uiRecordApi";
+import { LightningElement, api, wire } from "lwc";
 import { getRelatedListRecords } from "lightning/uiRelatedListApi";
-import { ShowToastEvent } from "lightning/platformShowToastEvent";
 
 export default class FilesPage extends LightningElement {
   // This allows the component to be placed on a record page, or other record

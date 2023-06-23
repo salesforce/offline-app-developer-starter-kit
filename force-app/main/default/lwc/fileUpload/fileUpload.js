@@ -1,6 +1,14 @@
-import { LightningElement } from "lwc";
+import { LightningElement, api, track, wire } from "lwc";
+import {
+  unstable_createContentDocumentAndVersion,
+  createRecord,
+} from "lightning/uiRecordApi";
+import { ShowToastEvent } from "lightning/platformShowToastEvent";
 
 export default class FileUpload extends LightningElement {
+  @api
+  recordId;
+
   @track
   files = undefined;
 
@@ -16,6 +24,9 @@ export default class FileUpload extends LightningElement {
   @track
   errorMessage = "";
 
+  get recordId() {
+    return recordId;
+  }
   // eslint-disable @salesforce/lwc-graph-analyzer/no-getter-contains-more-than-return-statement
   get fileName() {
     const file = this.files && this.files[0];
