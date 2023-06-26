@@ -84,13 +84,11 @@ export default class FileUpload extends LightningElement {
         const contentDocumentId = contentDocumentAndVersion.contentDocument.id;
         await this.createCdl(this.recordId, contentDocumentId);
       }
+      this.resetInputs();
     } catch (error) {
       console.error(error);
       this.errorMessage = error;
     } finally {
-        if (!this.errorMessage) {}
-        this.resetInputs();
-    }
       this.uploadingFile = false;
     }
   }
