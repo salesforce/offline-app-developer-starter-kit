@@ -13,7 +13,7 @@
             </lightning-input>
         </div>
 
-        <!-- Currently komaci only supports the if:true= instead of the new lds:if directive -->
+        <!-- Currently komaci only supports the if:true= instead of the new lwc:if directive -->
         <div if:true={fileName}>
             <p>Selected file:</p>
             <p>{fileName}</p>
@@ -40,7 +40,7 @@
             </button>
         </div>
 
-        <!-- Currently komaci only supports the if:true= instead of the new lds:if directive -->
+        <!-- Currently komaci only supports the if:true= instead of the new lwc:if directive -->
         <div if:true={errorMessage}>
             <lightning-card title="Error">
                 <div class="card-body">{errorMessage}</div>
