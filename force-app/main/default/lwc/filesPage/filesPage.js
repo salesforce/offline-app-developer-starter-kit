@@ -17,6 +17,7 @@ export default class FilesPage extends LightningElement {
   relatedFiles;
 
   get relatedFileData() {
-    return this.relatedFiles.data?.records;
+    // Restrict to first 5 items for priming performance reasons
+    return this.relatedFiles.data?.records.slice(0, 5);
   }
 }
