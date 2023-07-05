@@ -41,6 +41,8 @@ export default class AccountRelatedContacts extends NavigationMixin(
   `;
 
   // https://developer.salesforce.com/docs/component-library/documentation/en/lwc/lwc.reference_graphql_relationships
+  //
+  // eslint-disable-next-line @salesforce/lwc-graph-analyzer/no-wire-adapter-of-resource-cannot-be-primed
   @wire(graphql, {
     query: "$accountQuery",
     variables: "$graphqlVariables",
