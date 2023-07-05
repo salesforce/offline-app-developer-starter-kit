@@ -1,18 +1,18 @@
-import { LightningElement, api } from "lwc";
+import { LightningElement, track } from "lwc";
 import { getLocationService } from "lightning/mobileCapabilities";
 
 export default class LocationService extends LightningElement {
-  @api errorMessage;
-  @api currentLatitude;
-  @api currentLongitude;
+  @track errorMessage;
+  @track currentLatitude;
+  @track currentLongitude;
 
   locationService;
-  @api locationButtonDisabled = false;
+  @track locationButtonDisabled = false;
   requestInProgress = false;
   showInstruction = true;
   buttonInstruction = "Get Current Location";
-  @api buttonText = this.buttonInstruction;
-  @api interstitialMessage = "Fetching your current location...";
+  @track buttonText = this.buttonInstruction;
+  @track interstitialMessage = "Fetching your current location...";
 
   // When the component is initialized, detect whether to enable the button
   connectedCallback() {
@@ -24,10 +24,11 @@ export default class LocationService extends LightningElement {
   }
 
   get hasCurrentLocation() {
+    // eslint-disable-next-line @salesforce/lwc-graph-analyzer/no-unsupported-member-variable-in-member-expression
     return this.currentLatitude && this.currentLongitude;
   }
 
-  handleGetCurrentLocationClick(event) {
+  handleGetCurrentLocationClick() {
     if (this.locationService != null && this.locationService.isAvailable()) {
       // Reset current location
       this.currentLatitude = 0;
