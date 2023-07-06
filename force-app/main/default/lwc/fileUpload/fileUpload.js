@@ -15,26 +15,27 @@ export default class FileUpload extends LightningElement {
   @track
   uploadingFile = false;
 
-  @track
+  @api
   titleValue = "";
 
-  @track
+  @api
   descriptionValue = "";
 
   @track
   errorMessage = "";
 
   // This getter is only used for local processing. It does not need to be enabled for offline caching.
-  // eslint-disable @salesforce/lwc-graph-analyzer/no-getter-contains-more-than-return-statement
+  // eslint-disable-next-line @salesforce/lwc-graph-analyzer/no-getter-contains-more-than-return-statement
   get fileName() {
+    // eslint-disable-next-line @salesforce/lwc-graph-analyzer/no-unsupported-member-variable-in-member-expression
     const file = this.files && this.files[0];
     if (file) {
       return file.name;
     }
     return undefined;
   }
-  // eslint-enable @salesforce/lwc-graph-analyzer/no-getter-contains-more-than-return-statement
 
+  /* eslint-disable @lwc/lwc/no-api-reassignments */
   handleInputChange(event) {
     this.files = event.detail.files;
     this.titleValue = this.fileName;
@@ -55,6 +56,7 @@ export default class FileUpload extends LightningElement {
     this.descriptionValue = "";
     this.errorMessage = "";
   }
+  /* eslint-enable @lwc/lwc/no-api-reassignments */
 
   // Handle the user uploading a file
   async handleUploadClick() {
