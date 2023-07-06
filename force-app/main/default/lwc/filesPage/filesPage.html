@@ -1,0 +1,21 @@
+<template>
+    <div class="container">
+        <c-file-upload record-id={recordId}></c-file-upload>
+        <hr />
+
+        <!-- Check if there are any files to display -->
+        <!-- Currently komaci only supports the if:true= instead of the new lwc:if directive -->
+        <template if:true={relatedFileData}>
+            <div class="slds-var-m-around_medium">
+                <!-- Iterate across each file -->
+                <template for:each={relatedFileData} for:item="rec">
+                    <div key={rec.fields.ContentDocumentId.value}>
+                        <!-- Show the imageDetail LWC which will render the actual file-->
+                        <c-image-detail recordfield={rec.fields.ContentDocumentId.value}></c-image-detail>
+                    </div>
+                </template>
+            </div>
+        </template>
+        <!-- An else statement here can be used to show content if there are no images -->
+    </div>
+</template>

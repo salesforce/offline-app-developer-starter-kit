@@ -1,0 +1,8 @@
+<template>
+    <!-- Currently komaci requires if:true= instead of the new lwc:if directive -->
+    <template if:true={contentDocImage.data}>
+        <div>{imageTitle}</div>
+        <!-- This in addition to the @record call in the .js file ensure that the file is downloaded for offline use -->
+        <img src={imageUrl} alt={imageTitle} />
+    </template>
+</template>

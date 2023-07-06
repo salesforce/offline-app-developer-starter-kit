@@ -1,0 +1,49 @@
+<template>
+    <h1>File Upload</h1>
+
+        <div>
+            <lightning-input
+                type="file"
+                name="fileUploader"
+                label="Pick file to upload"
+                multiple="true"
+                accept="*/*"
+                onchange={handleInputChange}
+            >
+            </lightning-input>
+        </div>
+
+        <!-- Currently komaci only supports the if:true= instead of the new lwc:if directive -->
+        <div if:true={fileName}>
+            <p>Selected file:</p>
+            <p>{fileName}</p>
+            <div class="inputs">
+                <lightning-input
+                    type="text"
+                    label="Title"
+                    value={titleValue}
+                    onchange={handleTitleInputChange}
+                ></lightning-input>
+                <lightning-input
+                    type="text"
+                    label="Description"
+                    value={descriptionValue}
+                    onchange={handleDescriptionInputChange}
+                ></lightning-input>
+            </div>
+            <button
+                class="slds-button slds-button_brand slds-var-m-top_medium"
+                disabled={uploadingFile}
+                onclick={handleUploadClick}
+            >
+                <label>Upload</label>
+            </button>
+        </div>
+
+        <!-- Currently komaci only supports the if:true= instead of the new lwc:if directive -->
+        <div if:true={errorMessage}>
+            <lightning-card title="Error">
+                <div class="card-body">{errorMessage}</div>
+            </lightning-card>
+        </div>
+</template>
