@@ -25,15 +25,15 @@ export default class FileUpload extends LightningElement {
   errorMessage = "";
 
   // This getter is only used for local processing. It does not need to be enabled for offline caching.
-  // eslint-disable @salesforce/lwc-graph-analyzer/no-getter-contains-more-than-return-statement
+  // eslint-disable-next-line @salesforce/lwc-graph-analyzer/no-getter-contains-more-than-return-statement
   get fileName() {
+    // eslint-disable-next-line @salesforce/lwc-graph-analyzer/no-unsupported-member-variable-in-member-expression
     const file = this.files && this.files[0];
     if (file) {
       return file.name;
     }
     return undefined;
   }
-  // eslint-enable @salesforce/lwc-graph-analyzer/no-getter-contains-more-than-return-statement
 
   handleInputChange(event) {
     this.files = event.detail.files;
