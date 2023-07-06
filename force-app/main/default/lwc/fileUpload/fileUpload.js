@@ -24,10 +24,6 @@ export default class FileUpload extends LightningElement {
   @track
   errorMessage = "";
 
-  get recordId() {
-    return recordId;
-  }
-
   // This getter is only used for local processing. It does not need to be enabled for offline caching.
   // eslint-disable @salesforce/lwc-graph-analyzer/no-getter-contains-more-than-return-statement
   get fileName() {
