@@ -52,6 +52,7 @@ export default class FileUpload extends LightningElement {
     this.descriptionValue = event.detail.value;
   }
 
+  // Restore the UI to its default state to allow uploading
   resetInputs() {
     this.files = [];
     this.titleValue = "";
@@ -73,8 +74,8 @@ export default class FileUpload extends LightningElement {
     try {
       this.uploadingFile = true;
 
-      // Create a ContentDocumentLink (CDL) to associate the uploaded file
-      // to the Files Related List of a record, like a Work Order.
+      // Create a Content Document and Version for the file
+      // effectively uploading it
       const contentDocumentAndVersion =
         await unstable_createContentDocumentAndVersion({
           title: this.titleValue,
@@ -84,6 +85,9 @@ export default class FileUpload extends LightningElement {
 
       if (this.recordId) {
         const contentDocumentId = contentDocumentAndVersion.contentDocument.id;
+
+        // Create a ContentDocumentLink (CDL) to associate the uploaded file
+        // to the Files Related List of the target recordId
         await this.createCdl(this.recordId, contentDocumentId);
       }
       this.resetInputs();
@@ -95,6 +99,7 @@ export default class FileUpload extends LightningElement {
     }
   }
 
+  // Create the link between the new file upload and the target record
   async createCdl(recordId, contentDocumentId) {
     await createRecord({
       apiName: "ContentDocumentLink",
