@@ -27,6 +27,8 @@ export default class FileUpload extends LightningElement {
   get recordId() {
     return recordId;
   }
+
+  // This getter is only used for local processing. It does not need to be enabled for offline caching.
   // eslint-disable @salesforce/lwc-graph-analyzer/no-getter-contains-more-than-return-statement
   get fileName() {
     const file = this.files && this.files[0];
@@ -101,24 +103,13 @@ export default class FileUpload extends LightningElement {
         ContentDocumentId: contentDocumentId,
         ShareType: "V",
       },
-    })
-      .then(() => {
-        this.dispatchEvent(
-          new ShowToastEvent({
-            title: "Success",
-            message: "File attached",
-            variant: "success",
-          })
-        );
+    });
+    this.dispatchEvent(
+      new ShowToastEvent({
+        title: "Success",
+        message: "File attached",
+        variant: "success",
       })
-      .catch((e) => {
-        this.dispatchEvent(
-          new ShowToastEvent({
-            title: "Error uploading file",
-            message: e.body.message,
-            variant: "error",
-          })
-        );
-      });
+    );
   }
 }
