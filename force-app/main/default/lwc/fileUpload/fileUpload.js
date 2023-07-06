@@ -1,4 +1,4 @@
-import { LightningElement, api, track, wire } from "lwc";
+import { LightningElement, api, track } from "lwc";
 import {
   unstable_createContentDocumentAndVersion,
   createRecord,
