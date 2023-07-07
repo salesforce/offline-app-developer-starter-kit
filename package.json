@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "description": "Salesforce Offline Starter Kit",
   "scripts": {
-    "lint": "eslint \"force-app/**/*.js\"",
+    "lint": "eslint \"force-app/**/*.{js,html}\"",
     "test": "npm run test:unit",
     "test:unit": "sfdx-lwc-jest",
     "test:unit:watch": "sfdx-lwc-jest --watch",
