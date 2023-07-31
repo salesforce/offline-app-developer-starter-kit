@@ -9,9 +9,11 @@ export default class RecordHeader extends LightningElement {
 
   get cardIconName() {
     return `${
-      this.iconName ? this.iconName : `standard:${
-        this.objectApiName ? this.objectApiName.toLowerCase() : ""
-      }`
+      this.iconName
+        ? this.iconName
+        : `standard:${
+            this.objectApiName ? this.objectApiName.toLowerCase() : ""
+          }`
     }`;
   }
 }
