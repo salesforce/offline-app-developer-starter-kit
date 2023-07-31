@@ -4,12 +4,14 @@ export default class RecordHeader extends LightningElement {
   @api recordName;
   @api objectApiName;
 
-  // Optional property to set the icon location. Defaults to "standard"
-  @api iconLocation;
+  // Optional property to set the icon name. Otherwise uses standard icon
+  @api iconName;
 
   get cardIconName() {
-    return `${this.iconLocation ? this.iconLocation : "standard"}:${
-      this.objectApiName ? this.objectApiName.toLowerCase() : ""
+    return `${
+      this.iconName ? this.iconName : `standard:${
+        this.objectApiName ? this.objectApiName.toLowerCase() : ""
+      }`
     }`;
   }
 }
