@@ -15,10 +15,10 @@ export default class FileUpload extends LightningElement {
   @track
   uploadingFile = false;
 
-  @api
+  @track
   titleValue = "";
 
-  @api
+  @track
   descriptionValue = "";
 
   @track
@@ -35,7 +35,6 @@ export default class FileUpload extends LightningElement {
     return undefined;
   }
 
-  /* eslint-disable @lwc/lwc/no-api-reassignments */
   handleInputChange(event) {
     this.files = event.detail.files;
     this.titleValue = this.fileName;
@@ -56,7 +55,6 @@ export default class FileUpload extends LightningElement {
     this.descriptionValue = "";
     this.errorMessage = "";
   }
-  /* eslint-enable @lwc/lwc/no-api-reassignments */
 
   // Handle the user uploading a file
   async handleUploadClick() {
