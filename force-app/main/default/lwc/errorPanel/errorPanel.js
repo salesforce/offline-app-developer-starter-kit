@@ -10,7 +10,6 @@ export default class ErrorPanel extends LightningElement {
 
   viewDetails = false;
 
-  @api
   get errorMessages() {
     // eslint-disable-next-line @salesforce/lwc-graph-analyzer/no-call-expression-references-unsupported-namespace
     return reduceErrors(this.errors);
