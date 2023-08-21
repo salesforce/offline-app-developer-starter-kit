@@ -14,7 +14,7 @@ jest.mock(
       default: createApexTestWireAdapter(jest.fn()),
     };
   },
-  { virtual: true }
+  { virtual: true },
 );
 
 describe("c-view-accounts-with-apex", () => {
