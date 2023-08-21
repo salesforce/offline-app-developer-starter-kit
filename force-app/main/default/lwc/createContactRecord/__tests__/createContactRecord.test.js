@@ -30,7 +30,7 @@ describe("c-create-contact-record", () => {
     const backSpy = jest.spyOn(window.history, "back");
 
     const cancelButton = element.shadowRoot.querySelector(
-      'lightning-button[data-id="cancel"]'
+      'lightning-button[data-id="cancel"]',
     );
     cancelButton.click();
 
@@ -62,12 +62,12 @@ describe("c-create-contact-record", () => {
     expect(form.objectApiName).toBe(OBJECT_API_NAME);
 
     const submitButton = element.shadowRoot.querySelector(
-      'lightning-button[data-id="submit"]'
+      'lightning-button[data-id="submit"]',
     );
     expect(submitButton.type).toBe("submit");
 
     const cancelButton = element.shadowRoot.querySelector(
-      'lightning-button[data-id="cancel"]'
+      'lightning-button[data-id="cancel"]',
     );
     expect(cancelButton.type).toBe("button");
 
@@ -76,7 +76,7 @@ describe("c-create-contact-record", () => {
 
     // get the input fields and ensure they are in the correct order
     const outputFieldNames = Array.from(
-      element.shadowRoot.querySelectorAll("lightning-input-field")
+      element.shadowRoot.querySelectorAll("lightning-input-field"),
     ).map((outputField) => outputField.fieldName);
     expect(outputFieldNames).toEqual(INPUT_FIELDS);
   });

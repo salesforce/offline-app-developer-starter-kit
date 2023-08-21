@@ -110,7 +110,7 @@ export default class FileUpload extends LightningElement {
         title: "Success",
         message: "File attached",
         variant: "success",
-      })
+      }),
     );
   }
 }
