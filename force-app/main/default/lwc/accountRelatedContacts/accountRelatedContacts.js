@@ -10,9 +10,8 @@ export default class AccountRelatedContacts extends NavigationMixin(
   @api recordId;
 
   get accountQuery() {
-
     if (!this.recordId) return undefined;
-  
+
     return gql`
       query accountWithChildContacts($recordId: ID) {
         uiapi {
@@ -43,7 +42,7 @@ export default class AccountRelatedContacts extends NavigationMixin(
         }
       }
     `;
-    }
+  }
 
   // https://developer.salesforce.com/docs/component-library/documentation/en/lwc/lwc.reference_graphql_relationships
   //
