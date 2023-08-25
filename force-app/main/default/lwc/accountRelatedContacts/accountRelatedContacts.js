@@ -9,25 +9,31 @@ export default class AccountRelatedContacts extends NavigationMixin(
 ) {
   @api recordId;
 
-  accountQuery = gql`
-    query accountWithChildContacts($recordId: ID) {
-      uiapi {
-        query {
-          Account(where: { Id: { eq: $recordId } }) {
-            edges {
-              node {
-                Contacts {
+  get accountQuery() {
+    return !this.recordId
+      ? undefined
+      : gql`
+          query accountWithChildContacts($recordId: ID) {
+            uiapi {
+              query {
+                Account(where: { Id: { eq: $recordId } }) {
                   edges {
                     node {
-                      Id
-                      Name {
-                        value
-                      }
-                      Phone {
-                        value
-                      }
-                      Email {
-                        value
+                      Contacts {
+                        edges {
+                          node {
+                            Id
+                            Name {
+                              value
+                            }
+                            Phone {
+                              value
+                            }
+                            Email {
+                              value
+                            }
+                          }
+                        }
                       }
                     }
                   }
@@ -35,10 +41,8 @@ export default class AccountRelatedContacts extends NavigationMixin(
               }
             }
           }
-        }
-      }
-    }
-  `;
+        `;
+  }
 
   // https://developer.salesforce.com/docs/component-library/documentation/en/lwc/lwc.reference_graphql_relationships
   //
