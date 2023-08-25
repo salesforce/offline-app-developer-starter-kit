@@ -10,9 +10,7 @@ export default class AccountRelatedContacts extends NavigationMixin(
   @api recordId;
 
   get accountQuery() {
-    if (!this.recordId) return undefined;
-
-    return gql`
+    return !this.recordId? undefined : gql`
       query accountWithChildContacts($recordId: ID) {
         uiapi {
           query {
