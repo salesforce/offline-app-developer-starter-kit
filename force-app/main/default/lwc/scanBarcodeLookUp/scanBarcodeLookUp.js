@@ -9,6 +9,29 @@ export default class ScanBarcodeLookup extends LightningElement {
   @track errorMessage = null;
   scanButtonDisabled = false;
 
+  // https://developer.salesforce.com/docs/component-library/documentation/en/lwc/lwc.reference_graphql_relationships
+  //
+  // eslint-disable-next-line @salesforce/lwc-graph-analyzer/no-wire-adapter-of-resource-cannot-be-primed
+  @wire(graphql, {
+    query: "$productQuery",
+    variables: "$graphqlVariables",
+    operationName: "productBarcodeLookup",
+  })
+  graphqlResult({ data /* errors */ }) {
+    console.log("data", data);
+    if (data) {
+      const { edges } = data.uiapi.query.Product2;
+      const product = edges && edges[0];
+      this.productId = product && product.node.Id;
+    } else {
+      this.productId = "";
+    }
+    if (!this.productId && this.scannedBarcode) {
+      this.errorMessage = `Could not find product with code ${this.scannedBarcode}`;
+    }
+  }
+  productId;
+
   connectedCallback() {
     this.myScanner = getBarcodeScanner();
     if (this.myScanner == null || !this.myScanner.isAvailable()) {
@@ -37,29 +60,6 @@ export default class ScanBarcodeLookup extends LightningElement {
     `;
   }
 
-  // https://developer.salesforce.com/docs/component-library/documentation/en/lwc/lwc.reference_graphql_relationships
-  //
-  // eslint-disable-next-line @salesforce/lwc-graph-analyzer/no-wire-adapter-of-resource-cannot-be-primed
-  @wire(graphql, {
-    query: "$productQuery",
-    variables: "$graphqlVariables",
-    operationName: "productBarcodeLookup",
-  })
-  graphqlResult({ data /* errors */ }) {
-    console.log("data", data);
-    if (data) {
-      const { edges } = data.uiapi.query.Product2;
-      const product = edges && edges[0];
-      this.productId = product && product.node.Id;
-    } else {
-      this.productId = "";
-    }
-    if (!this.productId && this.scannedBarcode) {
-      this.errorMessage = `Could not find product with code ${this.scannedBarcode}`;
-    }
-  }
-  productId;
-
   get graphqlVariables() {
     return {
       upc: this.scannedBarcode,
@@ -71,8 +71,8 @@ export default class ScanBarcodeLookup extends LightningElement {
 
     if (this.myScanner != null && this.myScanner.isAvailable()) {
       const scanningOptions = {
-        barcodeTypes: [this.myScanner.barcodeTypes.QR],
-        instructionText: "Scan a QR Code",
+        barcodeTypes: [this.myScanner.barcodeTypes.EAN_13],
+        instructionText: "Scan a barcode",
         successText: "Scanning complete.",
       };
       this.myScanner
