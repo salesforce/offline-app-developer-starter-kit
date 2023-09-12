@@ -112,7 +112,7 @@ export default class ScanBarcodeLookup extends LightningElement {
           }
         })
         .finally(() => {
-          console.log("#finally");
+          console.log("scan complete");
 
           this.myScanner.endCapture();
         });
