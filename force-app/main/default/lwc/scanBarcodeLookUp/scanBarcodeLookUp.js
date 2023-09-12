@@ -33,8 +33,8 @@ export default class ScanBarcodeLookup extends LightningElement {
   productId;
 
   connectedCallback() {
-    this.myScanner = getBarcodeScanner();
-    if (this.myScanner == null || !this.myScanner.isAvailable()) {
+    this.scanner = getBarcodeScanner();
+    if (this.scanner == null || !this.scanner.isAvailable()) {
       this.scanButtonDisabled = true;
     }
   }
@@ -69,13 +69,13 @@ export default class ScanBarcodeLookup extends LightningElement {
   handleBeginScanClick(event) {
     this.scannedBarcode = "";
 
-    if (this.myScanner != null && this.myScanner.isAvailable()) {
+    if (this.scanner != null && this.scanner.isAvailable()) {
       const scanningOptions = {
-        barcodeTypes: [this.myScanner.barcodeTypes.EAN_13],
+        barcodeTypes: [this.scanner.barcodeTypes.EAN_13],
         instructionText: "Scan a barcode",
         successText: "Scanning complete.",
       };
-      this.myScanner
+      this.scanner
         .beginCapture(scanningOptions)
         .then((result) => {
           console.log(result);
@@ -114,7 +114,7 @@ export default class ScanBarcodeLookup extends LightningElement {
         .finally(() => {
           console.log("scan complete");
 
-          this.myScanner.endCapture();
+          this.scanner.endCapture();
         });
     } else {
       console.log(event);
