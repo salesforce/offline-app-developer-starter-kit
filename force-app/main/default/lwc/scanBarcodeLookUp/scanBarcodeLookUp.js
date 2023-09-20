@@ -17,8 +17,9 @@ export default class ScanBarcodeLookup extends LightningElement {
     variables: "$graphqlVariables",
     operationName: "productBarcodeLookup",
   })
-  graphqlResult({ data /* errors */ }) {
+  graphqlResult({ data, errors }) {
     console.log("data", data);
+    console.log("errors", errors);
     if (data) {
       const { edges } = data.uiapi.query.Product2;
       const product = edges && edges[0];
@@ -27,7 +28,7 @@ export default class ScanBarcodeLookup extends LightningElement {
       this.productId = "";
     }
     if (!this.productId && this.scannedBarcode) {
-      this.errorMessage = `Could not find product with code ${this.scannedBarcode}`;
+      this.errorMessage = `Could not find a product with code ${this.scannedBarcode}`;
     }
   }
   productId;
@@ -95,7 +96,7 @@ export default class ScanBarcodeLookup extends LightningElement {
           if (error.code == "userDismissedScanner") {
             this.dispatchEvent(
               new ShowToastEvent({
-                title: "Scanning Cancelled",
+                title: "Scanning Canceled",
                 message: "Scanning canceled",
                 mode: "sticky",
               })
