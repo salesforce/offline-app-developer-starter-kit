@@ -86,7 +86,7 @@ export default class ScanBarcodeLookup extends LightningElement {
               title: "Successful Scan",
               message: "Barcode scanned successfully.",
               variant: "success",
-            })
+            }),
           );
         })
         .catch((error) => {
@@ -98,7 +98,7 @@ export default class ScanBarcodeLookup extends LightningElement {
                 title: "Scanning Canceled",
                 message: "Scanning canceled",
                 mode: "sticky",
-              })
+              }),
             );
           } else {
             this.dispatchEvent(
@@ -107,7 +107,7 @@ export default class ScanBarcodeLookup extends LightningElement {
                 message: error.message,
                 variant: "error",
                 mode: "sticky",
-              })
+              }),
             );
           }
         })
@@ -124,7 +124,7 @@ export default class ScanBarcodeLookup extends LightningElement {
           title: "Barcode Scanner Is Not Available",
           message: "Failed to open barcode scanner",
           variant: "error",
-        })
+        }),
       );
     }
   }

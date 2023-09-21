@@ -7,7 +7,7 @@ import ISACTIVE_FIELD from "@salesforce/schema/Product2.IsActive";
 import FAMILY_FIELD from "@salesforce/schema/Product2.Family";
 import DESCRIPTION_FIELD from "@salesforce/schema/Product2.Description";
 
-jest.mock("c/scanBarcodeLookup");
+jest.mock("c/scanBarcodeLookUp");
 const mockGetRecord = require("./data/getRecord.json");
 
 describe("c-view-product2-record", () => {
