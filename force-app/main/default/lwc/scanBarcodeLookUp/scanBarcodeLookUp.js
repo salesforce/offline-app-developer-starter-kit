@@ -92,7 +92,7 @@ export default class ScanBarcodeLookup extends LightningElement {
         .catch((error) => {
           console.error(error);
 
-          if (error.code === "userDismissedScanner") {
+          if (error.code === "USER_DISMISSED") {
             this.dispatchEvent(
               new ShowToastEvent({
                 title: "Scanning Canceled",
