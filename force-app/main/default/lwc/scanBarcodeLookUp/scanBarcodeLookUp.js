@@ -23,7 +23,7 @@ export default class ScanBarcodeLookup extends LightningElement {
     if (data) {
       const { edges } = data.uiapi.query.Product2;
       const product = edges?.shift();
-      this.productId = product && product.node.Id;
+      this.productId = product?.node?.Id;
     } else {
       this.productId = "";
     }
