@@ -8,6 +8,7 @@ export default class ScanBarcodeLookup extends LightningElement {
   @track scannedBarcode = null;
   @track errorMessage = null;
   scanButtonDisabled = false;
+  productId;
 
   // https://developer.salesforce.com/docs/component-library/documentation/en/lwc/lwc.reference_graphql_relationships
   //
@@ -21,9 +22,8 @@ export default class ScanBarcodeLookup extends LightningElement {
     console.log("data", data);
     console.log("errors", errors);
     if (data) {
-      const { edges } = data.uiapi.query.Product2;
-      const product = edges?.shift();
-      this.productId = product?.node?.Id;
+      // get the id from the first element if any
+      this.productId = data?.uiapi?.query?.Product2?.edges?.shift()?.node?.Id;
     } else {
       this.productId = "";
     }
@@ -31,11 +31,10 @@ export default class ScanBarcodeLookup extends LightningElement {
       this.errorMessage = `Could not find a product with code ${this.scannedBarcode}`;
     }
   }
-  productId;
 
   connectedCallback() {
     this.scanner = getBarcodeScanner();
-    if (this.scanner == null || !this.scanner.isAvailable()) {
+    if (!this.scanner?.isAvailable()) {
       this.scanButtonDisabled = true;
     }
   }
@@ -70,10 +69,10 @@ export default class ScanBarcodeLookup extends LightningElement {
   handleBeginScanClick(event) {
     this.scannedBarcode = "";
 
-    if (this.scanner != null && this.scanner.isAvailable()) {
+    if (this.scanner?.isAvailable()) {
       const scanningOptions = {
         barcodeTypes: [this.scanner.barcodeTypes.EAN_13],
-        instructionText: "Scan a barcode",
+        instructionText: "Scan a UPC barcode",
         successText: "Scanning complete.",
       };
       this.scanner
@@ -93,7 +92,7 @@ export default class ScanBarcodeLookup extends LightningElement {
         .catch((error) => {
           console.error(error);
 
-          if (error.code == "userDismissedScanner") {
+          if (error.code === "userDismissedScanner") {
             this.dispatchEvent(
               new ShowToastEvent({
                 title: "Scanning Canceled",
