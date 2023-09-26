@@ -3,6 +3,7 @@ import { graphql } from "lightning/uiGraphQLApi";
 import AccountRelatedContacts from "c/accountRelatedContacts";
 
 const mockGraphQL = require("./data/graphql.json");
+const mockGraphQLEmpty = require("./data/graphql-empty.json");
 
 describe("c-account-related-contacts", () => {
   afterEach(() => {
@@ -34,5 +35,23 @@ describe("c-account-related-contacts", () => {
     const details = element.shadowRoot.querySelectorAll("dd");
     expect(details[0].textContent).toBe("415-555-5555");
     expect(details[1].textContent).toBe("marc@salesforce.com");
+  });
+
+  it("should handle an incomplete graphql response", async () => {
+    // setup
+    const element = createElement("c-account-related-contacts", {
+      is: AccountRelatedContacts,
+    });
+    element.recordId = "0011700000pJRRSAA4";
+
+    document.body.appendChild(element);
+
+    graphql.emit(mockGraphQLEmpty);
+    // Resolve a promise to wait for a re-render of the new content
+    await Promise.resolve();
+
+    // test
+    const title = element.shadowRoot.querySelector("h3");
+    expect(title).toBeNull();
   });
 });

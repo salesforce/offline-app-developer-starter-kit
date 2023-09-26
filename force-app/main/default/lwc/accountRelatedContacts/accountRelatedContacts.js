@@ -54,11 +54,9 @@ export default class AccountRelatedContacts extends NavigationMixin(
   })
   graphqlResult({ data /* errors */ }) {
     this.contacts = null;
-    if (data && data.uiapi.query.Account) {
-      const accounts = data.uiapi.query.Account.edges;
-      if (accounts && accounts[0]) {
-        this.contacts = accounts[0].node.Contacts.edges.map((e) => e.node);
-      }
+    const accounts = data?.uiapi?.query?.Account?.edges;
+    if (accounts && accounts[0]) {
+      this.contacts = accounts[0].node.Contacts.edges.map((e) => e.node);
     }
   }
   contacts;
