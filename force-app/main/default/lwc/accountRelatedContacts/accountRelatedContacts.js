@@ -5,7 +5,7 @@ import { graphql, gql } from "lightning/uiGraphQLApi";
 
 // eslint-disable-next-line @salesforce/lwc-graph-analyzer/no-unresolved-parent-class-reference
 export default class AccountRelatedContacts extends NavigationMixin(
-  LightningElement,
+  LightningElement
 ) {
   @api recordId;
 
@@ -54,11 +54,9 @@ export default class AccountRelatedContacts extends NavigationMixin(
   })
   graphqlResult({ data /* errors */ }) {
     this.contacts = null;
-    if (data && data.uiapi && data.uiapi.query && data.uiapi.query.Account) {
-      const accounts = data.uiapi.query.Account.edges;
-      if (accounts && accounts[0]) {
-        this.contacts = accounts[0].node.Contacts.edges.map((e) => e.node);
-      }
+    const accounts = data?.uiapi?.query?.Account?.edges;
+    if (accounts && accounts[0]) {
+      this.contacts = accounts[0].node.Contacts.edges.map((e) => e.node);
     }
   }
   contacts;
