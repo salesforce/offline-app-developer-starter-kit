@@ -38,7 +38,9 @@ export default class CreateContactRecord extends LightningElement {
     // stop the form from submitting; add selectedId to the form fields
     event.preventDefault();
     const fields = event.detail.fields;
-    fields[this.accountField.fieldApiName] = this.selectedId;
+    if (this.selectedId) {
+      fields[this.accountField.fieldApiName] = this.selectedId;
+    }
 
     // submit the form with the updated fields
     this.template.querySelector("lightning-record-edit-form").submit(fields);
