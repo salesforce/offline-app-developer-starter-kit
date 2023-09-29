@@ -3,7 +3,6 @@ import CreateContactRecord from "c/createContactRecord";
 
 import CONTACT_NAME_FIELD from "@salesforce/schema/Contact.Name";
 import CONTACT_TITLE_FIELD from "@salesforce/schema/Contact.Title";
-import CONTACT_ACCOUNT_FIELD from "@salesforce/schema/Contact.AccountId";
 import CONTACT_PHONE_FIELD from "@salesforce/schema/Contact.Phone";
 import CONTACT_EMAIL_FIELD from "@salesforce/schema/Contact.Email";
 import CONTACT_MOBILE_FIELD from "@salesforce/schema/Contact.MobilePhone";
@@ -39,11 +38,11 @@ describe("c-create-contact-record", () => {
 
   it("should populate correctly and have buttons, message, and input fields", () => {
     const OBJECT_API_NAME = "Contact";
+    const LOOKUP_OBJECT_API_NAME = "Account";
 
     const INPUT_FIELDS = [
       CONTACT_NAME_FIELD,
       CONTACT_TITLE_FIELD,
-      CONTACT_ACCOUNT_FIELD,
       CONTACT_PHONE_FIELD,
       CONTACT_EMAIL_FIELD,
       CONTACT_MOBILE_FIELD,
@@ -79,6 +78,14 @@ describe("c-create-contact-record", () => {
       element.shadowRoot.querySelectorAll("lightning-input-field"),
     ).map((outputField) => outputField.fieldName);
     expect(outputFieldNames).toEqual(INPUT_FIELDS);
+
+    // get the lightning-record-picker and ensure objectApiName is Account
+    const pickerFieldName = Array.from(
+      element.shadowRoot.querySelectorAll("lightning-record-picker"),
+    )
+      .map((outputField) => outputField.objectApiName)
+      .shift();
+    expect(pickerFieldName).toEqual(LOOKUP_OBJECT_API_NAME);
   });
 
   it("should go back after success", () => {

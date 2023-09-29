@@ -22,7 +22,7 @@
     "@salesforce/eslint-plugin-aura": "^2.1.0",
     "@salesforce/eslint-plugin-lightning": "^1.0.0",
     "@salesforce/eslint-plugin-lwc-graph-analyzer": "^0.7.1",
-    "@salesforce/sfdx-lwc-jest": "^1.4.1",
+    "@salesforce/sfdx-lwc-jest": "^2.0.1",
     "eslint": "^8.47.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-import": "^2.28.1",

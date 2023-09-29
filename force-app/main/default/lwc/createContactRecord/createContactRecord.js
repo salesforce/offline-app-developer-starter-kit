@@ -26,10 +26,34 @@ export default class CreateContactRecord extends LightningElement {
   email = "";
   mobile = "";
 
+  selectedId;
+
+  handleChange(event) {
+    // capture the selected accountId from the lookup field
+    this.selectedId = event.detail.recordId;
+    console.log("You selected an account: " + this.selectedId);
+  }
+
+  onSubmit(event) {
+    // stop the form from submitting; add selectedId to the form fields
+    event.preventDefault();
+    const fields = event.detail.fields;
+    if (this.selectedId) {
+      fields[this.accountField.fieldApiName] = this.selectedId;
+    }
+
+    // submit the form with the updated fields
+    this.template.querySelector("lightning-record-edit-form").submit(fields);
+  }
+
   onSuccess(event) {
-    console.log("Created contact", event.detail);
+    console.log("Created a contact", event.detail);
     // Dismiss modal on success
     this.dismiss(event);
+  }
+
+  onError(event) {
+    console.error("Failed to create contact", event);
   }
 
   dismiss(event) {
