@@ -4,6 +4,7 @@ import { graphql, gql } from "lightning/uiGraphQLApi";
 // eslint-disable-next-line @salesforce/lwc-graph-analyzer/no-unresolved-parent-class-reference
 export default class ContactRelatedCases extends LightningElement {
   @api recordId;
+  cases;
 
   get casesQuery() {
     if (!this.recordId) return undefined;
@@ -67,7 +68,6 @@ export default class ContactRelatedCases extends LightningElement {
       this.cases = contacts[0].node.Cases.edges.map((e) => e.node);
     }
   }
-  cases;
 
   get graphqlVariables() {
     return {
