@@ -1,0 +1,41 @@
+{
+  "uiapi": {
+    "query": {
+      "Contact": {
+        "edges": [
+          {
+            "node": {
+              "Cases": {
+                "edges": [
+                  {
+                    "node": {
+                      "Id": "ABC",
+                      "OwnerId": {
+                        "value" : "DEF"
+                      },
+                      "CaseNumber": {
+                        "value" : "123"
+                      },
+                      "Reason": {
+                        "value" : "Complex functionality"
+                      },
+                      "Subject": {
+                        "value" : "Test Case"
+                      },
+                      "Status": {
+                        "value" : "New"
+                      },
+                      "Priority": {
+                        "value" : "Low"
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

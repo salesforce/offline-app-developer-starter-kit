@@ -1,0 +1,54 @@
+<template>
+    <template if:true={cases}>
+        <article class="slds-card slds-var-m-around_small">
+            <div class="slds-card__header slds-grid">
+            <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                <div class="slds-media__figure">
+                    <span class="slds-icon_container slds-icon-standard-case" title="cases">
+                        <lightning-icon icon-name="standard:case" alternative-text="Case" title="Case"></lightning-icon>
+                    </span>
+                </div>
+                <div class="slds-media__body">
+                <h2 class="slds-card__header-title slds-truncate">
+                    <span>Cases</span>
+                </h2>
+                </div>
+            </header>
+            </div>
+            <div class="slds-card__body slds-card__body_inner">
+                <ul class="slds-has-dividers_around-space">
+                    <template for:each={cases} for:item="item">
+                        <li key={item.Id} class="slds-item" data-id={item.Id}>
+                            <article  class="slds-tile slds-media">
+                                <div class="slds-media__figure">
+                                    <span class="slds-icon_container" title="description of icon when needed">
+                                        <lightning-icon icon-name="standard:case" alternative-text="Contact" title="Contact"></lightning-icon>
+                                    </span>
+                                    </div>
+                                    <div class="slds-media__body">
+                                    <h3 class="slds-truncate" title={item.Subject.value}>
+                                        {item.Subject.value}
+                                    </h3>
+                                    <div class="slds-tile__detail">
+                                        <dl class="slds-list_horizontal slds-wrap">
+                                        <dt class="slds-item_label slds-text-color_weak slds-truncate" title="owner">Owner:</dt>
+                                        <dd class="slds-item_detail slds-truncate" title={item.OwnerId.value}>{item.OwnerId.value}</dd>
+                                        <dt class="slds-item_label slds-text-color_weak slds-truncate" title="number">Number:</dt>
+                                        <dd class="slds-item_detail slds-truncate" title={item.CaseNumber.value}>{item.CaseNumber.value}</dd>
+                                        <dt class="slds-item_label slds-text-color_weak slds-truncate" title="status">Status:</dt>
+                                        <dd class="slds-item_detail slds-truncate" title={item.Status.value}>{item.Status.value}</dd>
+                                        <dt class="slds-item_label slds-text-color_weak slds-truncate" title="priority">Priority:</dt>
+                                        <dd class="slds-item_detail slds-truncate" title={item.Priority.value}>{item.Priority.value}</dd>
+                                        <dt class="slds-item_label slds-text-color_weak slds-truncate" title="reason">Reason:</dt>
+                                        <dd class="slds-item_detail slds-truncate" title={item.Reason.value}>{item.Reason.value}</dd>
+                                        </dl>
+                                    </div>
+                                </div>
+                            </article>
+                        </li>
+                    </template>
+                </ul>
+            </div>
+        </article>
+    </template>
+</template>
