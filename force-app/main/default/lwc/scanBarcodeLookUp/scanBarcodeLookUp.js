@@ -40,6 +40,8 @@ export default class ScanBarcodeLookup extends LightningElement {
   }
 
   get productQuery() {
+    if (!this.scannedBarcode) return undefined;
+
     return gql`
       query productBarcodeLookup($upc: String) {
         uiapi {
