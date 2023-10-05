@@ -212,6 +212,13 @@ cd force-app/main/default
   The `<lightningWebComponent>` element specifies the Lightning web component loaded for
   the given quick action. In this case, the `editAccountRecord` component.
 
+### View Draft Details within a Lightning Web Component
+
+It may be useful to view draft details within a record view Lightning Web Component for debugging purposes. To enable draft details, simply uncomment the `<c-draft-detailst-list>` component from the `view<Object>Record` component html. Don't forget to uncomment the respective test code to validate the expected behavior.
+
+> **Note**
+> Adding additional dependencies will negatively affect the total time to prime all records, as well as slightly increase single record load times. It is recommended to remove or comment out debug components such as `<c-draft-details-list>` from production code.
+
 ### Call Apex Methods from Lightning Web Components
 
 Apex methods can be called from Lightning web components. However, Apex is a server-side language, and Apex methods aren't available when offline. When developing for the Offline App, we recommend that you use base components and Lightning Data Service (LDS) via wire adapters for viewing or modifying data. See "[Data Guidelines](https://developer.salesforce.com/docs/component-library/documentation/en/lwc/lwc.data_guidelines)" for a more detailed description of recommended strategies for data access within LWCs.
