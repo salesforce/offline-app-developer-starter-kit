@@ -234,3 +234,7 @@ The Starter Kit provides an example of calling Apex from an LWC:
 
 For additional details regarding using Apex in offline-ready apps, see "[Use Apex While Mobile and Offline](https://developer.salesforce.com/docs/atlas.en-us.mobile_offline.meta/mobile_offline/apex.htm)" in the _Mobile and Offline Developer Guide._
 For further information about calling Apex from LWCs, such as calling methods with complex parameters, see "[Wire Apex Methods to Lightning Web Components](https://developer.salesforce.com/docs/component-library/documentation/en/lwc/lwc.apex_wire_method)" in the _Lightning Web Components Developer Guide._
+
+## Example Features
+
+- [Offline Lookups](docs/OfflineLookups.md)
