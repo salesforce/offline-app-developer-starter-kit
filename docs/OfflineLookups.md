@@ -1,8 +1,10 @@
 # Offline Lookups
 
-[The offline lookups example](https://github.com/salesforce/offline-app-developer-starter-kit/tree/main/force-app/main/default/lwc/createContactRecord) in Starter Kit demonstrates the capability to search a list of objects (e.g., accounts) when creating/updating a record (e.g., contact) for mobile offline app. When device is online, the lookup field searches records by making network calls. When offline, it searches records from cache. In order to have records available for search offline, they need to be downloaded during briefcase priming. In addition to primed records, any existing drafts can also be searched in offline.
+[The LWC offline lookups example](../force-app/main/default/lwc/createContactRecord) demonstrates the capability to search a list of sObjects, e.g. `Accounts`, when creating or updating a record—a `Contact` for example—with the Mobile Offline app. When the mobile device is online, the lookup field searches records by making network calls. When offline, it searches records from the local record cache in the app.
 
-In the example of createContactRecord LWC, a lookup field is added as a base component `lightning-record-picker`  in the HTML file. Upon clicked on the field, a modal page will be presented where use can type a key word to search a list of accounts while creating a contact record. 
+In order to have records available to search while offline, they need to be downloaded during Briefcase priming. In addition to primed records, any existing drafts can also be searched while the device is offline.
+
+In the example of the `createContactRecord` LWC, a lookup field is added as a base component—`lightning-record-picker`—in the HTML file. Upon clicking the field, a modal page will be presented where the user can type a keyword to search a list of `Accounts` while creating a `Contact` record:
 
 ```xml
 <lightning-record-picker
@@ -15,26 +17,31 @@ In the example of createContactRecord LWC, a lookup field is added as a base com
 </lightning-record-picker>
 ```
 
-In the component’s JS file, the `handleChange` is called with the selected recordId after an account is selected. The recordId can then be used later when the edit form is submitted.
+In the component’s JS file, the `handleChange` event handler method is called with the record ID of the selected `Account`. This record ID will be added to the `Contact` when its edits are saved.
 
-[The developers document](https://developer.salesforce.com/docs/component-library/bundle/lightning-record-picker/documentation) contains more details on how to use the lightning-record-picker component.
+See the [Record Picker documentation](https://developer.salesforce.com/docs/component-library/bundle/lightning-record-picker/documentation) for more details on how to use the `lightning-record-picker` component.
 
 > **Note**
-> This component is a Beta Service in Winter'24 release. It is targeted to be GA in the coming releases. [Release Notes](https://help.salesforce.com/s/articleView?id=release-notes.rn_lwc_components.htm&release=246&type=5)
+> The `lightning-record-picker` component is a Beta Service in the Salesforce Winter '24 release. It is targeted to be GA in a release to follow. See the [Release Notes](https://help.salesforce.com/s/articleView?id=release-notes.rn_lwc_components.htm&release=246&type=5) for more information.
 
-## Steps
+## How to Configure
 
-1. [Configure your Offline Briefcase](https://github.com/salesforce/offline-app-developer-starter-kit#define-an-offline-briefcase) with the desired objects. In this example, you want to have records to be primed for Contact and Account objects. Especially, the primed account records will be searched when user lookup accounts in offline.
+1. [Configure your Offline Briefcase](../README.md#define-an-offline-briefcase) with the desired sObjects. In this example, you want to prime records for the `Contact` and `Account` sObjects. Priming `Contact` records will allow you to work with those records offline, while primed `Account` records can be looked up during offline searches.
 
-2. At the minimum, deploy the following LWCs to the org which can be added as quick actions to objects
-    - viewAccountRecord (Account.view), viewContactRecord (Contact.view)
-    - createAccountRecord (Account.create), createContactRecord (Contact.create)
+2. At a minimum, you must deploy the following LWCs to your Org, so they can be added as Quick Actions for the sObjects:
+    - `viewAccountRecord` (`Account.view`), and `viewContactRecord` (`Contact.view`)
+    - `createAccountRecord` (`Account.create`), and `createContactRecord` (`Contact.create`)
 
-3. Login to the Mobile Offline App. Let the briefcase priming is fully completed.
+3. Login to the Mobile Offline App. Wait for briefcase priming to fully complete.
 
-4. Turn off network on device, tap the New button from Contacts home page to create a contact.
-    - Fill required data fields, e.g., Last Name
-    - Tap the Account lookup field at the bottom. It brings up a modal page with a search box. You can type any key to start search. The dropdown list shows any matched records in cache, including the drafts! Select an account record from the dropdown list. The modal page is automatically closed.
-    - Now you have the account record filled in the lookup field. You can go ahead to save it as a new contact draft.
+4. To verify that you can create records while offline:
+
+    1. Turn off the network on your device (e.g. by putting it in Airplane Mode, turning off WiFi, etc.).
+    2. Tap the `New` button from the `Contacts` home page to create a new contact.
+    3. Fill in the required data fields, like `Last Name`.
+    4. Tap the `Account` lookup field at the bottom. It will bring up a modal page with a search box.
+    5. Start searching by entering your filter criteria. The dropdown list shows any records matching your filter in the local cache, including the drafts!
+    6. Select an `Account` record from the dropdown list. The modal page is automatically closed, and the `Account` record is populated in the lookup field.
+    7. Save the record as a new `Contact` draft.
     
-5. Turn on network on device, let the drafts automatically synced up with server. You should see a new contact is created successfully with an associated account!
+5. Turn on the device's network, and let the drafts automatically sync up with the server. You should see that a new contact has been created successfully with an associated account!
