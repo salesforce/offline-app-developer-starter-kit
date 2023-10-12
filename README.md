@@ -238,3 +238,4 @@ For further information about calling Apex from LWCs, such as calling methods wi
 ## Example Features
 
 - [Offline Lookups](docs/OfflineLookups.md)
+- [Related Records](docs/RelatedRecords.md)
