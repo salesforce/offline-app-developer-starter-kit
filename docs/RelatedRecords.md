@@ -43,8 +43,6 @@ In this example, we performed a GraphQL query to fetch related contacts from an 
 
 See the [Query Objects Examples documentation](https://developer.salesforce.com/docs/platform/graphql/guide/query-record-examples.html) for more details on how to use GraphQL queries.
 
-See the [Query Objects Examples developer document for more details on how to use GraphQL queries.
-
 Depending on your use case, you can add the `accountRelatedContacts` LWC as a quick action by creating a new file within the `quickActions` folder that includes the following
 
 ```xml
