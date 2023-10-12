@@ -1,6 +1,6 @@
 # Related Records
 
-[The related records starter kit example](../force-app/main/default/lwc/accountRelatedContacts) demonstrates the capability to view related records e.g. `Contacts` from an object e.g `Account` using GraphQL queries. When the device is online and while briefcase priming, the related records are prefetched and stored in the cache to be able to view in offline mode. There is currently a well known issue that GraphQL query prefetch fails, and as a result, accountRelatedContacts LWC will not work offline. An expected fix will come in November 2023.
+[The related records starter kit example](../force-app/main/default/lwc/accountRelatedContacts) demonstrates the capability to view related records e.g. `Contacts` from an object e.g `Account` using GraphQL queries. When the device is online and while briefcase priming, the related records are prefetched and stored in the cache to be able to view in offline mode. There is currently a well known issue that GraphQL query prefetch fails, and as a result, accountRelatedContacts LWC will not work offline. An expected fix will come in November 2023 and there is a workaround that can be implemented in this [Knowledge Article](https://help.salesforce.com/s/articleView?language=en_US&id=000396405&type=1).
 
 In this example, we performed a GraphQL query to fetch related contacts from an account record.
 
