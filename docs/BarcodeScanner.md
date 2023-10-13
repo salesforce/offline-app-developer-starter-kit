@@ -50,6 +50,6 @@
 > **Note**
 > Only the prefetched records in briefcase can be searched when using this quick action in offline.
 
-8. In this starter kit example, we only allow EAN-13 barcodes. Since we are testing on an Android emulator, we should be able to see the option `EAN13`.
+8. Click the Scan Barcode button and you will expect to see the camera preview. 
 
-9. Clicking on the EAN13 option will start to scan the barcode with the product code value as TestBarcodeValue for ean13. And since we have already added the product record within the Org, we should see the product information being displayed. If the product isn’t found, then an error screen will be displayed.
+9. Use the camera to scan an EAN-13 barcode, and upon scanning the barcode, you should expect to see the `Product` record. If the product isn’t found, then an error screen will be displayed.
