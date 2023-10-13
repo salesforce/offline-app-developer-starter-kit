@@ -5,7 +5,7 @@
 # How to Configure
 
 1. [Configure your Offline Briefcase](../README.md#define-an-offline-briefcase) with the `Product` sObject.
-2. Deploy the `viewProduct2Record` LWC and quick action, as well as the `scanBarcodeLookUp` LWC
+2. Deploy the `viewProduct2Record` LWC and `Product2.view.quickAction-meta` quick action, as well as the `scanBarcodeLookUp` LWC
 3. There are two options that you can use to add the `scanBarcodeLookUp` LWC as a global quick action:
     - Go to Setup, select Global Actions and create the new Action with the `scanBarcodeLookUp` LWC.
     - Alternatively, you can deploy the `scanBarcodeLookUp` LWC as a quick action by creating a new file within the `quickActions` folder that includes the following:
@@ -48,7 +48,7 @@
 7. Clicking on the Barcode Lookup Global Quick Action, you will be expecting to see a screen with a Scan Barcode button.
 
 > **Note**
-> All the records must be prefetched in the birefcase to be able to use the Quick Action.
+> Only the prefetched records in briefcase can be searched when using this quick action in offline.
 
 8. In this starter kit example, we only allow EAN-13 barcodes. Since we are testing on an Android emulator, we should be able to see the option `EAN13`.
 
