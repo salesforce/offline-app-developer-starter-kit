@@ -12,16 +12,16 @@ Note that records prefetched in the briefcase can be searched while the device i
     - Go to Setup, select Global Actions and create a new Global Action with the `scanBarcodeLookUp` LWC. See [Create Global Quick Actions](https://help.salesforce.com/s/articleView?id=sf.creating_global_actions.htm&type=5) for more information on how to create LWC global quick actions from Setup.
     - Alternatively, you can deploy the `scanBarcodeLookUp` LWC as a quick action from your local Starter Kit project, by creating a new file within the `force-app/main/default/quickActions` folder that includes the following:
 
-```xml
-<?xml version="1.0" encoding="UTF-8" ?>
-<QuickAction xmlns="http://soap.sforce.com/2006/04/metadata">
-    <actionSubtype>ScreenAction</actionSubtype>
-    <label>Barcode Lookup</label>
-    <lightningWebComponent>scanBarcodeLookUp</lightningWebComponent>
-    <optionsCreateFeedItem>false</optionsCreateFeedItem>
-    <type>LightningWebComponent</type>
-</QuickAction>
-```
+        ```xml
+        <?xml version="1.0" encoding="UTF-8" ?>
+        <QuickAction xmlns="http://soap.sforce.com/2006/04/metadata">
+            <actionSubtype>ScreenAction</actionSubtype>
+            <label>Barcode Lookup</label>
+            <lightningWebComponent>scanBarcodeLookUp</lightningWebComponent>
+            <optionsCreateFeedItem>false</optionsCreateFeedItem>
+            <type>LightningWebComponent</type>
+        </QuickAction>
+        ```
 
 4. Add the global action to publisher layout. 
 
