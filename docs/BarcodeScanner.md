@@ -52,4 +52,4 @@
 
 8. Click the Scan Barcode button and you will expect to see the camera preview. 
 
-9. Use the camera to scan an EAN-13 barcode, and upon scanning the barcode, you should expect to see the `Product` record. If the product isn’t found, then an error screen will be displayed.
+9. Use the camera to scan an EAN-13 barcode. Upon scanning the barcode, you should expect to see the `Product` record which has the `ProductCode` value equal to the barcode. If no product is found, an error screen is displayed.
