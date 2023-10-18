@@ -28,6 +28,7 @@ export default class FileUpload extends LightningElement {
   @track
   errorMessage = "";
 
+  // Object metadata are required for creating records in offline. The wire adapter is added here to ensure the content metadata are primed.
   @wire(getObjectInfos, {
     objectApiNames: [CONTENT_DOCUMENT_LINK, CONTENT_DOCUMENT, CONTENT_VERSION],
   })
