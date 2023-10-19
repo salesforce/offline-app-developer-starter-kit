@@ -1,9 +1,13 @@
-import { LightningElement, api, track } from "lwc";
+import { LightningElement, api, wire, track } from "lwc";
 import {
   unstable_createContentDocumentAndVersion,
   createRecord,
 } from "lightning/uiRecordApi";
+import { getObjectInfos } from "lightning/uiObjectInfoApi";
 import { ShowToastEvent } from "lightning/platformShowToastEvent";
+import CONTENT_DOCUMENT_LINK from "@salesforce/schema/ContentDocumentLink";
+import CONTENT_DOCUMENT from "@salesforce/schema/ContentDocument";
+import CONTENT_VERSION from "@salesforce/schema/ContentVersion";
 
 export default class FileUpload extends LightningElement {
   @api
@@ -23,6 +27,12 @@ export default class FileUpload extends LightningElement {
 
   @track
   errorMessage = "";
+
+  // Object metadata are required for creating records in offline. The wire adapter is added here to ensure the content metadata are primed.
+  @wire(getObjectInfos, {
+    objectApiNames: [CONTENT_DOCUMENT_LINK, CONTENT_DOCUMENT, CONTENT_VERSION],
+  })
+  objectMetadata;
 
   // This getter is only used for local processing. It does not need to be enabled for offline caching.
   // eslint-disable-next-line @salesforce/lwc-graph-analyzer/no-getter-contains-more-than-return-statement
