@@ -4,7 +4,7 @@
 
 Note that records prefetched in the briefcase can be searched while the device is offline.
 
-# How to Configure
+# Configure Barcode Scanner
 
 1. [Configure your Offline Briefcase](../README.md#define-an-offline-briefcase) with the `Product` sObject.
 2. Deploy the [`scanBarcodeLookUp`](../force-app/main/default/lwc/scanBarcodeLookUp) LWC, the [`viewProduct2Record`](../force-app/main/default/lwc/viewProduct2Record) LWC, and the [`Product2 view`](../force-app/main/default/quickActions/Product2.view.quickAction-meta.xml) quick action to your org.
