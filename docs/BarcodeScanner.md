@@ -7,51 +7,28 @@ Note that records prefetched in the briefcase can be searched while the device i
 # Configure Barcode Scanner
 
 1. [Configure your Offline Briefcase](../README.md#define-an-offline-briefcase) with the `Product` sObject.
-2. Deploy the [`scanBarcodeLookup`](../force-app/main/default/lwc/scanBarcodeLookup) LWC, the [`viewProduct2Record`](../force-app/main/default/lwc/viewProduct2Record) LWC, and the [`Product2 view`](../force-app/main/default/quickActions/Product2.view.quickAction-meta.xml) quick action to your org.
-3. There are two options for setting up the `scanBarcodeLookup` LWC as a global quick action:
-    - Go to Setup, select Global Actions and create a new Global Action with the `scanBarcodeLookup` LWC. See [Create Global Quick Actions](https://help.salesforce.com/s/articleView?id=sf.creating_global_actions.htm&type=5) for more information on how to create LWC global quick actions from Setup.
-    - Alternatively, you can deploy the `scanBarcodeLookup` LWC as a quick action from your local Starter Kit project, by creating a new file within the `force-app/main/default/quickActions` folder that includes the following:
 
-        ```xml
-        <?xml version="1.0" encoding="UTF-8" ?>
-        <QuickAction xmlns="http://soap.sforce.com/2006/04/metadata">
-            <actionSubtype>ScreenAction</actionSubtype>
-            <label>Barcode Lookup</label>
-            <lightningWebComponent>scanBarcodeLookup</lightningWebComponent>
-            <optionsCreateFeedItem>false</optionsCreateFeedItem>
-            <type>LightningWebComponent</type>
-        </QuickAction>
-        ```
+2. Make the Barcode Lookup global quick action available on your landing page. You can do this either by configuring the landing page to show _all_ global quick actions on the page, or by configuring the Barcode Lookup global quick action specifically.  
+
+   See the "Global Actions" section of the [Customize The Landing Page](https://help.salesforce.com/s/articleView?id=sf.salesforce_app_plus_offline_landing_page.htm&type=5) documentation, which will show you how to configure your chosen option for displaying global quick actions on your landing page. You can also consult one of the landing page templates in the project, such as [`landing_page_healthcare.json`](../force-app/main/default/staticresources/landing_page_healthcare.json), to see how the configuration steps in the docs are implemented in the landing page templates.
+
+3. Deploy the [`scanBarcodeLookup`](../force-app/main/default/lwc/scanBarcodeLookup) LWC, the [`viewProduct2Record`](../force-app/main/default/lwc/viewProduct2Record) LWC, the [`Product2 view`](../force-app/main/default/quickActions/Product2.view.quickAction-meta.xml) quick action, the [`scanBarcodeLookup`](../force-app/main/default/quickActions/scanBarcodeLookup.quickAction-meta.xml) quick action, `landing_page.json` and `landing_page.resource-meta.xml` to your org.
 
 4. Add the global action to publisher layout. 
 
     ![Add LWC Quick Actions to Mobile Layouts](../images/LWCQuickActionsPublisherLayouts.png)
 
-5. In Setup, enter Static Resources in quick find and select Static Resources under Custom Code. Update the landing page json file by adding a global action in the actionList block and upload it.
+5. After setting up the `scanBarcodeLookup` LWC, it can now be used as a Global Quick Action within the landing page. 
 
-```json
-{
-    "definition": "mcfp/actionItem",
-    "name": "global_action",
-    "label": "Scan barcode lookup",
-    "properties": {
-        "apiName": "Global.Barcode_Lookup"
-    },
-    "regions": {
-    
-    }
-}
-```
+    ![Barcode Scanner Lookup Quick Action](../images/LandingPageBarcodeScannerLookupQuickAction.png)
 
-6. After setting up the `scanBarcodeLookup` LWC, it can now be used as a Global Quick Action within the landing page. 
+6. When you tap on the Barcode Lookup Global Quick Action in the app, you should see a screen with a Scan Barcode button.
 
-  ![Barcode Scanner Lookup Quick Action](../images/LandingPageBarcodeScannerLookupQuickAction.png)
+    > **Note**
+    > Only the prefetched records in the briefcase can be searched when using this quick action while your device is offline.
 
-7. Clicking on the Barcode Lookup Global Quick Action, you will be expecting to see a screen with a Scan Barcode button.
+7. Click the Scan Barcode button to see the camera preview. 
 
-> **Note**
-> Only the prefetched records in briefcase can be searched when using this quick action in offline.
+8. Use the camera to scan an EAN-13 barcode.
 
-8. Click the Scan Barcode button and you will expect to see the camera preview. 
-
-9. Use the camera to scan an EAN-13 barcode. Upon scanning the barcode, you should expect to see the `Product` record which has the `ProductCode` value equal to the barcode. If no product is found, an error screen is displayed.
+9. Upon scanning the barcode, you should be presented with a view of the `Product` record associated with the `ProductCode` value encoded in the barcode. If no record is found for that product code / barcode, an error screen is displayed.
