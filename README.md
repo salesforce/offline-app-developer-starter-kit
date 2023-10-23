@@ -239,3 +239,4 @@ For further information about calling Apex from LWCs, such as calling methods wi
 
 - [Offline Lookups](docs/OfflineLookups.md)
 - [Related Records](docs/RelatedRecords.md)
+- [Barcode Scanner](docs/BarcodeScanner.md)
