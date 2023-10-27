@@ -12,7 +12,14 @@ export default class ViewVisit__cRecord extends LightningElement {
   @api objectApiName;
 
   get fields() {
-    return [NAME_FIELD, START_TIME__C_FIELD, END_TIME__C_FIELD, PRIORITY__C_FIELD, STATUS__C_FIELD, ADDRESS__C_FIELD];
+    return [
+      NAME_FIELD,
+      START_TIME__C_FIELD,
+      END_TIME__C_FIELD,
+      PRIORITY__C_FIELD,
+      STATUS__C_FIELD,
+      ADDRESS__C_FIELD,
+    ];
   }
 
   @wire(getRecord, { recordId: "$recordId", fields: "$fields" })
