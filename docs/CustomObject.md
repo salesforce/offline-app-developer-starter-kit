@@ -16,7 +16,7 @@ The following steps generally describe the setup of a custom object for use in o
 
 In this example, a `Visit` custom object is configured by deploying the relevant code artifacts to your org.
 
-1. Deploy the following code artifacts for the `Visit` object in order.
+1. Deploy the following code artifacts for the `Visit` object, in the order outlined below.
 
     ```sh
     # Create the Visit object with 5 new fields
@@ -42,7 +42,7 @@ In this example, a `Visit` custom object is configured by deploying the relevant
     sfdx force:source:deploy -p force-app/main/default/permissionsets/Offline_Custom_Objects.permissionset-meta.xml
     ``` 
 
-2. Admin assigns the permission set "Offline Custom Objects" to org users.
+2. In your org, an org admin should assign the permission set `Offline Custom Objects` to org users.
 
 3. [Configure your Offline Briefcase](../README.md#define-an-offline-briefcase) to include the `Visit` object. 
     - Make sure to create a few `Visit` records to be included in the briefcase.
