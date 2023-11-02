@@ -4,13 +4,13 @@
 
 The following steps generally describe the setup of a custom object for use in offline scenarios. You can see a specific example of these steps in the "Configure" section below.
 - Create a custom object and the associated fields needed for your use case.
-- Deploy lightning web components and quick actions on the object.
+- Configure and deploy Lightning web components and quick actions for the object.
 - Add quick actions to the object layout.
 - Add a custom tab on the object so that users can create object records on the browser.
 - Add or update a permission set to give users read/edit permissions to the object and its fields.
 
 > **Note**
-> Permissions for newly created custom objects are disabled by default. Admin needs to enable the object and field permissions in permission sets for users to access the custom objects. 
+> Permissions for newly created custom objects are disabled by default. Your org admin needs to enable the object and field permissions in permission sets for users to access the custom objects. 
 
 ## Configure Custom Object
 
