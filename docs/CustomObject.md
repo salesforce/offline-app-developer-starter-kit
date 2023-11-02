@@ -12,9 +12,9 @@ The following steps generally describe the setup of a custom object for use in o
 > **Note**
 > Permissions for newly created custom objects are disabled by default. Admin needs to enable the object and field permissions in permission sets for users to access the custom objects. 
 
-In this example, a `Visit` custom object is configured by deploying the relevant code artifacts to your org.
-
 ## Configure Custom Object
+
+In this example, a `Visit` custom object is configured by deploying the relevant code artifacts to your org.
 
 1. Deploy the following code artifacts for the `Visit` object in order.
 
