@@ -1,9 +1,9 @@
 # Custom Object
 
-[The custom object example](../force-app/main/default/objects/Visit__c) demonstrates the capability to work with custom objects in mobile offline app. Like standard objects, user can view, create, and edit records of custom objects in offline.
+[The custom object example](../force-app/main/default/objects/Visit__c) demonstrates the capability to work with custom objects in the Mobile Offline app. Like standard objects, users can view, create, and edit records of custom objects while their device is offline.
 
-The following steps are recommended for setting up a custom object.
-- Create a custom object with designed fields.
+The following steps generally describe the setup of a custom object for use in offline scenarios. You can see a specific example of these steps in the "Configure" section below.
+- Create a custom object and the associated fields needed for your use case.
 - Deploy lightning web components and quick actions on the object.
 - Add quick actions to the object layout.
 - Add a custom tab on the object so that users can create object records on the browser.
