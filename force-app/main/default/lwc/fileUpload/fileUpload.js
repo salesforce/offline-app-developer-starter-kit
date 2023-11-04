@@ -1,13 +1,14 @@
-import { LightningElement, api, wire, track } from "lwc";
+import { LightningElement, api, track, wire } from "lwc";
+import { ShowToastEvent } from "lightning/platformShowToastEvent";
 import {
   unstable_createContentDocumentAndVersion,
   createRecord,
 } from "lightning/uiRecordApi";
+// Imports for forced-prime ObjectInfo metadata work-around
 import { getObjectInfos } from "lightning/uiObjectInfoApi";
-import { ShowToastEvent } from "lightning/platformShowToastEvent";
-import CONTENT_DOCUMENT_LINK from "@salesforce/schema/ContentDocumentLink";
 import CONTENT_DOCUMENT from "@salesforce/schema/ContentDocument";
 import CONTENT_VERSION from "@salesforce/schema/ContentVersion";
+import CONTENT_DOCUMENT_LINK from "@salesforce/schema/ContentDocumentLink";
 
 export default class FileUpload extends LightningElement {
   @api
@@ -28,13 +29,16 @@ export default class FileUpload extends LightningElement {
   @track
   errorMessage = "";
 
-  // Object metadata are required for creating records in offline. The wire adapter is added here to ensure the content metadata are primed.
+  // Object metadata, or "ObjectInfo", is required for creating records
+  // while offline. Use the getObjectInfos adapter to "force-prime" the
+  // necessary object metadata. This is a work-around for the static analyzer
+  // not knowing enough about the file object schema.
   @wire(getObjectInfos, {
-    objectApiNames: [CONTENT_DOCUMENT_LINK, CONTENT_DOCUMENT, CONTENT_VERSION],
+    objectApiNames: [CONTENT_DOCUMENT, CONTENT_VERSION, CONTENT_DOCUMENT_LINK],
   })
   objectMetadata;
 
-  // This getter is only used for local processing. It does not need to be enabled for offline caching.
+  // Getter used for local-only processing. Not needed for offline caching.
   // eslint-disable-next-line @salesforce/lwc-graph-analyzer/no-getter-contains-more-than-return-statement
   get fileName() {
     // eslint-disable-next-line @salesforce/lwc-graph-analyzer/no-unsupported-member-variable-in-member-expression
@@ -45,7 +49,8 @@ export default class FileUpload extends LightningElement {
     return undefined;
   }
 
-  handleInputChange(event) {
+  // Input handlers
+  handleFilesInputChange(event) {
     this.files = event.detail.files;
     this.titleValue = this.fileName;
   }
@@ -58,7 +63,7 @@ export default class FileUpload extends LightningElement {
     this.descriptionValue = event.detail.value;
   }
 
-  // Restore the UI to its default state to allow uploading
+  // Restore UI to default state
   resetInputs() {
     this.files = [];
     this.titleValue = "";
@@ -66,7 +71,7 @@ export default class FileUpload extends LightningElement {
     this.errorMessage = "";
   }
 
-  // Handle the user uploading a file
+  // Handle uploading a file, initiated by user clicking Upload button
   async handleUploadClick() {
     if (this.uploadingFile) {
       return;
@@ -80,8 +85,8 @@ export default class FileUpload extends LightningElement {
     try {
       this.uploadingFile = true;
 
-      // Create a Content Document and Version for the file
-      // effectively uploading it
+      // Create a ContentDocument and related ContentDocumentVersion for
+      // the file, effectively uploading it
       const contentDocumentAndVersion =
         await unstable_createContentDocumentAndVersion({
           title: this.titleValue,
@@ -89,13 +94,21 @@ export default class FileUpload extends LightningElement {
           fileData: file,
         });
 
+      // If component is run in a record context (recordId is set), relate
+      // the uploaded file to that record
       if (this.recordId) {
         const contentDocumentId = contentDocumentAndVersion.contentDocument.id;
 
         // Create a ContentDocumentLink (CDL) to associate the uploaded file
-        // to the Files Related List of the target recordId
-        await this.createCdl(this.recordId, contentDocumentId);
+        // to the Files related list of the target recordId
+        await this.createContentDocumentLink(this.recordId, contentDocumentId);
       }
+
+      // Status and state updates
+      console.log(
+        "ContentDocument and ContentDocumentVersion records created."
+      );
+      this.notifySuccess();
       this.resetInputs();
     } catch (error) {
       console.error(error);
@@ -105,8 +118,8 @@ export default class FileUpload extends LightningElement {
     }
   }
 
-  // Create the link between the new file upload and the target record
-  async createCdl(recordId, contentDocumentId) {
+  // Create link between new file upload and target record
+  async createContentDocumentLink(recordId, contentDocumentId) {
     await createRecord({
       apiName: "ContentDocumentLink",
       fields: {
@@ -115,12 +128,16 @@ export default class FileUpload extends LightningElement {
         ShareType: "V",
       },
     });
+    console.log("ContentDocumentLink record created.");
+  }
+
+  notifySuccess() {
     this.dispatchEvent(
       new ShowToastEvent({
-        title: "Success",
-        message: "File attached",
+        title: "Upload Successful",
+        message: "File enqueued for upload.",
         variant: "success",
-      }),
+      })
     );
   }
 }
