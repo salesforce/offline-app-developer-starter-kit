@@ -1,0 +1,10 @@
+{
+    "fields": {
+        "Name": {
+            "value": "Name Mock"
+        },
+        "Amount": {
+            "value": 123.45
+        }
+    }
+ }

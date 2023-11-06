@@ -3,3 +3,4 @@
 .localdevserver
 .DS_Store
 node_modules
+__lwr_cache__
