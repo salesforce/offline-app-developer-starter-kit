@@ -35,27 +35,27 @@ Instructions for installing and using additional tools specific for mobile and o
 Here's a list of steps to ensure you can view a custom record type offline. Each link provides more details on the specific step. For records in the starter kit, you can use the corresponding existing LWC and modify it to your needs.
 
 * Set up your development environment, following the [Starter Kit Guide](https://github.com/salesforce/offline-app-developer-starter-kit#prerequisites) prerequisites step.
-* Set up the [starter kit project](https://trailhead.salesforce.com/trailblazer-community/feed/0D54V000078RAEVSA4#:~:text=Add%20your%20QuickAction).
+* Set up the [starter kit project](https://github.com/salesforce/offline-app-developer-starter-kit/#set-up-the-starter-kit-project).
 * Configure your [Offline Briefcase](https://github.com/salesforce/offline-app-developer-starter-kit#define-an-offline-briefcase) to include the object you want to see offline.
   * Use the [Offline Briefcase](https://trailhead.salesforce.com/content/learn/modules/offline-briefcase) trailhead to learn more, including how to view a briefcase as a specific user to ensure that they are seeing the records you expect them to.
  
-Status Check: Following the [instructions here](https://github.com/salesforce/offline-app-developer-starter-kit#view-offline-components-in-the-salesforce-mobile-app), are you seeing the object you want offline in this screen? If not, check your Briefcase. If you attempt to view the record, you will get an error that the records for that object type are not configured for offline, which is expected at this point. Note: In newer builds you will see an error on the "My Offline Records" screen on the row with the objects not yet configured.
+Status Check: Following the [instructions here](https://github.com/salesforce/offline-app-developer-starter-kit#view-offline-components-in-the-salesforce-mobile-app), are you seeing the object you want offline in this screen? If not, check your Briefcase. If you attempt to view the record, you will get an error that the records for that object type are not configured for offline, which is expected at this point as the view quickaction has not been created. Note: In newer builds you will see an error on the "My Offline Records" screen on the row with the objects not yet configured.
 
-* Create a lightning web component using SFDX: Create Lightning Web Component. Name it something like "`viewObjectType`". Replace "`ObjectType`" with the Object Name you're trying to display, such as "`viewWorkOrder`".
-  * If you are unfamiliar with developing Lightning Web Components, the [Building Lightning Web Components trailhead](https://trailhead.salesforce.com/content/learn/trails/build-lightning-web-components) is a great resource for building and testing Lightning Web Components. Your LWC should work online in the browser before deploying it to mobile.
+* Create a lightning web component using SFDX: Create Lightning Web Component. Name it something like "`viewObjectType`". Replace "`objectType`" with the Object Name you're trying to display, such as "`viewWorkOrder`".
+  * If you are unfamiliar with developing Lightning Web Components, the [Building Lightning Web Components trailhead](https://trailhead.salesforce.com/content/learn/trails/build-lightning-web-components) is a great resource for building and testing Lightning Web Components. Your basic LWC should work online in the browser before deploying it to mobile. Advanced mobile-only functionality is an exception.
 * Have your Lightning Web Component render your custom object. If you need a starting point:
   * Use the [viewAccountRecord starter kit](https://github.com/salesforce/offline-app-developer-starter-kit/tree/main/force-app/main/default/lwc/viewAccountRecord) as an example. Copy the content of the `.js`, .`html`, `.xml`, and `.css` files into your new component's files
-  * Change your `viewObjectType.js` file as follows:
+  * Change your `view<ObjectType>.js` file as follows:
     * Change the class name "export default class ViewAccountRecord" to your Component's name, i.e. "export default class ViewObjectType"
     * Leave the imports from "lwc" and "lightning/uiRecordAPI"
     * Delete all the field imports for Account
     * Create new `import FIELD_NAME from "@salesforce/schema/ObjectType.Field";` lines for the relevant fields you are interested in. Replace FIELD_NAME, ObjectType and Field with appropriate values. 
     * Adjust the `fields()` and `name()` methods to return the fields you wish.
-* `viewObjectType.html` requires no modification.
+* `view<ObjectType>.html` requires no modification.
   * Note that this view depends on the [draftDetails custom component](https://github.com/salesforce/offline-app-developer-starter-kit/tree/main/force-app/main/default/lwc/draftDetailsList) that is part of the starter kit. As long as you are working from the starter kit and deploy that to your org, this will be fine. If not, you may get an error that the 'c-draft-details' component doesn't exist when you attempt to push this component.
-* Change `viewObjectType.js-meta.xml` as follows:
+* Change `view<ObjectType>.js-meta.xml` as follows:
   * Change `<masterLabel>` and `<description>`. All other fields can remain the same.
-* `viewObjectType.css` requires no modification.
+* `view<ObjectType>.css` requires no modification.
   * `commonStyles` is part of the starter kit.
 * Create a quick action to view your object. This quick action requires a specific format: <ObjectType>.view.quickAction-meta.xml. Note the lowercase 'view', as that is required. Follow the [Account.view](https://github.com/salesforce/offline-app-developer-starter-kit/blob/main/force-app/main/default/quickActions/Account.view.quickAction-meta.xml) example but change the `<lightningWebComponent>` to the component you created in the previous step.
 * Deploy the Starter Kit, your custom viewObjectType LWC folder, and `ObjectType.view.quickAction-meta.xml` files to your org. The Building Lightning Web Component trailhead goes into more details on this, we also have a [short guide in the starter kit](https://trailhead.salesforce.com/trailblazer-community/feed/0D54V000078RAEVSA4#:~:text=short%20guide%20in%20the%20starter%20kit).
