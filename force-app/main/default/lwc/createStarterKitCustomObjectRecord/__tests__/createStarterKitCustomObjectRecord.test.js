@@ -1,14 +1,14 @@
 import { createElement } from "lwc";
-import CreateVisitRecord from "c/createVisitRecord";
+import CreateStarterKitCustomObjectRecord from "c/createStarterKitCustomObjectRecord";
 
-import NAME_FIELD from "@salesforce/schema/Visit__c.Name";
-import START_TIME__C_FIELD from "@salesforce/schema/Visit__c.Start_Time__c";
-import END_TIME__C_FIELD from "@salesforce/schema/Visit__c.End_Time__c";
-import PRIORITY__C_FIELD from "@salesforce/schema/Visit__c.Priority__c";
-import STATUS__C_FIELD from "@salesforce/schema/Visit__c.Status__c";
-import ADDRESS__C_FIELD from "@salesforce/schema/Visit__c.Address__c";
+import NAME_FIELD from "@salesforce/schema/StarterKitCustomObject__c.Name";
+import START_TIME__C_FIELD from "@salesforce/schema/StarterKitCustomObject__c.Start_Time__c";
+import END_TIME__C_FIELD from "@salesforce/schema/StarterKitCustomObject__c.End_Time__c";
+import PRIORITY__C_FIELD from "@salesforce/schema/StarterKitCustomObject__c.Priority__c";
+import STATUS__C_FIELD from "@salesforce/schema/StarterKitCustomObject__c.Status__c";
+import ADDRESS__C_FIELD from "@salesforce/schema/StarterKitCustomObject__c.Address__c";
 
-describe("c-create-visit-record", () => {
+describe("c-create-starter-kit-custom-object-record", () => {
   afterEach(() => {
     // The jsdom instance is shared across test cases in a single file, so, reset the DOM
     while (document.body.firstChild) {
@@ -20,8 +20,8 @@ describe("c-create-visit-record", () => {
 
   it("should go back when clicking cancel button", () => {
     // setup
-    const element = createElement("c-create-visit-record", {
-      is: CreateVisitRecord,
+    const element = createElement("c-create-starter-kit-custom-object-record", {
+      is: CreateStarterKitCustomObjectRecord,
     });
     document.body.appendChild(element);
 
@@ -37,7 +37,7 @@ describe("c-create-visit-record", () => {
   });
 
   it("should populate correctly and have buttons, message, and input fields", () => {
-    const OBJECT_API_NAME = "Visit__c";
+    const OBJECT_API_NAME = "StarterKitCustomObject__c";
 
     const INPUT_FIELDS = [
       NAME_FIELD,
@@ -49,8 +49,8 @@ describe("c-create-visit-record", () => {
     ];
 
     // setup
-    const element = createElement("c-create-visit-record", {
-      is: CreateVisitRecord,
+    const element = createElement("c-create-starter-kit-custom-object-record", {
+      is: CreateStarterKitCustomObjectRecord,
     });
     document.body.appendChild(element);
 
@@ -81,8 +81,8 @@ describe("c-create-visit-record", () => {
 
   it("should go back after success", () => {
     // setup
-    const element = createElement("c-create-visit-record", {
-      is: CreateVisitRecord,
+    const element = createElement("c-create-starter-kit-custom-object-record", {
+      is: CreateStarterKitCustomObjectRecord,
     });
     document.body.appendChild(element);
 

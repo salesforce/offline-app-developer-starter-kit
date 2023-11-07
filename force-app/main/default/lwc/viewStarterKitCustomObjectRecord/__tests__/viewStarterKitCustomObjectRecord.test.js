@@ -1,16 +1,16 @@
 import { createElement } from "lwc";
-import ViewVisitRecord from "c/viewVisitRecord";
+import ViewStarterKitCustomObjectRecord from "c/viewStarterKitCustomObjectRecord";
 import { getRecord } from "lightning/uiRecordApi";
-import NAME_FIELD from "@salesforce/schema/Visit__c.Name";
-import START_TIME__C_FIELD from "@salesforce/schema/Visit__c.Start_Time__c";
-import END_TIME__C_FIELD from "@salesforce/schema/Visit__c.End_Time__c";
-import PRIORITY__C_FIELD from "@salesforce/schema/Visit__c.Priority__c";
-import STATUS__C_FIELD from "@salesforce/schema/Visit__c.Status__c";
-import ADDRESS__C_FIELD from "@salesforce/schema/Visit__c.Address__c";
+import NAME_FIELD from "@salesforce/schema/StarterKitCustomObject__c.Name";
+import START_TIME__C_FIELD from "@salesforce/schema/StarterKitCustomObject__c.Start_Time__c";
+import END_TIME__C_FIELD from "@salesforce/schema/StarterKitCustomObject__c.End_Time__c";
+import PRIORITY__C_FIELD from "@salesforce/schema/StarterKitCustomObject__c.Priority__c";
+import STATUS__C_FIELD from "@salesforce/schema/StarterKitCustomObject__c.Status__c";
+import ADDRESS__C_FIELD from "@salesforce/schema/StarterKitCustomObject__c.Address__c";
 
 const mockGetRecord = require("./data/getRecord.json");
 
-describe("c-view-visit-record", () => {
+describe("c-view-starter-kit-custom-object-record", () => {
   afterEach(() => {
     // The jsdom instance is shared across test cases in a single file so reset the DOM
     while (document.body.firstChild) {
@@ -19,11 +19,11 @@ describe("c-view-visit-record", () => {
   });
 
   it("should correctly populate record fields", async () => {
-    const element = createElement("c-view-visit-record", {
-      is: ViewVisitRecord,
+    const element = createElement("c-view-starter-kit-custom-object-record", {
+      is: ViewStarterKitCustomObjectRecord,
     });
     element.recordId = "0011700000pJRRSAA4";
-    element.objectApiName = "Visit";
+    element.objectApiName = "StarterKitCustomObject";
     document.body.appendChild(element);
 
     // Emit mock record into the wired field

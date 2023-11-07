@@ -1,13 +1,13 @@
 import { LightningElement, api } from "lwc";
 
-import NAME_FIELD from "@salesforce/schema/Visit__c.Name";
-import START_TIME__C_FIELD from "@salesforce/schema/Visit__c.Start_Time__c";
-import END_TIME__C_FIELD from "@salesforce/schema/Visit__c.End_Time__c";
-import PRIORITY__C_FIELD from "@salesforce/schema/Visit__c.Priority__c";
-import STATUS__C_FIELD from "@salesforce/schema/Visit__c.Status__c";
-import ADDRESS__C_FIELD from "@salesforce/schema/Visit__c.Address__c";
+import NAME_FIELD from "@salesforce/schema/StarterKitCustomObject__c.Name";
+import START_TIME__C_FIELD from "@salesforce/schema/StarterKitCustomObject__c.Start_Time__c";
+import END_TIME__C_FIELD from "@salesforce/schema/StarterKitCustomObject__c.End_Time__c";
+import PRIORITY__C_FIELD from "@salesforce/schema/StarterKitCustomObject__c.Priority__c";
+import STATUS__C_FIELD from "@salesforce/schema/StarterKitCustomObject__c.Status__c";
+import ADDRESS__C_FIELD from "@salesforce/schema/StarterKitCustomObject__c.Address__c";
 
-export default class CreateVisit__cRecord extends LightningElement {
+export default class CreateStarterKitCustomObject__cRecord extends LightningElement {
   @api recordId;
   @api objectApiName;
 
@@ -26,7 +26,7 @@ export default class CreateVisit__cRecord extends LightningElement {
   address__c = "";
 
   onSuccess(event) {
-    console.log("Created Visit__c", event.detail);
+    console.log("Created StarterKitCustomObject__c", event.detail);
     // Dismiss modal on success
     this.dismiss(event);
   }
