@@ -3,27 +3,27 @@
     <description>Assign permission to access custom objects in mobile offline app</description>
     <fieldPermissions>
         <editable>true</editable>
-        <field>Visit__c.Address__c</field>
+        <field>StarterKitCustomObject__c.Address__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>Visit__c.End_Time__c</field>
+        <field>StarterKitCustomObject__c.End_Time__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>Visit__c.Priority__c</field>
+        <field>StarterKitCustomObject__c.Priority__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>Visit__c.Start_Time__c</field>
+        <field>StarterKitCustomObject__c.Start_Time__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>Visit__c.Status__c</field>
+        <field>StarterKitCustomObject__c.Status__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <hasActivationRequired>false</hasActivationRequired>
@@ -35,11 +35,11 @@
         <allowEdit>true</allowEdit>
         <allowRead>true</allowRead>
         <modifyAllRecords>true</modifyAllRecords>
-        <object>Visit__c</object>
+        <object>StarterKitCustomObject__c</object>
         <viewAllRecords>true</viewAllRecords>
     </objectPermissions>
     <tabSettings>
-        <tab>Visit__c</tab>
+        <tab>StarterKitCustomObject__c</tab>
         <visibility>Visible</visibility>
     </tabSettings>
 </PermissionSet>

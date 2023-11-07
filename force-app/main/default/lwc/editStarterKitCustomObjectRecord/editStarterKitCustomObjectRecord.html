@@ -1,7 +1,6 @@
 <template>
     <div class="component-background">
-        <lightning-record-edit-form object-api-name="Visit__c" onsuccess={onSuccess}>
-
+        <lightning-record-edit-form object-api-name="StarterKitCustomObject__c" record-id={recordId} onsuccess={onSuccess}>
             <div class="header-slot">
                 <!-- cancel and submit buttons-->
                 <lightning-layout horizontal-align="spread" class="slds-var-p-horizontal_xx-small">
@@ -10,14 +9,16 @@
                             class="button"></lightning-button>
                     </lightning-layout-item>
 
+                    <lightning-layout-item data-id="name" class="record-name slds-align_absolute-center">
+                        <p style="word-break: break-all;">{name}</p>
+                    </lightning-layout-item>
+
                     <lightning-layout-item>
-                        <lightning-button variant="base" data-id="submit" label="Create" type="submit"
+                        <lightning-button variant="base" data-id="submit" label="Save" type="submit"
                             class="button-primary"></lightning-button>
                     </lightning-layout-item>
                 </lightning-layout>
             </div>
-
-
 
             <div class="header-offset slds-var-p-horizontal_small slds-var-p-bottom_medium">
 
@@ -25,13 +26,12 @@
                 <lightning-messages></lightning-messages>
 
                 <!-- input fields -->
-                <lightning-input-field field-name={nameField} value={name}></lightning-input-field>
-                <lightning-input-field field-name={start_Time__cField} value={start_Time__c}></lightning-input-field>
-                <lightning-input-field field-name={end_Time__cField} value={end_Time__c}></lightning-input-field>
-                <lightning-input-field field-name={priority__cField} value={priority__c}></lightning-input-field>
-                <lightning-input-field field-name={status__cField} value={status__c}></lightning-input-field>
-                <lightning-input-field field-name={address__cField} value={address__c}></lightning-input-field>
-            </div>
+                <lightning-input-field field-name={nameField}></lightning-input-field>
+                <lightning-input-field field-name={start_Time__cField}></lightning-input-field>
+                <lightning-input-field field-name={end_Time__cField}></lightning-input-field>
+                <lightning-input-field field-name={priority__cField}></lightning-input-field>
+                <lightning-input-field field-name={status__cField}></lightning-input-field>
+                <lightning-input-field field-name={address__cField}></lightning-input-field>            </div>
 
         </lightning-record-edit-form>
     </div>

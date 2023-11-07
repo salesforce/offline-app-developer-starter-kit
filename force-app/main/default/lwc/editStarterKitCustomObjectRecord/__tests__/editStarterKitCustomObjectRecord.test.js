@@ -1,17 +1,17 @@
 import { createElement } from "lwc";
-import EditVisitRecord from "c/editVisitRecord";
+import EditStarterKitCustomObjectRecord from "c/editStarterKitCustomObjectRecord";
 import { getRecord } from "lightning/uiRecordApi";
 
-import NAME_FIELD from "@salesforce/schema/Visit__c.Name";
-import START_TIME__C_FIELD from "@salesforce/schema/Visit__c.Start_Time__c";
-import END_TIME__C_FIELD from "@salesforce/schema/Visit__c.End_Time__c";
-import PRIORITY__C_FIELD from "@salesforce/schema/Visit__c.Priority__c";
-import STATUS__C_FIELD from "@salesforce/schema/Visit__c.Status__c";
-import ADDRESS__C_FIELD from "@salesforce/schema/Visit__c.Address__c";
+import NAME_FIELD from "@salesforce/schema/StarterKitCustomObject__c.Name";
+import START_TIME__C_FIELD from "@salesforce/schema/StarterKitCustomObject__c.Start_Time__c";
+import END_TIME__C_FIELD from "@salesforce/schema/StarterKitCustomObject__c.End_Time__c";
+import PRIORITY__C_FIELD from "@salesforce/schema/StarterKitCustomObject__c.Priority__c";
+import STATUS__C_FIELD from "@salesforce/schema/StarterKitCustomObject__c.Status__c";
+import ADDRESS__C_FIELD from "@salesforce/schema/StarterKitCustomObject__c.Address__c";
 
 const mockRecord = require("./data/getRecord.json");
 
-describe("c-edit-visit-record", () => {
+describe("c-edit-starter-kit-custom-object-record", () => {
   afterEach(() => {
     // The jsdom instance is shared across test cases in a single file so reset the DOM
     while (document.body.firstChild) {
@@ -21,10 +21,10 @@ describe("c-edit-visit-record", () => {
 
   it("should correctly populate form and name field", () => {
     const RECORD_ID = "001abcdefghijklmno";
-    const OBJECT_API_NAME = "Visit__c";
+    const OBJECT_API_NAME = "StarterKitCustomObject__c";
 
-    const element = createElement("c-edit-visit-record", {
-      is: EditVisitRecord,
+    const element = createElement("c-edit-starter-kit-custom-object-record", {
+      is: EditStarterKitCustomObjectRecord,
     });
     element.recordId = RECORD_ID;
     element.objectApiName = OBJECT_API_NAME;
@@ -84,8 +84,8 @@ describe("c-edit-visit-record", () => {
   });
 
   it("should go back when clicking cancel button", () => {
-    const element = createElement("c-edit-visit-record", {
-      is: EditVisitRecord,
+    const element = createElement("c-edit-starter-kit-custom-object-record", {
+      is: EditStarterKitCustomObjectRecord,
     });
     document.body.appendChild(element);
 
@@ -101,8 +101,8 @@ describe("c-edit-visit-record", () => {
   });
 
   it("should go back after success", () => {
-    const element = createElement("c-edit-visit-record", {
-      is: EditVisitRecord,
+    const element = createElement("c-edit-starter-kit-custom-object-record", {
+      is: EditStarterKitCustomObjectRecord,
     });
     document.body.appendChild(element);
 
