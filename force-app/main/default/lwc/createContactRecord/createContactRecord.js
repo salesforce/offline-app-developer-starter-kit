@@ -11,6 +11,10 @@ export default class CreateContactRecord extends LightningElement {
   @api recordId;
   @api objectApiName;
 
+  get fields() {
+    return [CONTACT_NAME_FIELD, CONTACT_TITLE_FIELD, CONTACT_ACCOUNT_FIELD, CONTACT_EMAIL_FIELD, CONTACT_MOBILE_FIELD, CONTACT_OWNER_FIELD];
+  }
+
   nameField = CONTACT_NAME_FIELD;
   titleField = CONTACT_TITLE_FIELD;
   accountField = CONTACT_ACCOUNT_FIELD;

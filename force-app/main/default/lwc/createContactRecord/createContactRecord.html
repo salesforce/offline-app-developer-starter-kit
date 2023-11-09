@@ -1,6 +1,6 @@
 <template>
     <div class="component-background slds-p-around_medium">
-        <lightning-record-edit-form object-api-name="Contact" onsuccess={onSuccess} onerror={onError} onsubmit={onSubmit}>
+        <lightning-record-edit-form object-api-name="Contact" onsuccess={onSuccess} onerror={onError} onsubmit={onSubmit} optional-fields={fields}>
 
             <!-- cancel and submit buttons-->
             <lightning-layout horizontal-align="spread" class="slds-var-p-horizontal_xx-small">
