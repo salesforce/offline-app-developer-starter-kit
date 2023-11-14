@@ -1,0 +1,39 @@
+<template>
+    <div class="component-background">
+        <lightning-record-edit-form object-api-name="Contact" record-id={recordId} onsuccess={onSuccess}>
+            <div class="header-slot">
+                <!-- cancel and submit buttons-->
+                <lightning-layout horizontal-align="spread" class="slds-var-p-horizontal_xx-small">
+                    <lightning-layout-item>
+                        <lightning-button variant="base" data-id="cancel" label="Cancel" type="button" onclick={dismiss}
+                            class="button"></lightning-button>
+                    </lightning-layout-item>
+
+                    <lightning-layout-item data-id="name" class="record-name slds-align_absolute-center">
+                        <p style="word-break: break-all;">{name}</p>
+                    </lightning-layout-item>
+
+                    <lightning-layout-item>
+                        <lightning-button variant="base" data-id="submit" label="Save" type="submit"
+                            class="button-primary"></lightning-button>
+                    </lightning-layout-item>
+                </lightning-layout>
+            </div>
+
+            <div class="header-offset slds-var-p-horizontal_small slds-var-p-bottom_medium">
+
+                <!-- show any error messages or alerts -->
+                <lightning-messages></lightning-messages>
+
+                <!-- input fields -->
+                <lightning-input-field field-name={nameField}></lightning-input-field>
+                <lightning-input-field field-name={titleField}></lightning-input-field>
+                <lightning-input-field field-name={accountField}></lightning-input-field>
+                <lightning-input-field field-name={phoneField}></lightning-input-field>
+                <lightning-input-field field-name={emailField}></lightning-input-field>
+                <lightning-input-field field-name={mobileField}></lightning-input-field>
+            </div>
+
+        </lightning-record-edit-form>
+    </div>
+</template>
