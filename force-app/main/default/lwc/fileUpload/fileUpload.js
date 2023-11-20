@@ -73,10 +73,12 @@ export default class FileUpload extends LightningElement {
 
   // Handle uploading a file, initiated by user clicking Upload button
   async handleUploadClick() {
+    // Make sure we're not already uploading something
     if (this.uploadingFile) {
       return;
     }
 
+    // Make sure we have something to upload
     const file = this.files && this.files[0];
     if (!file) {
       return;
@@ -93,6 +95,7 @@ export default class FileUpload extends LightningElement {
           description: this.descriptionValue,
           fileData: file,
         });
+        console.log("ContentDocument and ContentDocumentVersion records created.");
 
       // If component is run in a record context (recordId is set), relate
       // the uploaded file to that record
@@ -105,9 +108,7 @@ export default class FileUpload extends LightningElement {
       }
 
       // Status and state updates
-      console.log(
-        "ContentDocument and ContentDocumentVersion records created."
-      );
+      console.log("File upload created and enqueued.");
       this.notifySuccess();
       this.resetInputs();
     } catch (error) {
