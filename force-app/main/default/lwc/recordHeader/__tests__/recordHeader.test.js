@@ -21,19 +21,19 @@ describe("c-record-header", () => {
     // Resolve a promise to wait for a re-render of the new content
     await Promise.resolve();
     const iconField = element.shadowRoot.querySelector(
-      'lightning-icon[data-id="iconId"]',
+      'lightning-icon[data-id="iconId"]'
     );
     expect(iconField.iconName).toBe(
-      "standard:" + element.objectApiName.toLowerCase(),
+      "standard:" + element.objectApiName.toLowerCase()
     );
 
     const nameField = element.shadowRoot.querySelector(
-      'lightning-layout-item[data-id="nameId"]',
+      'lightning-layout-item[data-id="nameId"]'
     );
     expect(nameField.textContent).toBe(element.recordName);
 
     const objectField = element.shadowRoot.querySelector(
-      'lightning-layout-item[data-id="objectApiNameId"]',
+      'lightning-layout-item[data-id="objectApiNameId"]'
     );
     expect(objectField.textContent).toBe(element.objectApiName);
   });

@@ -51,12 +51,12 @@ describe("c-edit-visit-record", () => {
     expect(form.objectApiName).toBe(OBJECT_API_NAME);
 
     const submitButton = element.shadowRoot.querySelector(
-      'lightning-button[data-id="submit"]',
+      'lightning-button[data-id="submit"]'
     );
     expect(submitButton.type).toBe("submit");
 
     const cancelButton = element.shadowRoot.querySelector(
-      'lightning-button[data-id="cancel"]',
+      'lightning-button[data-id="cancel"]'
     );
     expect(cancelButton.type).toBe("button");
 
@@ -65,7 +65,7 @@ describe("c-edit-visit-record", () => {
 
     // get the input fields and ensure they are in the correct order
     const outputFieldNames = Array.from(
-      element.shadowRoot.querySelectorAll("lightning-input-field"),
+      element.shadowRoot.querySelectorAll("lightning-input-field")
     ).map((outputField) => outputField.fieldName);
     expect(outputFieldNames).toEqual(INPUT_FIELDS);
 
@@ -73,7 +73,7 @@ describe("c-edit-visit-record", () => {
     // that is built after the @wire executes.
     return Promise.resolve().then(() => {
       const displayName = element.shadowRoot.querySelector(
-        'lightning-layout-item[data-id="name"]',
+        'lightning-layout-item[data-id="name"]'
       );
 
       const mockedName = mockRecord.fields.Name.value;
@@ -93,7 +93,7 @@ describe("c-edit-visit-record", () => {
     const backSpy = jest.spyOn(window.history, "back");
 
     const cancelButton = element.shadowRoot.querySelector(
-      'lightning-button[data-id="cancel"]',
+      'lightning-button[data-id="cancel"]'
     );
     cancelButton.click();
 

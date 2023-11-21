@@ -5,7 +5,7 @@ import { graphql, gql } from "lightning/uiGraphQLApi";
 
 // eslint-disable-next-line @salesforce/lwc-graph-analyzer/no-unresolved-parent-class-reference
 export default class AccountRelatedContacts extends NavigationMixin(
-  LightningElement,
+  LightningElement
 ) {
   @api recordId;
 
