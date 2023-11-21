@@ -21,7 +21,7 @@ describe("c-file-upload", () => {
     // test
     // verify select files button is shown
     const selectButton = element.shadowRoot.querySelector("lightning-input");
-    expect(selectButton.label).toBe("Pick file to upload");
+    expect(selectButton.label).toBe("Select file to upload");
     // verify upload button is not shown
     const uploadButton = element.shadowRoot.querySelector("button.slds-button");
     expect(uploadButton).toBeNull();

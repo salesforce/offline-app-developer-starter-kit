@@ -95,7 +95,9 @@ export default class FileUpload extends LightningElement {
           description: this.descriptionValue,
           fileData: file,
         });
-        console.log("ContentDocument and ContentDocumentVersion records created.");
+      console.log(
+        "ContentDocument and ContentDocumentVersion records created."
+      );
 
       // If component is run in a record context (recordId is set), relate
       // the uploaded file to that record
