@@ -33,10 +33,10 @@ describe("c-location-service", () => {
 
     // check to ensure the template was updated with the expected latitude and longitude
     const currentLatitude = element.shadowRoot.querySelector(
-      'slot[name="latitude"]'
+      'slot[name="latitude"]',
     );
     const currentLongitude = element.shadowRoot.querySelector(
-      'slot[name="longitude"]'
+      'slot[name="longitude"]',
     );
 
     // eslint-disable-next-line @lwc/lwc/no-inner-html
@@ -50,7 +50,7 @@ describe("c-location-service", () => {
     // setup
     let mockLocationService = getLocationService();
     mockLocationService.getCurrentPosition = jest.fn(() =>
-      Promise.reject({ code: "some-error", message: "some error occured!" })
+      Promise.reject({ code: "some-error", message: "some error occured!" }),
     );
     const element = createElement("c-location-service", {
       is: LocationService,
@@ -69,13 +69,13 @@ describe("c-location-service", () => {
 
     // check to ensure the template was updated with the error code
     const errorMessage = element.shadowRoot.querySelector(
-      'span[data-id="error"]'
+      'span[data-id="error"]',
     );
     // eslint-disable-next-line @lwc/lwc/no-inner-html
     expect(errorMessage.innerHTML).toBe("some error occured!");
 
     const fetchedPosition = element.shadowRoot.querySelector(
-      'span[data-id="result"]'
+      'span[data-id="result"]',
     );
     expect(fetchedPosition).toBe(null); // should not even be visible in the dom
   });
@@ -103,15 +103,15 @@ describe("c-location-service", () => {
 
     // check to ensure the template was updated with the error code
     const errorMessage = element.shadowRoot.querySelector(
-      'span[data-id="error"]'
+      'span[data-id="error"]',
     );
     // eslint-disable-next-line @lwc/lwc/no-inner-html
     expect(errorMessage.innerHTML).toBe(
-      "Nimbus location service is not available."
+      "Nimbus location service is not available.",
     );
 
     const fetchedPosition = element.shadowRoot.querySelector(
-      'span[data-id="result"]'
+      'span[data-id="result"]',
     );
     expect(fetchedPosition).toBe(null); // should not even be visible in the dom
   });
