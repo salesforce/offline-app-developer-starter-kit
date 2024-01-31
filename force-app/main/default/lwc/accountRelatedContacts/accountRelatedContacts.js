@@ -12,10 +12,9 @@ export default class AccountRelatedContacts extends NavigationMixin(
   /*
     There is a currently Known Issue {@link https://issues.salesforce.com/issue/a028c00000xGGwE/graphql-query-fails-prefetch-with-an-unknown-field-warning} with GraphQL wire adapters where this will cause the component to fail to load offline.   
     There is a workaround that can be implemented in this Knowledge Article {@link https://help.salesforce.com/s/articleView?language=en_US&id=000396405&type=1}.
+    As of Spring '24 release the issue has been addressed.
   */
   get accountQuery() {
-    if (!this.recordId) return undefined;
-
     return gql`
       query accountWithChildContacts($recordId: ID) {
         uiapi {
@@ -67,7 +66,7 @@ export default class AccountRelatedContacts extends NavigationMixin(
 
   get graphqlVariables() {
     return {
-      recordId: this.recordId,
+      recordId: this.recordId || "",
     };
   }
 
