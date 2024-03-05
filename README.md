@@ -36,7 +36,7 @@ After you’ve configured your Offline Briefcase, see [View Offline Components i
 
 ### Create a View LWC Quick Action
 
-If you’re unfamiliar with developing Lightning Web Components, the [Building Lightning Web Components](https://trailhead.salesforce.com/content/learn/trails/build-lightning-web-components) Trailhead trail is a great resource for building and testing LWCs. Your basic LWC should work online in the browser before deploying it to the mobile app. Advanced mobile-only functionality is an exception.
+If you’re unfamiliar with developing Lightning Web Components, the [Building Lightning Web Components](https://trailhead.salesforce.com/content/learn/trails/build-lightning-web-components) Trailhead trail is a great resource for building and testing LWCs. Before deploying your LWC to the mobile app, you should first verify that it works online in a browser, wherever possible. Verifying in a browser is not possible for some advanced, mobile-only functionality such as camera access, barcode and business card scanning, etc.
 
 1. Create an LWC using SFDX: Create Lightning Web Component. Give it a name such as "`viewObjectType`". Replace "`objectType`" with the Object Name you're trying to display, such as "`viewWorkOrder`".
 2. Get your LWC to render your custom object. If you need a starting point:
