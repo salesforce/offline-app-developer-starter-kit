@@ -27,7 +27,7 @@ This quick start shows you how to view a custom record type offline. For records
 * Set up the Starter Kit Project
   * Follow the steps in the [Set Up the Starter Kit Project](#set-up-the-starter-kit-project) section.
 * Configure your [Offline Briefcase](#define-an-offline-briefcase) to include the objects that you want to view offline.
-  * Follow the steps in the [Define an Offline Briefcase](https://github.com/salesforce/offline-app-developer-starter-kit#define-an-offline-briefcase) section.
+  * Follow the steps in the [Define an Offline Briefcase](#define-an-offline-briefcase) section.
   * The [Briefcase Builder](https://help.salesforce.com/s/articleView?id=sf.briefcase_builder_overview.htm&language=en_US&type=5) help documentation and [Offline Briefcase](https://trailhead.salesforce.com/content/learn/modules/offline-briefcase) Trailhead module are excellent resources to help you create a briefcase, set of rules, and filters that select records for offline use for your org.
 
 After you’ve configured your Offline Briefcase, see [View Offline Components in the Salesforce Mobile App](https://github.com/salesforce/offline-app-developer-starter-kit#view-offline-components-in-the-salesforce-mobile-app). Can you view the object that you want offline? If not, check your Offline Briefcase configuration. If you try to view a record, you should expect to get an error that the records for the object type haven’t been configured for offline use. This behavior is expected at this point as the view LWC quick action hasn’t been created yet.
