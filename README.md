@@ -30,11 +30,7 @@ This quick start shows you how to view a custom record type offline. For records
   * Follow the steps in the [Define an Offline Briefcase](#define-an-offline-briefcase) section.
   * The [Briefcase Builder](https://help.salesforce.com/s/articleView?id=sf.briefcase_builder_overview.htm&language=en_US&type=5) help documentation and [Offline Briefcase](https://trailhead.salesforce.com/content/learn/modules/offline-briefcase) Trailhead module are excellent resources to help you create a briefcase, set of rules, and filters that select records for offline use for your org.
 
-After you’ve configured your Offline Briefcase, see [View Offline Components in the Salesforce Mobile App](#view-offline-components-in-the-salesforce-mobile-app). Can you view the object that you want offline? If not, check your Offline Briefcase configuration. If you try to view a record, you should expect to get an error that the records for the object type haven’t been configured for offline use. This behavior is expected at this point as the view LWC quick action hasn’t been created yet.
-
-**Note:** In subsequent releases, the My Offline Records screen in the Offline App shows an error on the row of the objects that haven’t been configured.
-
-### Create a View LWC Quick Action
+### Create an LWC Quick Action to View an sObject
 
 If you’re unfamiliar with developing Lightning Web Components, the [Building Lightning Web Components](https://trailhead.salesforce.com/content/learn/trails/build-lightning-web-components) Trailhead trail is a great resource for building and testing LWCs. Before deploying your LWC to the mobile app, you should first verify that it works online in a browser, wherever possible. Verifying in a browser is not possible for some advanced, mobile-only functionality such as camera access, barcode and business card scanning, etc.
 
