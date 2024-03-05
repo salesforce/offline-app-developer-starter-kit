@@ -2,7 +2,11 @@
 
 [The LWC related records example](../force-app/main/default/lwc/accountRelatedContacts) demonstrates the capability to view related records, for example `Contacts`, from an object, for example `Account`, using GraphQL queries. When a user's mobile device is online and priming the briefcase, the related records are prefetched and stored in the cache and can be viewed in offline mode.
 
-There’s a known issue that [GraphQL query prefetches fail](https://issues.salesforce.com/issue/a028c00000xGGwEAAW/graphql-query-fails-prefetch-with-an-unknown-field-warning), and as a result the `accountRelatedContacts` LWC won’t work offline. A fix for this known issue is coming soon. In the meantime, see this [Knowledge Article](https://help.salesforce.com/s/articleView?language=en_US&id=000396405&type=1) for a resolution to this known issue.
+> **Note**
+> There’s a known issue that [GraphQL query prefetches fail](https://issues.salesforce.com/issue/a028c00000xGGwEAAW/graphql-query-fails-prefetch-with-an-unknown-field-warning), and as a result the `accountRelatedContacts` LWC won’t work offline. In the meantime, see this [Knowledge Article](https://help.salesforce.com/s/articleView?language=en_US&id=000396405&type=1) for a resolution to this known issue. 
+
+> **Update**
+> As of Spring '24 release the issue has been addressed.
 
 In this example, we perform a GraphQL query to fetch related `Contacts` from an `Account` record.
 
