@@ -23,7 +23,7 @@ The remainder of this README is intended to guide you through these steps. The i
 This quick start shows you how to view a custom record type offline. For records in the Starter Kit, you can use the corresponding existing Lightning Web Components (LWC) and modify it to your needs.
 
 * Set up your development environment.
-  * Follow the steps in the [Prerequisites](https://github.com/salesforce/offline-app-developer-starter-kit#prerequisites) section.
+  * Follow the steps in the [Prerequisites](#prerequisites) section.
 * Set up the Starter Kit Project
   * Follow the steps in the [Set Up the Starter Kit Project](#set-up-the-starter-kit-project) section.
 * Configure your Offline Briefcase to include the objects that you want to view offline.[Offline Briefcase](https://github.com/salesforce/offline-app-developer-starter-kit#define-an-offline-briefcase) to include the object you want to see offline.
