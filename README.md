@@ -1,6 +1,6 @@
 # Offline App Developer Starter Kit
 
-The Offline App Developer Starter Kit — this repository — is your jump start to get up and running quickly with Lightning Web Components and Mobile Offline. This README provides steps to clone, modify, and deploy example offline components and quick actions, and view them in the offline-enabled version of the Salesforce Mobile app.
+The Offline App Developer Starter Kit — this repository — is your jump-start to get up and running quickly with Lightning Web Components and Mobile Offline. This README provides steps to clone, modify, and deploy example offline components and quick actions, and view them in the offline-enabled version of the Salesforce Mobile app.
 
 ## How to Use the Starter Kit
 
@@ -18,9 +18,61 @@ The remainder of this README is intended to guide you through these steps. The i
 * [Lightning Web Components Developer Guide](https://developer.salesforce.com/docs/component-library/documentation/en/lwc)
 * [Mobile and Offline Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.mobile_offline.meta/mobile_offline/)
 
+## Quick Start Guide
+
+This quick start shows you how to view a custom record type offline. For records in the Starter Kit, you can use the corresponding existing Lightning Web Components (LWC) and modify it to your needs.
+
+* Set up your development environment.
+  * Follow the steps in the [Prerequisites](#prerequisites) section.
+* Set up the Starter Kit Project
+  * Follow the steps in the [Set Up the Starter Kit Project](#set-up-the-starter-kit-project) section.
+* Configure your [Offline Briefcase](#define-an-offline-briefcase) to include the objects that you want to view offline.
+  * Follow the steps in the [Define an Offline Briefcase](#define-an-offline-briefcase) section.
+  * The [Briefcase Builder](https://help.salesforce.com/s/articleView?id=sf.briefcase_builder_overview.htm&language=en_US&type=5) help documentation and [Offline Briefcase](https://trailhead.salesforce.com/content/learn/modules/offline-briefcase) Trailhead module are excellent resources to help you create a briefcase, set of rules, and filters that select records for offline use for your org.
+
+### Create an LWC Quick Action to View an sObject
+
+If you’re unfamiliar with developing Lightning Web Components, the [Building Lightning Web Components](https://trailhead.salesforce.com/content/learn/trails/build-lightning-web-components) Trailhead trail is a great resource for building and testing LWCs. Before deploying your LWC to the mobile app, you should first verify that it works online in a browser, wherever possible. Verifying in a browser is not possible for some advanced, mobile-only functionality such as camera access, barcode and business card scanning, etc.
+
+1. Create an LWC using SFDX: Create Lightning Web Component. Give it a name such as "`view<Object Type>`": for example, "`viewWorkOrder`".
+2. Update your LWC to render your custom object. If you need a starting point:
+  * Use the [viewAccountRecord](https://github.com/salesforce/offline-app-developer-starter-kit/tree/main/force-app/main/default/lwc/viewAccountRecord) in the Starter Kit as an example. Copy the content of the `.js`, .`html`, `.xml`, and `.css` files into your new component's files.
+  * Change your `view<ObjectType>.js` file:
+    * Change the class name "export default class ViewAccountRecord" to your Component's name. For example, "export default class ViewObjectType".
+    * Leave the imports from "lwc" and "lightning/uiRecordAPI".
+    * Delete all the field imports for Account.
+    * Create new `import FIELD_NAME from "@salesforce/schema/ObjectType.Field";` lines for the relevant fields you're interested in. Replace FIELD_NAME, ObjectType, and Field with appropriate values. 
+    * Adjust the `fields()` and `name()` methods to return the fields that you want.
+3. `view<ObjectType>.html` requires no modification.
+  * This view depends on the [draftDetailsList](https://github.com/salesforce/offline-app-developer-starter-kit/tree/main/force-app/main/default/lwc/draftDetailsList) custom component that's a part of the Starter Kit. This is fine as long as you're working from the starter kit and deploy that to your org. If not, you may get an error that the 'c-draft-details' component doesn't exist when you attempt to deploy this component.
+4. Change `view<ObjectType>.js-meta.xml`:
+  * Change `<masterLabel>` and `<description>`. All other fields can remain the same.
+5. `view<ObjectType>.css` requires no modification.
+  * `commonStyles` is part of the starter kit.
+6. Create a quick action to view your object. This quick action requires a specific format: <ObjectType>.view.quickAction-meta.xml. Note the lowercase 'view', as it's required. Follow the [Account.view](https://github.com/salesforce/offline-app-developer-starter-kit/blob/main/force-app/main/default/quickActions/Account.view.quickAction-meta.xml) example but change the `<lightningWebComponent>` to the component you created previously.
+7. Deploy the Starter Kit, your custom viewObjectType LWC folder, and `ObjectType.view.quickAction-meta.xml` files to your org. 
+  * See [Deploy Components and Quick Actions](https://github.com/asikora-sf/offline-app-developer-starter-kit/blob/patch-1/README.md#deploy-components-and-quick-actions) for more information. The [Building Lightning Web Components](https://trailhead.salesforce.com/content/learn/trails/build-lightning-web-components) trail is also an excellent resource for more in-depth details.
+8. Add your [LWC Quick Action to the Mobile Layout](https://github.com/salesforce/offline-app-developer-starter-kit/tree/main#add-lwc-quick-actions-to-mobile-layouts) for the user.
+
+In the mobile app, logout and relogin to reload your cache. If you have a newer version of the mobile app, use the Clear Cached Data button in the Settings screen. Follow the steps in [View Offline Components in the Salesforce Mobile App](https://github.com/salesforce/offline-app-developer-starter-kit#view-offline-components-in-the-salesforce-mobile-app). You should see your custom Lightning web component! If record priming has been completed, go offline on your mobile device (turn on Airplane Mode and turn off Wi-Fi) and view a record you haven't viewed while online. Make sure your view component also works there.
+
+Alternatively, you can use the LWC Offline Test Harness to help confirm that your LWCs work as expected in LWC Offline-based environments, and are ready for integration testing within an offline-enabled Salesforce mobile app. For more information, see [Develop Offline-Ready LWCs with the LWC Offline Test Harness](https://developer.salesforce.com/docs/atlas.en-us.mobile_offline.meta/mobile_offline/dx_harness_app.htm) in the Mobile and Offline Developer Guide.
+
+You have now created a successful '.view' quick action to prime and view your Object offline! Other special action types for required functionality include '.edit' and '.create' for their respective actions (the capitalization and naming is important for these as well). The Starter Kit also contains examples for these actions. Any other custom LWC quick actions you create that are offline capable show up in the Action Bar of the '.view' action after they’re added to the Mobile Layout.
+
+### Other Custom Actions
+
+Other lightning web component quick actions can be [added to the object's page layout](https://github.com/salesforce/offline-app-developer-starter-kit/tree/main#add-lwc-quick-actions-to-mobile-layouts) and are accessible at the top of the view quick action. Salesforce reserves three quick action names for specific use cases. Create custom LWCs assigned to these quick action names to enable this functionality:
+
+* `<ObjectName>.view.quickAction-meta.xml` is used for viewing a record and injects an action bar across the top for other quick actions.
+* `<ObjectName>.edit.quickAction-meta.xml` is used for editing a record, including records in a draft state.
+* `<ObjectName.create.quickAction-meta.xml` is used for creating a record from the plus button in My Offline Records.
+
+**Note:** The quick action names for `view`, `create`, and `edit` require the exact spelling and capitalization.
+
 ## Prerequisites
 
-The Salesforce product team will enable your org for Mobile Offline when you license it. While you wait, perform the following tasks to set up your developer environment and tools, so you can begin exploring once Mobile Offline is enabled.
+The Salesforce product team will enable Mobile Offline for your org when you license it. While you wait, perform the following tasks to set up your developer environment and tools, so you can begin exploring after Mobile Offline is enabled.
 
 * Install Salesforce CLI
   * Follow the steps in the [Salesforce CLI Setup Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_intro.htm)
@@ -32,7 +84,7 @@ Instructions for installing and using additional tools specific for mobile and o
 
 ## Define an Offline Briefcase
 
-The _Briefcase_ is the most fundamental and powerful method for defining the set of records that your offline users can take with them when they're in the field, away from a network connection. A Briefcase is actually quite simple; it's just a set of rules and filters that select records. The Offline App uses — and depends on — a Briefcase to use when priming records for offline use.
+The _Briefcase_ is the most fundamental and powerful method for defining the set of records that your offline users can take with them when they're in the field, away from a network connection. A Briefcase is quite simple; it's just a set of rules and filters that select records. The Offline App uses — and depends on — a Briefcase to use when priming records for offline use.
 
 1. From Setup, navigate to Briefcase Builder and click **New Briefcase**:
   ![Setup Briefcase](images/SetupBriefcase.png)
@@ -52,7 +104,7 @@ For additional details about how to create a briefcase for offline use, see "[Br
 
 To use the Starter Kit, first clone (copy) it to your development system, and then configure it to connect to a Salesforce org you want to use for development. The easiest way to accomplish this is using the command line.
 
-1. In Terminal, or your command line application of choice, create or move to a directory where you want to copy the Starter Kit. For example:
+1. In the Terminal, or your command line application of choice, create, or move to a directory where you want to copy the Starter Kit. For example:
 
    ```sh
    mkdir -p ~/Developer/Salesforce
@@ -112,7 +164,7 @@ To use the Starter Kit, first clone (copy) it to your development system, and th
 
 ## Deploy Components and Quick Actions
 
-Before you can run a quick action based on a Lightning web component, you need to deploy the relevant code artifacts to your org. Components and quick actions can be deployed via the CLI or VS Code.
+Before you can run a quick action based on a Lightning web component, you must deploy the relevant code artifacts to your org. Components and quick actions can be deployed via the CLI or VS Code.
 
 Using CLI:
 
@@ -124,7 +176,7 @@ Using VS Code:
 
 * Right-click on a component or Quick Action and select: `SFDX: Deploy Source to Org`  
   ![VS Code Deploy](images/DeployVSCode.png)
-* Upon successful deploy you will see in the console:  
+* Upon successful deploy you’ll see in the console:  
   ![VS Deploy Success](images/DeployedLWCConsole.png)
 
 > **Note**
@@ -176,7 +228,7 @@ The part you've been waiting for: seeing the code in action!
 
 ## Modify Existing and Create New Components
 
-Here's where it gets fun: making changes and seeing how they run. Once you've verified that you can view and use the quick actions provided in the Starter Kit, it's time to make them your own. Here are a couple of quick notes to help you find your way.
+Here's where it gets fun: making changes and seeing how they run. After you've verified that you can view and use the quick actions provided in the Starter Kit, it's time to make them your own. Here are a couple of quick notes to help you find your way.
 
 ### View and Modify Components and Quick Actions
 
@@ -217,7 +269,7 @@ cd force-app/main/default
 It may be useful to view draft details within a record view Lightning Web Component for debugging purposes. To enable draft details, simply uncomment the `<c-draft-detailst-list>` component from the `view<Object>Record` component html. Don't forget to uncomment the respective test code to validate the expected behavior.
 
 > **Note**
-> Adding additional dependencies will negatively affect the total time to prime all records, as well as slightly increase single record load times. It is recommended to remove or comment out debug components such as `<c-draft-details-list>` from production code.
+> Adding additional dependencies will negatively affect the total time to prime all records, as well as slightly increase single record load times. It’s recommended to remove or comment out debug components such as `<c-draft-details-list>` from production code.
 
 ### Call Apex Methods from Lightning Web Components
 
