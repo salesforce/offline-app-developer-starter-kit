@@ -12,8 +12,6 @@ In this example, we perform a GraphQL query to fetch related `Contacts` from an 
 
 ```js
   get accountQuery() {
-    if (!this.recordId) return undefined;
-
     return gql`
       query accountWithChildContacts($recordId: ID) {
         uiapi {
