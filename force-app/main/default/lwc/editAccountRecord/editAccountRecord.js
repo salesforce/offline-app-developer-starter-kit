@@ -11,11 +11,25 @@ export default class EditAccountRecord extends LightningElement {
   @api recordId;
   @api objectApiName;
 
-  nameField = NAME_FIELD;
-  phoneField = PHONE_FIELD;
-  websiteField = WEBSITE_FIELD;
-  industryField = INDUSTRY_FIELD;
-  typeField = TYPE_FIELD;
+  get nameField() {
+    return NAME_FIELD;
+  }
+
+  get phoneField() {
+    return PHONE_FIELD;
+  }
+
+  get websiteField() {
+    return WEBSITE_FIELD;
+  }
+
+  get industryField() {
+    return INDUSTRY_FIELD;
+  }
+
+  get typeField() {
+    return TYPE_FIELD;
+  }
 
   @wire(getRecord, { recordId: "$recordId", fields: [NAME_FIELD] })
   record;

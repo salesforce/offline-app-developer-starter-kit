@@ -20,11 +20,11 @@
             <lightning-messages></lightning-messages>
 
             <!-- input fields -->
-            <lightning-input-field field-name={nameField} value={name}></lightning-input-field>
-            <lightning-input-field field-name={titleField} value={title}></lightning-input-field>
-            <lightning-input-field field-name={phoneField} value={phone}></lightning-input-field>
-            <lightning-input-field field-name={emailField} value={email}></lightning-input-field>
-            <lightning-input-field field-name={mobileField} value={mobile}></lightning-input-field>
+            <lightning-input-field field-name={nameField} value={initialValue}></lightning-input-field>
+            <lightning-input-field field-name={titleField} value={initialValue}></lightning-input-field>
+            <lightning-input-field field-name={phoneField} value={initialValue}></lightning-input-field>
+            <lightning-input-field field-name={emailField} value={initialValue}></lightning-input-field>
+            <lightning-input-field field-name={mobileField} value={initialValue}></lightning-input-field>
             <lightning-input-field field-name={ownerField}></lightning-input-field>
 
             <!-- 
@@ -36,7 +36,7 @@
                 label="Account"
                 placeholder="Search Accounts..."
                 object-api-name="Account"
-                value={account}
+                value={initialValue}
                 onchange={handleChange}
             >
             </lightning-record-picker>

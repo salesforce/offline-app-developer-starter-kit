@@ -10,18 +10,33 @@ export default class CreateContactRecord extends LightningElement {
   @api recordId;
   @api objectApiName;
 
-  nameField = OPPORTUNITY_NAME_FIELD;
-  accountField = OPPORTUNITY_ACCOUNT_FIELD;
-  closeDateField = OPPORTUNITY_CLOSE_DATE_FIELD;
-  amountField = OPPORTUNITY_AMOUNT_FIELD;
-  stageNameField = OPPORTUNITY_STAGENAME_FIELD;
-  ownerField = OPPORTUNITY_OWNER_FIELD;
+  get nameField() {
+    return OPPORTUNITY_NAME_FIELD;
+  }
 
-  name = "";
-  account = "";
-  closeDate = "";
-  amount = "";
-  stageName = "";
+  get accountField() {
+    return OPPORTUNITY_ACCOUNT_FIELD;
+  }
+
+  get closeDateField() {
+    return OPPORTUNITY_CLOSE_DATE_FIELD;
+  }
+
+  get amountField() {
+    return OPPORTUNITY_AMOUNT_FIELD;
+  }
+
+  get stageNameField() {
+    return OPPORTUNITY_STAGENAME_FIELD;
+  }
+
+  get ownerField() {
+    return OPPORTUNITY_OWNER_FIELD;
+  }
+
+  get initialValue() {
+    return "";
+  }
 
   onSuccess(event) {
     console.log("Created opportunity", event.detail);

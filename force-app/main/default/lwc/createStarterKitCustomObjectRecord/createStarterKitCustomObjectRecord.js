@@ -11,19 +11,33 @@ export default class CreateStarterKitCustomObject__cRecord extends LightningElem
   @api recordId;
   @api objectApiName;
 
-  nameField = NAME_FIELD;
-  start_Time__cField = START_TIME__C_FIELD;
-  end_Time__cField = END_TIME__C_FIELD;
-  priority__cField = PRIORITY__C_FIELD;
-  status__cField = STATUS__C_FIELD;
-  address__cField = ADDRESS__C_FIELD;
+  get nameField() {
+    return NAME_FIELD;
+  }
 
-  name = "";
-  start_Time__c = "";
-  end_Time__c = "";
-  priority__c = "";
-  status__c = "";
-  address__c = "";
+  get start_Time__cField() {
+    return START_TIME__C_FIELD;
+  }
+
+  get end_Time__cField() {
+    return END_TIME__C_FIELD;
+  }
+
+  get priority__cField() {
+    return PRIORITY__C_FIELD;
+  }
+
+  get status__cField() {
+    return STATUS__C_FIELD;
+  }
+
+  get address__cField() {
+    return ADDRESS__C_FIELD;
+  }
+
+  get initialValue() {
+    return "";
+  }
 
   onSuccess(event) {
     console.log("Created StarterKitCustomObject__c", event.detail);

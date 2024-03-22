@@ -11,11 +11,25 @@ export default class EditOpportunityRecord extends LightningElement {
   @api recordId;
   @api objectApiName;
 
-  nameField = OPPORTUNITY_NAME_FIELD;
-  accountField = OPPORTUNITY_ACCOUNT_FIELD;
-  closeDateField = OPPORTUNITY_CLOSE_DATE_FIELD;
-  amountField = OPPORTUNITY_AMOUNT_FIELD;
-  stageNameField = OPPORTUNITY_STAGENAME_FIELD;
+  get nameField() {
+    return OPPORTUNITY_NAME_FIELD;
+  }
+
+  get accountField() {
+    return OPPORTUNITY_ACCOUNT_FIELD;
+  }
+
+  get closeDateField() {
+    return OPPORTUNITY_CLOSE_DATE_FIELD;
+  }
+
+  get amountField() {
+    return OPPORTUNITY_AMOUNT_FIELD;
+  }
+
+  get stageNameField() {
+    return OPPORTUNITY_STAGENAME_FIELD;
+  }
 
   @wire(getRecord, { recordId: "$recordId", fields: [OPPORTUNITY_NAME_FIELD] })
   record;
