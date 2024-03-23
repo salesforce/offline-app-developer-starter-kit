@@ -12,12 +12,29 @@ export default class EditStarterKitCustomObject__cRecord extends LightningElemen
   @api recordId;
   @api objectApiName;
 
-  nameField = NAME_FIELD;
-  start_Time__cField = START_TIME__C_FIELD;
-  end_Time__cField = END_TIME__C_FIELD;
-  priority__cField = PRIORITY__C_FIELD;
-  status__cField = STATUS__C_FIELD;
-  address__cField = ADDRESS__C_FIELD;
+  get nameField() {
+    return NAME_FIELD;
+  }
+
+  get start_Time__cField() {
+    return START_TIME__C_FIELD;
+  }
+
+  get end_Time__cField() {
+    return END_TIME__C_FIELD;
+  }
+
+  get priority__cField() {
+    return PRIORITY__C_FIELD;
+  }
+
+  get status__cField() {
+    return STATUS__C_FIELD;
+  }
+
+  get address__cField() {
+    return ADDRESS__C_FIELD;
+  }
 
   @wire(getRecord, { recordId: "$recordId", fields: [NAME_FIELD] })
   record;

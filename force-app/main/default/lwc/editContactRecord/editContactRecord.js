@@ -12,12 +12,29 @@ export default class EditContactRecord extends LightningElement {
   @api recordId;
   @api objectApiName;
 
-  nameField = CONTACT_NAME_FIELD;
-  titleField = CONTACT_TITLE_FIELD;
-  accountField = CONTACT_ACCOUNT_FIELD;
-  phoneField = CONTACT_PHONE_FIELD;
-  emailField = CONTACT_EMAIL_FIELD;
-  mobileField = CONTACT_MOBILE_FIELD;
+  get nameField() {
+    return CONTACT_NAME_FIELD;
+  }
+
+  get titleField() {
+    return CONTACT_TITLE_FIELD;
+  }
+
+  get accountField() {
+    return CONTACT_ACCOUNT_FIELD;
+  }
+
+  get phoneField() {
+    return CONTACT_PHONE_FIELD;
+  }
+
+  get emailField() {
+    return CONTACT_EMAIL_FIELD;
+  }
+
+  get mobileField() {
+    return CONTACT_MOBILE_FIELD;
+  }
 
   @wire(getRecord, { recordId: "$recordId", fields: [CONTACT_NAME_FIELD] })
   record;
