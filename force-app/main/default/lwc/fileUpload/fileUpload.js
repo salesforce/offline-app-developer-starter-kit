@@ -1,6 +1,6 @@
 import { LightningElement, api, wire, track } from "lwc";
 import {
-  unstable_createContentDocumentAndVersion,
+  createContentDocumentAndVersion,
   createRecord,
 } from "lightning/uiRecordApi";
 import { getObjectInfos } from "lightning/uiObjectInfoApi";
@@ -82,12 +82,11 @@ export default class FileUpload extends LightningElement {
 
       // Create a Content Document and Version for the file
       // effectively uploading it
-      const contentDocumentAndVersion =
-        await unstable_createContentDocumentAndVersion({
-          title: this.titleValue,
-          description: this.descriptionValue,
-          fileData: file,
-        });
+      const contentDocumentAndVersion = await createContentDocumentAndVersion({
+        title: this.titleValue,
+        description: this.descriptionValue,
+        fileData: file,
+      });
 
       if (this.recordId) {
         const contentDocumentId = contentDocumentAndVersion.contentDocument.id;
