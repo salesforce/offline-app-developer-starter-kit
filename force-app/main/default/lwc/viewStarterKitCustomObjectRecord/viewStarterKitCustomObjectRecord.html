@@ -1,0 +1,24 @@
+<template>
+    <div class="component-background">
+        <template if:true={record}>
+            <div class="card-container">
+                
+                <div class="title-slot">
+                    <c-record-header record-name={name} object-api-name={objectApiName}
+                        object-label="StarterKitCustomObject" icon-name="custom:custom9">
+                    </c-record-header>
+                </div>
+
+                <div class="body-slot">
+                    <!-- use lightning-record-form to show the selected fields. here, we use 'view' as the mode which allows edits too -->
+                    <lightning-record-form record-id={recordId} object-api-name={objectApiName} fields={fields}
+                        columns="1" mode="readonly">
+                    </lightning-record-form>
+                </div>
+
+                <!-- show any draft information for this record -->
+                <!-- <c-draft-details-list record-id={recordId} fields={fields}></c-draft-details-list> -->
+            </div>
+        </template>
+    </div>
+</template>

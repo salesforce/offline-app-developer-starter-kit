@@ -1,7 +1,7 @@
 import { LightningElement, api, track, wire } from "lwc";
 import { ShowToastEvent } from "lightning/platformShowToastEvent";
 import {
-  unstable_createContentDocumentAndVersion,
+  createContentDocumentAndVersion,
   createRecord,
 } from "lightning/uiRecordApi";
 // Imports for forced-prime ObjectInfo metadata work-around
@@ -89,12 +89,11 @@ export default class FileUpload extends LightningElement {
 
       // Create a ContentDocument and related ContentDocumentVersion for
       // the file, effectively uploading it
-      const contentDocumentAndVersion =
-        await unstable_createContentDocumentAndVersion({
-          title: this.titleValue,
-          description: this.descriptionValue,
-          fileData: file,
-        });
+      const contentDocumentAndVersion = await createContentDocumentAndVersion({
+        title: this.titleValue,
+        description: this.descriptionValue,
+        fileData: file,
+      });
       console.log(
         "ContentDocument and ContentDocumentVersion records created."
       );
