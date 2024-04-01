@@ -1,7 +1,6 @@
 import { LightningElement, api } from "lwc";
 import CONTACT_NAME_FIELD from "@salesforce/schema/Contact.Name";
 import CONTACT_TITLE_FIELD from "@salesforce/schema/Contact.Title";
-import CONTACT_ACCOUNT_FIELD from "@salesforce/schema/Contact.AccountId";
 import CONTACT_PHONE_FIELD from "@salesforce/schema/Contact.Phone";
 import CONTACT_EMAIL_FIELD from "@salesforce/schema/Contact.Email";
 import CONTACT_MOBILE_FIELD from "@salesforce/schema/Contact.MobilePhone";
@@ -11,20 +10,32 @@ export default class CreateContactRecord extends LightningElement {
   @api recordId;
   @api objectApiName;
 
-  nameField = CONTACT_NAME_FIELD;
-  titleField = CONTACT_TITLE_FIELD;
-  accountField = CONTACT_ACCOUNT_FIELD;
-  phoneField = CONTACT_PHONE_FIELD;
-  emailField = CONTACT_EMAIL_FIELD;
-  mobileField = CONTACT_MOBILE_FIELD;
-  ownerField = CONTACT_OWNER_FIELD;
+  get nameField() {
+    return CONTACT_NAME_FIELD;
+  }
+  get titleField() {
+    return CONTACT_TITLE_FIELD;
+  }
 
-  name = "";
-  title = "";
-  account = "";
-  phone = "";
-  email = "";
-  mobile = "";
+  get phoneField() {
+    return CONTACT_PHONE_FIELD;
+  }
+
+  get emailField() {
+    return CONTACT_EMAIL_FIELD;
+  }
+
+  get mobileField() {
+    return CONTACT_MOBILE_FIELD;
+  }
+
+  get ownerField() {
+    return CONTACT_OWNER_FIELD;
+  }
+
+  get initialValue() {
+    return "";
+  }
 
   selectedId;
 
