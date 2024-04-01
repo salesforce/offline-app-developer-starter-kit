@@ -95,7 +95,7 @@ export default class FileUpload extends LightningElement {
         fileData: file,
       });
       console.log(
-        "ContentDocument and ContentDocumentVersion records created."
+        "ContentDocument and ContentDocumentVersion records created.",
       );
 
       // If component is run in a record context (recordId is set), relate
@@ -139,7 +139,7 @@ export default class FileUpload extends LightningElement {
         title: "Upload Successful",
         message: "File enqueued for upload.",
         variant: "success",
-      })
+      }),
     );
   }
 }
