@@ -40,26 +40,26 @@ export default class ScanBarcodeLookup extends LightningElement {
   }
 
   get productQuery() {
-    if (!this.scannedBarcode) return undefined;
-
-    return gql`
-      query productBarcodeLookup($upc: String) {
-        uiapi {
-          query {
-            Product2(where: { ProductCode: { eq: $upc } }) {
-              edges {
-                node {
-                  Id
-                  Name {
-                    value
+    return !this.scannedBarcode
+      ? undefined
+      : gql`
+          query productBarcodeLookup($upc: String) {
+            uiapi {
+              query {
+                Product2(where: { ProductCode: { eq: $upc } }) {
+                  edges {
+                    node {
+                      Id
+                      Name {
+                        value
+                      }
+                    }
                   }
                 }
               }
             }
           }
-        }
-      }
-    `;
+        `;
   }
 
   get graphqlVariables() {
