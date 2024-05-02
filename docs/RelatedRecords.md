@@ -12,25 +12,29 @@ In this example, we perform a GraphQL query to fetch related `Contacts` from an 
 
 ```js
   get accountQuery() {
-    return gql`
-      query accountWithChildContacts($recordId: ID) {
-        uiapi {
-          query {
-            Account(where: { Id: { eq: $recordId } }) {
-              edges {
-                node {
-                  Contacts {
-                    edges {
-                      node {
-                        Id
-                        Name {
-                          value
-                        }
-                        Phone {
-                          value
-                        }
-                        Email {
-                          value
+    return !this.recordId
+      ? undefined
+      : gql`
+          query accountWithChildContacts($recordId: ID) {
+            uiapi {
+              query {
+                Account(where: { Id: { eq: $recordId } }) {
+                  edges {
+                    node {
+                      Contacts {
+                        edges {
+                          node {
+                            Id
+                            Name {
+                              value
+                            }
+                            Phone {
+                              value
+                            }
+                            Email {
+                              value
+                            }
+                          }
                         }
                       }
                     }
@@ -39,9 +43,7 @@ In this example, we perform a GraphQL query to fetch related `Contacts` from an 
               }
             }
           }
-        }
-      }
-    `;
+        `;
   }
 ```
 

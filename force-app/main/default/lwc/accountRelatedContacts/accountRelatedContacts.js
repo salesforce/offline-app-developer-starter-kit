@@ -1,6 +1,5 @@
 import { LightningElement, api, wire } from "lwc";
 import { NavigationMixin } from "lightning/navigation";
-
 import { graphql, gql } from "lightning/uiGraphQLApi";
 
 // eslint-disable-next-line @salesforce/lwc-graph-analyzer/no-unresolved-parent-class-reference
@@ -15,25 +14,29 @@ export default class AccountRelatedContacts extends NavigationMixin(
     As of Spring '24 release the issue has been addressed.
   */
   get accountQuery() {
-    return gql`
-      query accountWithChildContacts($recordId: ID) {
-        uiapi {
-          query {
-            Account(where: { Id: { eq: $recordId } }) {
-              edges {
-                node {
-                  Contacts {
-                    edges {
-                      node {
-                        Id
-                        Name {
-                          value
-                        }
-                        Phone {
-                          value
-                        }
-                        Email {
-                          value
+    return !this.recordId
+      ? undefined
+      : gql`
+          query accountWithChildContacts($recordId: ID) {
+            uiapi {
+              query {
+                Account(where: { Id: { eq: $recordId } }) {
+                  edges {
+                    node {
+                      Contacts {
+                        edges {
+                          node {
+                            Id
+                            Name {
+                              value
+                            }
+                            Phone {
+                              value
+                            }
+                            Email {
+                              value
+                            }
+                          }
                         }
                       }
                     }
@@ -42,9 +45,7 @@ export default class AccountRelatedContacts extends NavigationMixin(
               }
             }
           }
-        }
-      }
-    `;
+        `;
   }
 
   // https://developer.salesforce.com/docs/component-library/documentation/en/lwc/lwc.reference_graphql_relationships
@@ -66,7 +67,7 @@ export default class AccountRelatedContacts extends NavigationMixin(
 
   get graphqlVariables() {
     return {
-      recordId: this.recordId || "",
+      recordId: this.recordId,
     };
   }
 
