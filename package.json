@@ -15,7 +15,7 @@
   },
   "devDependencies": {
     "@lwc/engine-server": "^3.8.0",
-    "@lwc/eslint-plugin-lwc": "^1.7.2",
+    "@lwc/eslint-plugin-lwc": "^1.8.2",
     "@prettier/plugin-xml": "^3.2.0",
     "@sa11y/jest": "^5.2.0",
     "@salesforce/eslint-config-lwc": "^3.5.2",
