@@ -18,7 +18,7 @@
     "@lwc/eslint-plugin-lwc": "^1.8.2",
     "@prettier/plugin-xml": "^3.4.1",
     "@sa11y/jest": "^5.2.0",
-    "@salesforce/eslint-config-lwc": "^3.5.2",
+    "@salesforce/eslint-config-lwc": "^3.6.0",
     "@salesforce/eslint-plugin-aura": "^2.1.0",
     "@salesforce/eslint-plugin-lightning": "^1.0.0",
     "@salesforce/eslint-plugin-lwc-graph-analyzer": "^0.9.0",
