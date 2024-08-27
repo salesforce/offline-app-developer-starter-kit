@@ -3,12 +3,14 @@ updates:
     - package-ecosystem: 'npm'
       directory: '/'
       schedule:
-          interval: 'weekly'
-          day: 'saturday'
+          interval: 'monthly'
+          day: 'monday'
+          time: '08:00'
+          timezone: 'America/Los_Angeles'
       versioning-strategy: 'increase'
       labels:
           - 'dependencies'
-      open-pull-requests-limit: 10
+      open-pull-requests-limit: 5
       pull-request-branch-name:
           separator: '-'
       commit-message:
