@@ -5,6 +5,7 @@ import CONTACT_PHONE_FIELD from "@salesforce/schema/Contact.Phone";
 import CONTACT_EMAIL_FIELD from "@salesforce/schema/Contact.Email";
 import CONTACT_MOBILE_FIELD from "@salesforce/schema/Contact.MobilePhone";
 import CONTACT_OWNER_FIELD from "@salesforce/schema/Contact.OwnerId";
+import CONTACT_ACCOUNT_FIELD from "@salesforce/schema/Contact.AccountId";
 
 export default class CreateContactRecord extends LightningElement {
   @api recordId;
@@ -31,6 +32,10 @@ export default class CreateContactRecord extends LightningElement {
 
   get ownerField() {
     return CONTACT_OWNER_FIELD;
+  }
+
+  get accountField() {
+    return CONTACT_ACCOUNT_FIELD;
   }
 
   get initialValue() {
