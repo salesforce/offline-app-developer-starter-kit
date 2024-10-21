@@ -4,12 +4,16 @@ updates:
       directory: '/'
       schedule:
           interval: 'monthly'
-          day: 'monday'
-          time: '08:00'
-          timezone: 'America/Los_Angeles'
       versioning-strategy: 'increase'
       labels:
           - 'dependencies'
+      groups:
+          # Group all minor and patch dependency updates together.
+          minor-and-patch:
+              applies-to: version-updates
+              update-types:
+                  - 'minor'
+                  - 'patch'
       open-pull-requests-limit: 5
       pull-request-branch-name:
           separator: '-'
