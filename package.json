@@ -14,7 +14,7 @@
     "prettier:verify": "prettier --list-different \"force-app/**/*.js\""
   },
   "devDependencies": {
-    "@lwc/engine-server": "^7.2.1",
+    "@lwc/engine-server": "^8.2.0",
     "@lwc/eslint-plugin-lwc": "^1.8.2",
     "@prettier/plugin-xml": "^3.4.1",
     "@sa11y/jest": "^6.10.1",
