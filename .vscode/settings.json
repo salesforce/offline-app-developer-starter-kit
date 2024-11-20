@@ -4,7 +4,7 @@
         "editor.formatOnSave": true,
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
-    "mobileDiagnostics.suppressByRuleId": [
- 
+    "cSpell.words": [
+        "uiapi"
     ]
 }
