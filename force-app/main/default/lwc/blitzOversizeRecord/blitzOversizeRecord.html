@@ -1,0 +1,11 @@
+<template>
+  <lightning-card title="Books">
+    <div class="slds-var-m-around_medium">
+      <template lwc:if={records}>
+        <template for:each={records} for:item="record">
+          {recrod.Name.value}
+        </template>
+      </template>
+    </div>
+  </lightning-card>
+</template>
