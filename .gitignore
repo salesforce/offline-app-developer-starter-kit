@@ -1,5 +1,6 @@
 .sfdx
 .sf
+.sfMobile
 .localdevserver
 .DS_Store
 node_modules
