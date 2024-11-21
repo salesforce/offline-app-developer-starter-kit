@@ -9,14 +9,14 @@ export default class BlitzGetRelatedList extends LightningElement {
         fields: ['Contact.Name','Contact.Id'],
         sortBy: ['Contact.Name']
     })
-    onResult1({data, error}) {
+    onResult1() {
     }
 
     @wire(getRelatedListCount, {
         parentRecordId: '001RM000003UNu6YAG',
         relatedListId: 'Contacts',
     })
-    onResult2({data, error}) {
+    onResult2() {
 
     }
 }
