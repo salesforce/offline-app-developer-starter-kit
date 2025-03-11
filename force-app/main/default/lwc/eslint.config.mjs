@@ -6,15 +6,13 @@ import { FlatCompat } from "@eslint/eslintrc";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const compat = new FlatCompat({
-  baseDirectory: __dirname,
-  recommendedConfig: js.configs.recommended,
-  allConfig: js.configs.all,
+    baseDirectory: __dirname,
+    recommendedConfig: js.configs.recommended,
+    allConfig: js.configs.all
 });
 
-export default [
-  ...compat.extends(
+export default [...compat.extends(
     "eslint:recommended",
     "@salesforce/eslint-config-lwc/recommended",
-    "plugin:@salesforce/lwc-graph-analyzer/recommended"
-  ),
-];
+    "plugin:@salesforce/lwc-graph-analyzer/recommended",
+)];
