@@ -1,0 +1,98 @@
+<template>
+    <div class="component-background">
+        <lightning-record-edit-form object-api-name="Product2" onsuccess={onSuccess} onerror={onError}>
+
+            <div class="header-slot">
+                <!-- cancel and submit buttons-->
+                <lightning-layout horizontal-align="spread" class="slds-var-p-horizontal_xx-small">
+                    <lightning-layout-item>
+                        <lightning-button variant="base" data-id="cancel" label="Cancel" type="button" onclick={dismiss}
+                            class="button"></lightning-button>
+                    </lightning-layout-item>
+
+                    <lightning-layout-item>
+                        <lightning-button variant="base" data-id="submit" label="Create" type="submit"
+                            class="button-primary"></lightning-button>
+                    </lightning-layout-item>
+                </lightning-layout>
+            </div>
+
+            <div class="header-offset slds-var-p-horizontal_small slds-var-p-bottom_medium">
+
+                <!-- show any error messages or alerts -->
+                <lightning-messages></lightning-messages>
+
+                <!-- Barcode Scanner Section -->
+                <div class="barcode-scanner-section slds-var-p-around_medium slds-var-m-bottom_medium">
+                    <div class="slds-text-heading_small slds-var-m-bottom_small">Barcode Scanner</div>
+                    <template if:true={scannerAvailable}>
+                        <lightning-button 
+                            variant="brand" 
+                            label="Scan Barcode" 
+                            onclick={handleScanBarcode}
+                            disabled={isScanning}
+                            icon-name="utility:scan"
+                            class="slds-size_full slds-var-m-bottom_small">
+                        </lightning-button>
+                        <template if:true={isScanning}>
+                            <div class="slds-text-color_weak slds-var-m-bottom_small">
+                                <lightning-spinner alternative-text="Scanning..." size="small"></lightning-spinner>
+                                Scanning barcode...
+                            </div>
+                        </template>
+                        <template if:true={scannedBarcode}>
+                            <div class="scanned-barcode-display slds-var-p-around_x-small slds-var-m-bottom_small">
+                                <span class="slds-text-color_weak">Scanned barcode: </span>
+                                <span class="slds-text-color_success">{scannedBarcode}</span>
+                            </div>
+                        </template>
+                    </template>
+                    <template if:false={scannerAvailable}>
+                        <div class="slds-text-color_weak">
+                            Barcode scanner is not available on this device
+                        </div>
+                    </template>
+                </div>
+
+                <!-- Product Input Fields -->
+                <div class="slds-var-m-top_medium">
+                    <div class="slds-text-heading_small slds-var-m-bottom_small">Product Details</div>
+                    
+                    <!-- Product Name -->
+                    <lightning-input-field 
+                        field-name={nameField} 
+                        value={initialValue}
+                        required>
+                    </lightning-input-field>
+
+                    <!-- Product Code -->
+                    <lightning-input-field 
+                        field-name={productCodeField} 
+                        value={productCodeValue}
+                        data-field="productCode"
+                        required>
+                    </lightning-input-field>
+
+                    <!-- Description -->
+                    <lightning-input-field 
+                        field-name={descriptionField} 
+                        value={initialValue}>
+                    </lightning-input-field>
+
+                    <!-- Family -->
+                    <lightning-input-field 
+                        field-name={familyField} 
+                        value={initialValue}>
+                    </lightning-input-field>
+
+                    <!-- Is Active -->
+                    <lightning-input-field 
+                        field-name={isActiveField}>
+                    </lightning-input-field>
+                </div>
+
+            </div>
+
+        </lightning-record-edit-form>
+    </div>
+</template> 

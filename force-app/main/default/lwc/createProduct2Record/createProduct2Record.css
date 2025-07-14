@@ -1,0 +1,35 @@
+@import 'c/commonStyles';
+
+.barcode-scanner-section {
+    background: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+}
+
+.scanned-barcode-display {
+    background: #e8f5e8;
+    border-radius: 4px;
+    border-left: 4px solid #4caf50;
+    font-family: monospace;
+    font-size: 0.9rem;
+}
+
+/* Mobile-specific styles */
+@media (max-width: 768px) {
+    .scanned-barcode-display {
+        font-size: 0.8rem;
+    }
+}
+
+/* Improve button styling */
+.button-primary {
+    background-color: #0176d3;
+    color: white;
+    border: none;
+}
+
+.button {
+    border: 1px solid #dddbda;
+    background-color: white;
+    color: #0176d3;
+} 
