@@ -1,0 +1,138 @@
+<template>
+    <div class="slds-card slds-var-m-around_medium">
+        <div class="slds-card__header slds-grid slds-var-p-around_medium">
+            <div class="slds-media__figure slds-var-m-right_small">
+                <lightning-icon icon-name="standard:service_appointment" size="small"></lightning-icon>
+            </div>
+            <div class="slds-media__body">
+                <h2 class="slds-card__header-title">
+                    <span class="slds-text-heading_small">Field Technician Check-in</span>
+                </h2>
+            </div>
+        </div>
+        
+        <div class="slds-card__body slds-card__body_inner slds-var-p-around_large">
+            <!-- Error Message -->
+            <template if:true={errorMessage}>
+                <div class="slds-notify slds-notify_alert slds-theme_error slds-m-bottom_medium slds-var-p-around_medium" data-id="error-message">
+                    <span class="slds-assistive-text">Error</span>
+                    <h2>{errorMessage}</h2>
+                </div>
+            </template>
+
+            <!-- Biometric Authentication Step -->
+            <template if:true={isBiometricStep}>
+                <div class="slds-text-align_center slds-m-bottom_large" data-id="biometric-step">
+                    <lightning-icon icon-name="action:freeze_user" size="large" class="slds-m-bottom_medium"></lightning-icon>
+                    <h3 class="slds-text-heading_medium slds-m-bottom_small">Biometric Authentication Required</h3>
+                    <p class="slds-text-body_regular slds-m-bottom_medium">
+                        Please authenticate using your device's biometric scanner or PIN to begin the check-in process.
+                    </p>
+                </div>
+                
+                <div class="slds-text-align_center">
+                    <lightning-button 
+                        variant="brand" 
+                        label="Start Check-in"
+                        icon-name="utility:identity"
+                        onclick={handleStartCheckIn}
+                        disabled={isProcessing}
+                        class="slds-m-bottom_medium"
+                        data-id="start-checkin-button">
+                    </lightning-button>
+                    
+                    <template if:true={isProcessing}>
+                        <div class="slds-text-align_center slds-m-top_medium" data-id="biometric-processing">
+                            <lightning-spinner alternative-text="Authenticating..." size="small"></lightning-spinner>
+                            <p class="slds-text-color_weak slds-m-top_small">Authenticating...</p>
+                        </div>
+                    </template>
+                </div>
+            </template>
+
+            <!-- Location Update Prompt -->
+            <template if:true={showLocationOptions}>
+                <div class="slds-text-align_center slds-m-bottom_large" data-id="location-step">
+                    <lightning-icon icon-name="utility:location" size="large" class="slds-m-bottom_medium"></lightning-icon>
+                    <h3 class="slds-text-heading_medium slds-m-bottom_small">Update Location</h3>
+                    <p class="slds-text-body_regular slds-m-bottom_medium">
+                        Would you like to update the geolocation field on your Service Appointment record with your current location?
+                    </p>
+                </div>
+                
+                <div class="slds-text-align_center">
+                    <lightning-button-group>
+                        <lightning-button 
+                            variant="brand" 
+                            label="Update Location"
+                            icon-name="utility:location"
+                            onclick={handleLocationUpdate}
+                            disabled={isProcessing}
+                            class="slds-m-right_small"
+                            data-id="update-location-button">
+                        </lightning-button>
+                        
+                        <lightning-button 
+                            variant="neutral" 
+                            label="Skip Location"
+                            onclick={handleSkipLocation}
+                            disabled={isProcessing}
+                            data-id="skip-location-button">
+                        </lightning-button>
+                    </lightning-button-group>
+                    
+                    <template if:true={isProcessing}>
+                        <div class="slds-text-align_center slds-m-top_medium" data-id="location-processing">
+                            <lightning-spinner alternative-text="Getting location..." size="small"></lightning-spinner>
+                            <p class="slds-text-color_weak slds-m-top_small">Getting your current location...</p>
+                        </div>
+                    </template>
+                </div>
+            </template>
+
+            <!-- Completion Step -->
+            <template if:true={isCompleted}>
+                <div class="slds-text-align_center slds-m-bottom_large" data-id="completion-step">
+                    <lightning-icon icon-name="utility:success" size="large" variant="success" class="slds-m-bottom_medium"></lightning-icon>
+                    <h3 class="slds-text-heading_medium slds-m-bottom_small">Check-in Complete!</h3>
+                    <p class="slds-text-body_regular slds-m-bottom_medium">
+                        Your check-in has been successfully completed and your Service Appointment has been updated.
+                    </p>
+                    
+                    <template if:true={currentLatitude}>
+                        <div class="location-info slds-box slds-theme_shade slds-m-top_medium slds-var-p-around_medium" data-id="location-info">
+                            <h4 class="slds-text-heading_small slds-m-bottom_small slds-text-color_default">Location Updated:</h4>
+                            <p class="slds-text-body_small slds-text-color_weak">
+                                <strong>Latitude:</strong> {currentLatitude}<br/>
+                                <strong>Longitude:</strong> {currentLongitude}
+                            </p>
+                        </div>
+                    </template>
+                </div>
+                
+                <div class="slds-text-align_center">
+                    <lightning-button 
+                        variant="brand" 
+                        label="Done"
+                        icon-name="utility:check"
+                        onclick={handleDismiss}
+                        data-id="done-button">
+                    </lightning-button>
+                </div>
+            </template>
+        </div>
+        
+        <!-- Footer with Cancel Button -->
+        <div class="slds-card__footer slds-text-align_center slds-var-p-around_medium">
+            <template if:false={isCompleted}>
+                <lightning-button 
+                    variant="neutral" 
+                    label="Cancel"
+                    onclick={handleDismiss}
+                    disabled={isProcessing}
+                    data-id="cancel-button">
+                </lightning-button>
+            </template>
+        </div>
+    </div>
+</template> 

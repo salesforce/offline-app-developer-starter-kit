@@ -35,10 +35,23 @@ const mockLocationServiceFactory = {
   getCurrentPosition: mockGetCurrentPosition,
 };
 
+const mockIsBiometricsReady = jest.fn().mockResolvedValue(true);
+const mockCheckUserIsDeviceOwner = jest.fn().mockResolvedValue(true);
+
+const mockBiometricsServiceFactory = {
+  isAvailable: mockIsAvailable,
+  isBiometricsReady: mockIsBiometricsReady,
+  checkUserIsDeviceOwner: mockCheckUserIsDeviceOwner,
+};
+
 export function getBarcodeScanner() {
   return mockBarcodeScannerFactory;
 }
 
 export function getLocationService() {
   return mockLocationServiceFactory;
+}
+
+export function getBiometricsService() {
+  return mockBiometricsServiceFactory;
 }

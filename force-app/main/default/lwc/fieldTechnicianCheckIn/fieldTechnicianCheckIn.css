@@ -1,0 +1,117 @@
+@import 'c/commonStyles';
+
+.slds-card {
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.slds-card__header {
+    background-color: var(--lwc-colorBackgroundAlt, #f3f3f3);
+    border-bottom: 1px solid var(--lwc-colorBorder, #e0e0e0);
+    border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.slds-card__body {
+    min-height: 300px;
+}
+
+.slds-card__footer {
+    border-top: 1px solid var(--lwc-colorBorder, #e0e0e0);
+    background-color: var(--lwc-colorBackgroundAlt, #f9f9f9);
+    border-radius: 0 0 0.5rem 0.5rem;
+}
+
+.location-info {
+    background-color: var(--lwc-colorBackgroundRowSelected, #e8f4fd);
+    border: 1px solid var(--lwc-colorBorder, #d8dde6);
+    border-radius: 0.25rem;
+}
+
+.location-info h4 {
+    font-weight: 600;
+}
+
+.location-info p {
+    line-height: 1.5;
+}
+
+/* Mobile-specific styles */
+@media (max-width: 768px) {
+    .slds-text-heading_medium {
+        font-size: 1.25rem;
+    }
+    
+    .slds-text-body_regular {
+        font-size: 0.875rem;
+    }
+}
+
+/* Loading state styles */
+.slds-spinner_container {
+    position: relative;
+    height: 60px;
+}
+
+/* Success state styles */
+.slds-icon-success {
+    color: #04844b;
+}
+
+/* Error state styles */
+.slds-notify_alert {
+    border-radius: 0.25rem;
+}
+
+.slds-theme_error {
+    background-color: #feded8;
+    border: 1px solid #ea001e;
+    color: #8a1701;
+}
+
+/* Button group styles */
+.slds-button-group {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Responsive button styles */
+@media (max-width: 480px) {
+    .slds-button-group {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .slds-button {
+        width: 100%;
+        max-width: 280px;
+    }
+}
+
+/* Step indicator styles */
+.step-indicator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.step-indicator .slds-icon {
+    margin-right: 0.5rem;
+}
+
+/* Animation for step transitions */
+.fade-in {
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+} 

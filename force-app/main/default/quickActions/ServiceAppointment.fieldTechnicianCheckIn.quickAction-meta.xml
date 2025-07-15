@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QuickAction xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionSubtype>ScreenAction</actionSubtype>
+    <description>Field technician check-in with biometric verification and location update</description>
+    <optionsCreateFeedItem>false</optionsCreateFeedItem>
+    <label>Field Technician Check-in</label>
+    <lightningWebComponent>fieldTechnicianCheckIn</lightningWebComponent>
+    <type>LightningWebComponent</type>
+    
+</QuickAction> 
