@@ -1,5 +1,5 @@
 {
-  "name": "offline-starter-kit",
+  "name": "@salesforce/offline-starter-kit",
   "private": true,
   "version": "1.0.0",
   "description": "Salesforce Offline Starter Kit",
