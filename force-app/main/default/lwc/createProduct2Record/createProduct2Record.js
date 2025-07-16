@@ -9,7 +9,7 @@ import FAMILY_FIELD from "@salesforce/schema/Product2.Family";
 import ISACTIVE_FIELD from "@salesforce/schema/Product2.IsActive";
 
 export default class CreateProduct2Record extends LightningElement {
-  @api recordId;
+  @api recordId = "01t55000001ZtFkAAK";
   @api objectApiName;
 
   @track scannedBarcode = "";

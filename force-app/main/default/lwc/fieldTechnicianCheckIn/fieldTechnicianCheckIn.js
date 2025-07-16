@@ -13,7 +13,7 @@ import SERVICE_APPOINTMENT_STATUS_FIELD from "@salesforce/schema/ServiceAppointm
 import SERVICE_APPOINTMENT_ACTUAL_START_TIME_FIELD from "@salesforce/schema/ServiceAppointment.ActualStartTime";
 
 export default class FieldTechnicianCheckIn extends LightningElement {
-  @api recordId;
+  @api recordId = "08pKS0000008YzGYAU";
   @api objectApiName;
 
   @track biometricsService;

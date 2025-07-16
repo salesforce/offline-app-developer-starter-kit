@@ -5,9 +5,10 @@
     <masterLabel>Create Product Record</masterLabel>
     <description>Creates a new Product record with barcode scanner integration for mobile field engineers.</description>
     <targets>
-        <target>lightning__GlobalAction</target>
-        <target>lightning__RecordPage</target>
         <target>lightning__RecordAction</target>
+        <target>lightning__AppPage</target>
+        <target>lightning__HomePage</target>
+        <target>lightning__GlobalAction</target>
     </targets>
     <targetConfigs>
         <targetConfig targets="lightning__RecordAction">
