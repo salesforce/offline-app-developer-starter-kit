@@ -14,22 +14,22 @@
     "prettier:verify": "prettier --list-different \"force-app/**/*.js\""
   },
   "devDependencies": {
-    "@lwc/engine-server": "^8.16.1",
+    "@lwc/engine-server": "^8.20.2",
     "@lwc/eslint-plugin-lwc": "^2.1.0",
-    "@prettier/plugin-xml": "^3.4.1",
-    "@sa11y/jest": "^7.0.0",
+    "@prettier/plugin-xml": "^3.4.2",
+    "@sa11y/jest": "^7.3.1",
     "@salesforce/eslint-config-lwc": "^3.7.1",
     "@salesforce/eslint-plugin-aura": "^2.1.0",
     "@salesforce/eslint-plugin-lightning": "^1.0.1",
     "@salesforce/eslint-plugin-lwc-graph-analyzer": "^0.9.0",
     "@salesforce/sfdx-lwc-jest": "^7.0.1",
     "eslint": "^8.57.1",
-    "eslint-config-prettier": "^10.1.1",
-    "eslint-plugin-import": "^2.31.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-jest": "^28.11.0",
-    "prettier": "^3.4.2",
-    "prettier-plugin-apex": "^2.2.2",
-    "typescript": "^5.7.3"
+    "prettier": "^3.6.2",
+    "prettier-plugin-apex": "^2.2.6",
+    "typescript": "^5.9.2"
   },
   "engines": {
     "node": ">=20"
