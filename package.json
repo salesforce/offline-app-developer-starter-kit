@@ -17,7 +17,7 @@
     "@lwc/engine-server": "^8.28.2",
     "@eslint/js": "^9",
     "@lwc/eslint-plugin-lwc": "^3.5.0",
-    "@lwc/template-compiler": "^8.28.2",
+    "@lwc/template-compiler": "^9.2.2",
     "@prettier/plugin-xml": "^3.4.2",
     "@sa11y/jest": "^7.0.0",
     "@salesforce/eslint-config-lwc": "^4.1.2",
