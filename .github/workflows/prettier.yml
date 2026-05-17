@@ -1,6 +1,10 @@
 name: prettier
 run-name: Installs project and runs prettier checks
 on: [ push, pull_request ]
+
+permissions:
+  contents: read
+
 jobs:
   lint:
     runs-on: ubuntu-latest

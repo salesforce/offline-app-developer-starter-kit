@@ -1,6 +1,10 @@
 name: run-tests
 run-name: Installs project and runs project tests
 on: [ push, pull_request ]
+
+permissions:
+  contents: read
+
 jobs:
   run-tests-nix:
     runs-on: ubuntu-latest

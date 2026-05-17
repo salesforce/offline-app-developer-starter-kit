@@ -1,6 +1,10 @@
 name: lint
 run-name: Installs project and runs linting
 on: [ push, pull_request ]
+
+permissions:
+  contents: read
+
 jobs:
   lint:
     runs-on: ubuntu-latest
