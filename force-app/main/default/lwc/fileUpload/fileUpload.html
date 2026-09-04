@@ -1,49 +1,57 @@
 <template>
     <h1>File Upload</h1>
 
-        <div>
-            <lightning-input
+    <!-- File selection controls. Always displayed.
+         Set `accept="*/*"` to allow uploads of any type of file. -->
+    <div>
+        <lightning-input
                 type="file"
                 name="fileUploader"
-                label="Pick file to upload"
-                multiple="true"
-                accept="*/*"
-                onchange={handleInputChange}
+                label="Select file to upload"
+                multiple="false"
+                accept="image/*"
+                onchange={handleFilesInputChange}
             >
             </lightning-input>
         </div>
 
-        <!-- Currently komaci only supports the if:true= instead of the new lwc:if directive -->
-        <div if:true={fileName}>
-            <p>Selected file:</p>
-            <p>{fileName}</p>
-            <div class="inputs">
-                <lightning-input
-                    type="text"
-                    label="Title"
-                    value={titleValue}
-                    onchange={handleTitleInputChange}
-                ></lightning-input>
-                <lightning-input
-                    type="text"
-                    label="Description"
-                    value={descriptionValue}
-                    onchange={handleDescriptionInputChange}
-                ></lightning-input>
-            </div>
-            <button
-                class="slds-button slds-button_brand slds-var-m-top_medium"
-                disabled={uploadingFile}
-                onclick={handleUploadClick}
-            >
-                <label>Upload</label>
-            </button>
+    <!-- If a file is selected, display additional input controls. -->
+    <div if:true={fileName}>
+
+        <!-- Show the filename (read-only) -->
+        <p>Selected file:</p>
+        <p>{fileName}</p>
+        
+        <!-- Form fields for upload details -->
+        <div class="inputs">
+            <lightning-input
+                type="text"
+                label="Title"
+                value={titleValue}
+                onchange={handleTitleInputChange}
+            ></lightning-input>
+            <lightning-input
+                type="text"
+                label="Description"
+                value={descriptionValue}
+                onchange={handleDescriptionInputChange}
+            ></lightning-input>
         </div>
 
-        <!-- Currently komaci only supports the if:true= instead of the new lwc:if directive -->
-        <div if:true={errorMessage}>
-            <lightning-card title="Error">
-                <div class="card-body">{errorMessage}</div>
-            </lightning-card>
-        </div>
+        <!-- Button to actually do the upload (enqueued as a draft) -->
+        <button
+            class="slds-button slds-button_brand slds-var-m-top_medium"
+            disabled={uploadingFile}
+            onclick={handleUploadClick}
+        >
+            <label>Upload</label>
+        </button>
+    </div>
+
+    <!-- If there are errors, show them here -->
+    <div if:true={errorMessage}>
+        <lightning-card title="Error">
+            <div class="card-body">{errorMessage}</div>
+        </lightning-card>
+    </div>
 </template>
