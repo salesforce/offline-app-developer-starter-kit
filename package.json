@@ -15,7 +15,7 @@
   },
   "devDependencies": {
     "@lwc/engine-server": "^8.28.2",
-    "@eslint/js": "^9",
+    "@eslint/js": "^10",
     "@lwc/eslint-plugin-lwc": "^3.5.0",
     "@lwc/template-compiler": "^8.28.2",
     "@prettier/plugin-xml": "^3.4.2",
